@@ -824,20 +824,32 @@ input[type="range"]::-moz-range-thumb{
   box-shadow:0 2px 8px rgba(13,22,8,0.3);cursor:pointer;
 }
 
-/* MONTH CARDS */
-.month-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem}
-.month-card{background:var(--gray);border:1px solid rgba(124,191,57,0.12);border-radius:14px;padding:2rem 1.6rem;position:relative}
-.month-tag{
-  display:inline-block;font-family:var(--fd);font-size:0.62rem;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;color:var(--black);
-  background:var(--gb);padding:0.3rem 0.7rem;border-radius:999px;margin-bottom:1.1rem;
+/* MONTH TIMELINE */
+.timeline{margin-top:3.5rem;display:flex;flex-direction:column;max-width:820px}
+.timeline-item{display:flex;gap:2rem;position:relative;padding-bottom:3rem}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item:not(:last-child)::before{
+  content:'';position:absolute;left:31px;top:64px;bottom:0;width:2px;
+  background:rgba(124,191,57,0.2);
 }
-.month-card h3{font-family:var(--fd);font-size:1.2rem;font-weight:800;color:var(--cream);margin-bottom:1rem}
-.month-card ul{list-style:none;margin-bottom:1.2rem}
-.month-card li{font-size:0.83rem;color:rgba(252,249,244,0.6);padding:0.35rem 0;padding-left:1rem;position:relative;line-height:1.5}
-.month-card li::before{content:'\2192';position:absolute;left:0;color:var(--gb)}
+.timeline-marker{
+  flex-shrink:0;width:64px;height:64px;border-radius:50%;background:var(--gray);
+  border:2px solid var(--gb);display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-weight:800;font-size:1.15rem;color:var(--gb);
+  position:relative;z-index:1;
+}
+.timeline-content{flex:1;padding-top:0.5rem;background:var(--gray);border:1px solid rgba(124,191,57,0.12);border-radius:14px;padding:1.8rem 1.8rem 1.6rem}
+.timeline-content h3{font-family:var(--fd);font-size:1.2rem;font-weight:800;color:var(--cream);margin-bottom:1rem}
+.timeline-content ul{list-style:none;margin-bottom:1.2rem}
+.timeline-content li{font-size:0.83rem;color:rgba(252,249,244,0.6);padding:0.35rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
+.timeline-content li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
 .month-proof{font-size:0.7rem;color:var(--gb);font-weight:700;border-top:1px solid rgba(124,191,57,0.15);padding-top:0.9rem}
-@media(max-width:900px){.month-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .timeline-item{gap:1.1rem}
+  .timeline-marker{width:48px;height:48px;font-size:0.9rem}
+  .timeline-item:not(:last-child)::before{left:23px;top:48px}
+  .timeline-content{padding:1.4rem 1.3rem 1.2rem}
+}
 
 /* ITEMIZED LIST */
 .itemized{margin-top:3rem;max-width:760px}
