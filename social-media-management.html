@@ -128,31 +128,38 @@
   <p class="section-intro">Everything's scoped to what your brand actually needs. Slide it together below and we'll turn it into a real quote &mdash; no generic packages.</p>
 
   <div class="builder" id="retainer-builder">
-    <div class="builder-step">
-      <span class="builder-step-label"><span class="builder-step-num">1</span> Content &amp; Posting</span>
-      <div class="slider-row">
-        <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Content Mix</label><span class="slider-val" id="mix-val">Balanced</span></div>
-        <input type="range" min="0" max="100" value="50" id="mix-slider">
-        <div class="slider-scale"><span>Photo-Heavy</span><span>Video-Heavy</span></div>
-      </div>
-      <div class="slider-row">
-        <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Platforms Managed</label><span class="slider-val" id="platforms-val">2 Platforms</span></div>
-        <input type="range" min="1" max="4" value="2" step="1" id="platforms-slider">
-        <div class="slider-scale"><span>1 Platform</span><span>4 Platforms</span></div>
-      </div>
-    </div>
-
-    <div class="builder-step">
-      <span class="builder-step-label"><span class="builder-step-num">2</span> Monthly Shoot Cadence</span>
-      <div class="slider-row">
-        <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Shoot Days / Month</label><span class="slider-val" id="cadence-val">1 Shoot Day (Included)</span></div>
-        <input type="range" min="0" max="2" value="0" step="1" id="cadence-slider">
-        <div class="slider-scale"><span>1 Day (Included)</span><span>Weekly (Full Retainer)</span></div>
+    <div class="builder-step step-tint-a">
+      <div class="step-tag"><span class="step-dot"></span>Step 1</div>
+      <h3 class="step-heading">Content &amp; Posting</h3>
+      <div class="slider-grid">
+        <div class="slider-row">
+          <div class="slider-top"><label class="slider-label">Content Mix</label><span class="slider-val" id="mix-val">Balanced</span></div>
+          <input type="range" min="0" max="100" value="50" id="mix-slider">
+          <div class="slider-scale"><span>Photo-Heavy</span><span>Video-Heavy</span></div>
+        </div>
+        <div class="slider-row">
+          <div class="slider-top"><label class="slider-label">Platforms Managed</label><span class="slider-val" id="platforms-val">2 Platforms</span></div>
+          <input type="range" min="1" max="4" value="2" step="1" id="platforms-slider">
+          <div class="slider-scale"><span>1 Platform</span><span>4 Platforms</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="builder-step">
-      <span class="builder-step-label"><span class="builder-step-num">3</span> Where You're Located</span>
+    <div class="builder-step step-tint-b">
+      <div class="step-tag"><span class="step-dot"></span>Step 2</div>
+      <h3 class="step-heading">Monthly Shoot Cadence</h3>
+      <div class="slider-grid">
+        <div class="slider-row">
+          <div class="slider-top"><label class="slider-label">Shoot Days / Month</label><span class="slider-val" id="cadence-val">1 Shoot Day (Included)</span></div>
+          <input type="range" min="0" max="2" value="0" step="1" id="cadence-slider">
+          <div class="slider-scale"><span>1 Day (Included)</span><span>Weekly (Full Retainer)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="builder-step step-tint-c">
+      <div class="step-tag"><span class="step-dot"></span>Step 3</div>
+      <h3 class="step-heading">Where You're Located</h3>
       <div class="location-field">
         <span class="location-icon">&#128205;</span>
         <input type="text" id="location-input" placeholder="City, State / Region">
