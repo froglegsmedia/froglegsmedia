@@ -131,16 +131,21 @@
     <div class="builder-step step-tint-a">
       <div class="step-tag"><span class="step-dot"></span>Step 1</div>
       <h3 class="step-heading">Content &amp; Posting</h3>
-      <div class="slider-grid">
-        <div class="slider-row">
-          <div class="slider-top"><label class="slider-label">Content Mix</label><span class="slider-val" id="mix-val">Balanced</span></div>
-          <input type="range" min="0" max="100" value="50" id="mix-slider">
-          <div class="slider-scale"><span>Photo-Heavy</span><span>Video-Heavy</span></div>
+      <div class="builder-field">
+        <label class="slider-label">Content Mix</label>
+        <div class="builder-options" data-group="mix">
+          <button type="button" class="builder-opt" data-value="0">Photo-Heavy</button>
+          <button type="button" class="builder-opt active" data-value="1">Balanced</button>
+          <button type="button" class="builder-opt" data-value="2">Video-Heavy</button>
         </div>
-        <div class="slider-row">
-          <div class="slider-top"><label class="slider-label">Platforms Managed</label><span class="slider-val" id="platforms-val">2 Platforms</span></div>
-          <input type="range" min="1" max="4" value="2" step="1" id="platforms-slider">
-          <div class="slider-scale"><span>1 Platform</span><span>4 Platforms</span></div>
+      </div>
+      <div class="builder-field">
+        <label class="slider-label">Platforms Managed</label>
+        <div class="builder-options" data-group="platforms">
+          <button type="button" class="builder-opt" data-value="1">1 Platform</button>
+          <button type="button" class="builder-opt active" data-value="2">2 Platforms</button>
+          <button type="button" class="builder-opt" data-value="3">3 Platforms</button>
+          <button type="button" class="builder-opt" data-value="4">4 Platforms</button>
         </div>
       </div>
     </div>
@@ -148,11 +153,12 @@
     <div class="builder-step step-tint-b">
       <div class="step-tag"><span class="step-dot"></span>Step 2</div>
       <h3 class="step-heading">Monthly Shoot Cadence</h3>
-      <div class="slider-grid">
-        <div class="slider-row">
-          <div class="slider-top"><label class="slider-label">Shoot Days / Month</label><span class="slider-val" id="cadence-val">1 Shoot Day (Included)</span></div>
-          <input type="range" min="0" max="2" value="0" step="1" id="cadence-slider">
-          <div class="slider-scale"><span>1 Day (Included)</span><span>Weekly (Full Retainer)</span></div>
+      <div class="builder-field">
+        <label class="slider-label">Shoot Days / Month</label>
+        <div class="builder-options" data-group="cadence">
+          <button type="button" class="builder-opt active" data-value="0">1 Shoot Day (Included)</button>
+          <button type="button" class="builder-opt" data-value="1">2 Shoot Days (Upgrade)</button>
+          <button type="button" class="builder-opt" data-value="2">Weekly Shoots (Full Retainer)</button>
         </div>
       </div>
     </div>
@@ -349,60 +355,46 @@
 
 <script>
 (function(){
-  var mixSlider = document.getElementById('mix-slider');
-  var platformsSlider = document.getElementById('platforms-slider');
-  var cadenceSlider = document.getElementById('cadence-slider');
+  var groups = document.querySelectorAll('.builder-options');
   var locationInput = document.getElementById('location-input');
-  var mixVal = document.getElementById('mix-val');
-  var platformsVal = document.getElementById('platforms-val');
-  var cadenceVal = document.getElementById('cadence-val');
   var summaryEl = document.getElementById('builder-summary-text');
   var hiddenSummary = document.getElementById('builder-hidden-summary');
-  if (!mixSlider) return;
+  if (!groups.length) return;
 
+  var mixNames = ['More Photo-Heavy', 'Balanced', 'More Video-Heavy'];
   var platformNames = ['Instagram', 'Instagram + TikTok', 'Instagram + TikTok + Facebook', 'Instagram + TikTok + Facebook + LinkedIn'];
   var cadenceNames = ['1 Shoot Day (Included)', '2 Shoot Days (Upgrade)', 'Weekly Shoots (Full Video Retainer)'];
 
-  function mixLabel(v){
-    if (v < 34) return 'More Photo-Heavy';
-    if (v > 66) return 'More Video-Heavy';
-    return 'Balanced';
-  }
+  var state = { mix: 1, platforms: 2, cadence: 0 };
 
-  function fillTrack(el){
-    var min = parseFloat(el.min || 0);
-    var max = parseFloat(el.max || 100);
-    var val = parseFloat(el.value);
-    var pct = ((val - min) / (max - min)) * 100;
-    el.style.background = 'linear-gradient(to right, var(--gd) 0%, var(--gd) ' + pct + '%, var(--border) ' + pct + '%, var(--border) 100%)';
+  for (var i = 0; i < groups.length; i++) {
+    (function(group){
+      var name = group.getAttribute('data-group');
+      var opts = group.querySelectorAll('.builder-opt');
+      for (var j = 0; j < opts.length; j++) {
+        opts[j].addEventListener('click', function(e){
+          var btn = e.currentTarget;
+          for (var k = 0; k < opts.length; k++) { opts[k].classList.remove('active'); }
+          btn.classList.add('active');
+          state[name] = parseInt(btn.getAttribute('data-value'), 10);
+          update();
+        });
+      }
+    })(groups[i]);
   }
 
   function update(){
-    var mixV = parseInt(mixSlider.value, 10);
-    var platV = parseInt(platformsSlider.value, 10);
-    var cadV = parseInt(cadenceSlider.value, 10);
-    var mixText = mixLabel(mixV);
-    var platText = platformNames[platV - 1];
-    var cadText = cadenceNames[cadV];
-    var loc = locationInput.value || 'wherever you are';
-
-    mixVal.textContent = mixText;
-    platformsVal.textContent = platV + ' Platform' + (platV > 1 ? 's' : '');
-    cadenceVal.textContent = cadText;
-
-    fillTrack(mixSlider);
-    fillTrack(platformsSlider);
-    fillTrack(cadenceSlider);
+    var mixText = mixNames[state.mix];
+    var platText = platformNames[state.platforms - 1];
+    var cadText = cadenceNames[state.cadence];
+    var loc = (locationInput && locationInput.value) || 'wherever you are';
 
     var summary = 'A ' + cadText.replace(' (Included)','').replace(' (Upgrade)','').replace(' (Full Video Retainer)','') + ' retainer, ' + mixText.toLowerCase() + ', managing ' + platText + ', based in ' + loc + '.';
     summaryEl.innerHTML = '<strong>Your build:</strong> ' + summary;
     if (hiddenSummary) hiddenSummary.value = summary;
   }
 
-  mixSlider.addEventListener('input', update);
-  platformsSlider.addEventListener('input', update);
-  cadenceSlider.addEventListener('input', update);
-  locationInput.addEventListener('input', update);
+  if (locationInput) locationInput.addEventListener('input', update);
   update();
 })();
 </script>
