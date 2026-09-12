@@ -817,11 +817,21 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   background:var(--yellow);padding:0.25rem 0.6rem;border-radius:4px;flex-shrink:0;
 }
 .ig-note-text{font-size:0.8rem;color:var(--muted)}
+.ig-note-text a{color:var(--gd);font-weight:700;text-decoration:underline}
 .reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.6rem}
 .reel-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,22,8,0.08)}
 .reel-top{display:flex;align-items:center;gap:6px;padding:0.6rem 0.8rem;border-bottom:1px solid var(--border)}
-.reel-top .rd{width:18px;height:18px;border-radius:50%;background:var(--gd)}
+.reel-top .rd{width:18px;height:18px;border-radius:50%;background:var(--gd);flex-shrink:0}
 .reel-top span{font-family:var(--fd);font-size:0.6rem;font-weight:700;color:var(--black)}
+.ig-top{gap:0.5rem}
+.ig-top span:not(.rd){flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ig-profile-btn{
+  flex-shrink:0;font-family:var(--fd);font-size:0.6rem;font-weight:800;
+  color:var(--black);background:var(--yellow);padding:0.35rem 0.65rem;
+  border-radius:999px;text-decoration:none;letter-spacing:0.01em;
+  transition:background 0.2s ease;
+}
+.ig-profile-btn:hover{background:var(--gb)}
 .reel-thumb{position:relative;aspect-ratio:4/5;display:block}
 .reel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .reel-play{
@@ -830,11 +840,16 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;
 }
 .reel-caption{padding:0.7rem 0.8rem;font-size:0.72rem;color:var(--muted);font-weight:600}
+.ig-caption-row{display:flex;flex-direction:column;gap:0.3rem}
+.ig-view-more{font-family:var(--fd);font-size:0.68rem;font-weight:700;color:var(--gd);text-decoration:underline}
+.ig-cap-text{font-size:0.72rem;color:var(--muted);font-weight:600}
 .ig-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7rem;
   background:linear-gradient(135deg,rgba(124,191,57,0.1),rgba(242,187,19,0.1));
   border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);
+  cursor:pointer;transition:background 0.2s ease;
 }
+.ig-placeholder:hover{background:linear-gradient(135deg,rgba(124,191,57,0.18),rgba(242,187,19,0.16))}
 .ig-glyph{color:rgba(13,22,8,0.28)}
 .ig-placeholder-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-align:center;line-height:1.4}
 @media(max-width:900px){.reel-grid{grid-template-columns:1fr 1fr}}
