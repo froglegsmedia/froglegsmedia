@@ -743,11 +743,12 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .mock-dots i{width:7px;height:7px;border-radius:50%;background:rgba(252,249,244,0.4);display:inline-block}
 .mock-post-foot{display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(252,249,244,0.5)}
 .mock-post-foot span:last-child{color:rgba(252,249,244,0.7);font-style:italic}
-.mock-review{display:flex;flex-direction:column;justify-content:center}
+.mock-review{display:flex;flex-direction:column}
 .mock-review .example-badge{align-self:flex-start}
+.mock-review .mock-post-head{margin-bottom:1.6rem}
 .mock-stars{color:var(--yellow);font-size:1.1rem;letter-spacing:0.15em;margin-bottom:1rem}
 .mock-quote{font-size:0.92rem;font-style:italic;color:rgba(252,249,244,0.72);line-height:1.6;margin-bottom:1.3rem}
-.mock-reviewer{display:flex;align-items:center;gap:0.7rem}
+.mock-reviewer{display:flex;align-items:center;gap:0.7rem;margin-top:auto;padding-top:1rem}
 .mock-name{font-family:var(--fd);font-size:0.85rem;font-weight:700;color:var(--cream)}
 .mock-sub{font-size:0.7rem;color:rgba(252,249,244,0.5)}
 @media(max-width:900px){.clients-grid{grid-template-columns:1fr}}
@@ -999,14 +1000,45 @@ input[type="range"]::-moz-range-thumb{
 .example-note{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:1.5rem}
 
 /* ACCORDION FAQ */
-.faq-acc{max-width:760px}
-.faq-acc details{border-bottom:1px solid var(--border);padding:1.3rem 0}
-.faq-acc details:first-child{border-top:1px solid var(--border)}
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start}
+.faq-intro{position:sticky;top:6rem}
+.faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
+.faq-intro .section-intro{margin-bottom:1.6rem}
+.faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
+.faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
+.faq-acc{max-width:none}
+.faq-acc details{
+  background:#fff;border:1.5px solid var(--border);border-radius:14px;
+  padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
+}
+.faq-acc details[open]{border-color:var(--gb);box-shadow:0 10px 24px rgba(13,22,8,0.08)}
 .faq-acc summary{
-  cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;
-  font-family:var(--fd);font-size:0.98rem;font-weight:700;color:var(--black);
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:1rem;
+  font-family:var(--fd);font-size:0.95rem;font-weight:700;color:var(--black);
 }
 .faq-acc summary::-webkit-details-marker{display:none}
-.faq-acc summary::after{content:'+';font-size:1.4rem;font-weight:400;color:var(--gd);flex-shrink:0;transition:transform 0.2s}
-.faq-acc details[open] summary::after{content:'\2212'}
-.faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;max-width:640px}
+.faq-num{
+  flex-shrink:0;width:1.9rem;height:1.9rem;border-radius:50%;background:rgba(124,191,57,0.14);
+  color:var(--gd);font-family:var(--fd);font-weight:800;font-size:0.68rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.faq-q-text{flex:1}
+.faq-toggle{
+  position:relative;flex-shrink:0;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--yellow);
+  transition:transform 0.25s ease,background 0.2s ease;
+}
+.faq-toggle::before,.faq-toggle::after{
+  content:'';position:absolute;top:50%;left:50%;background:var(--black);
+  transform:translate(-50%,-50%);border-radius:2px;
+}
+.faq-toggle::before{width:9px;height:2px}
+.faq-toggle::after{width:2px;height:9px;transition:opacity 0.2s ease}
+.faq-acc details[open] .faq-toggle{background:var(--gb);transform:rotate(90deg)}
+.faq-acc details[open] .faq-toggle::after{opacity:0}
+.faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
+@media(max-width:900px){
+  .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
+  .faq-intro{position:static}
+  .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
+  .faq-intro .btn-text{display:block;text-align:center}
+}
