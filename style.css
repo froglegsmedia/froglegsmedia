@@ -2,7 +2,7 @@
 :root{
   --gd:#6BA641;--gb:#7CBF39;--yellow:#F2BB13;--orange:#F2845C;
   --cream:#FCF9F4;--black:#0d1608;--gray:#131d0c;
-  --muted:#8a9478;--border:rgba(107,166,65,0.14);
+  --muted:#4f5a44;--border:rgba(107,166,65,0.14);
   --fd:'Bricolage Grotesque',sans-serif;
   --fb:'Inter',sans-serif;
   --fs:'Patrick Hand',cursive;
@@ -115,7 +115,7 @@ h1 .outline{
 }
 .hero-sub{
   font-size:1rem;
-  color:rgba(252,249,244,0.5);
+  color:rgba(252,249,244,0.68);
   max-width:420px;
   font-weight:300;
   line-height:1.8;
@@ -140,7 +140,7 @@ h1 .outline{
   border:2px solid rgba(252,249,244,0.25);
   transition:border-color 0.2s,background 0.2s,transform 0.15s;
 }
-.btn-text:hover{border-color:rgba(252,249,244,0.6);background:rgba(252,249,244,0.06);transform:translateY(-2px)}
+.btn-text:hover{border-color:rgba(252,249,244,0.72);background:rgba(252,249,244,0.06);transform:translateY(-2px)}
 .hero-bar{
   display:flex;flex-wrap:wrap;align-items:center;gap:0.9rem;
   margin-top:3.5rem;
@@ -185,6 +185,7 @@ h2{
   font-size:clamp(2.8rem,4.5vw,4.2rem);
   font-weight:800;line-height:1.0;letter-spacing:-0.025em;
   margin-bottom:1.2rem;
+  text-align:center;
 }
 h2 span{color:var(--gd)}
 h2.light{color:var(--cream)}
@@ -307,7 +308,7 @@ h2.light span{color:var(--gb)}
   color:var(--cream);margin-bottom:0.8rem;letter-spacing:-0.01em;
 }
 .wc-body{
-  font-size:0.88rem;color:rgba(252,249,244,0.45);
+  font-size:0.88rem;color:rgba(252,249,244,0.65);
   line-height:1.75;font-weight:300;
 }
 .wc-body strong{color:rgba(252,249,244,0.8);font-weight:500}
@@ -411,7 +412,7 @@ h2.light span{color:var(--gb)}
   padding:1rem 2rem;
   border-right:1px solid rgba(124,191,57,0.15);
   font-family:var(--fd);font-size:0.78rem;font-weight:600;
-  color:rgba(252,249,244,0.55);
+  color:rgba(252,249,244,0.7);
   display:flex;align-items:center;gap:0.5rem;
   white-space:nowrap;
   flex-shrink:0;
@@ -776,7 +777,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .trust-dots .dstack span:first-child{margin-left:0;background:var(--gb)}
 .trust-dots .dstack span:nth-child(2){background:var(--yellow)}
 .trust-dots .dstack span:nth-child(3){background:var(--orange)}
-.trust-dots p{font-size:0.78rem;color:rgba(252,249,244,0.55)}
+.trust-dots p{font-size:0.78rem;color:rgba(252,249,244,0.7)}
 .trust-dots p strong{color:var(--cream)}
 
 /* REEL MOCKUPS */
@@ -841,7 +842,7 @@ input[type="range"]::-moz-range-thumb{
 .timeline-item:nth-child(2) .timeline-content{margin-top:2.2rem}
 .timeline-content h3{font-family:var(--fd);font-size:1.15rem;font-weight:800;color:var(--cream);margin-bottom:1rem}
 .timeline-content ul{list-style:none;margin-bottom:1.2rem}
-.timeline-content li{font-size:0.82rem;color:rgba(252,249,244,0.6);padding:0.3rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
+.timeline-content li{font-size:0.82rem;color:rgba(252,249,244,0.72);padding:0.3rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
 .timeline-content li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
 .month-proof{font-size:0.68rem;color:var(--gb);font-weight:700;border-top:1px solid rgba(124,191,57,0.15);padding-top:0.9rem}
 @media(max-width:900px){
