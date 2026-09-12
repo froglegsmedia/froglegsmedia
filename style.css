@@ -807,7 +807,17 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .trust-dots p strong{color:var(--cream)}
 
 /* REEL MOCKUPS */
-.reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem}
+.ig-note-row{
+  display:flex;align-items:center;justify-content:center;gap:0.7rem;
+  margin-top:2.2rem;flex-wrap:wrap;text-align:center;
+}
+.ig-note-badge{
+  display:inline-block;font-family:var(--fd);font-size:0.62rem;font-weight:800;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--black);
+  background:var(--yellow);padding:0.25rem 0.6rem;border-radius:4px;flex-shrink:0;
+}
+.ig-note-text{font-size:0.8rem;color:var(--muted)}
+.reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.6rem}
 .reel-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,22,8,0.08)}
 .reel-top{display:flex;align-items:center;gap:6px;padding:0.6rem 0.8rem;border-bottom:1px solid var(--border)}
 .reel-top .rd{width:18px;height:18px;border-radius:50%;background:var(--gd)}
@@ -820,6 +830,13 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   background:rgba(255,255,255,0.85);display:flex;align-items:center;justify-content:center;
 }
 .reel-caption{padding:0.7rem 0.8rem;font-size:0.72rem;color:var(--muted);font-weight:600}
+.ig-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7rem;
+  background:linear-gradient(135deg,rgba(124,191,57,0.1),rgba(242,187,19,0.1));
+  border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);
+}
+.ig-glyph{color:rgba(13,22,8,0.28)}
+.ig-placeholder-label{font-size:0.68rem;font-weight:700;color:var(--muted);text-align:center;line-height:1.4}
 @media(max-width:900px){.reel-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:500px){.reel-grid{grid-template-columns:1fr}}
 
