@@ -674,6 +674,8 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   box-shadow:0 30px 70px rgba(0,0,0,0.5);
   border:2px solid rgba(255,255,255,0.08);
 }
+.phone-mock-lg{width:300px}
+.hero-h1-sm{font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1.05;margin-bottom:1.2rem}
 .phone-screen{background:var(--cream);border-radius:24px;overflow:hidden}
 .phone-topbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border)}
 .phone-topbar .dot{width:16px;height:16px;border-radius:50%;background:var(--gd)}
