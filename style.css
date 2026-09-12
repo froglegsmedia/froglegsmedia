@@ -855,10 +855,23 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* MONTH TIMELINE (no cards — editorial three-up strip divided by hairlines) */
-.timeline{margin-top:5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.timeline{margin-top:6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
 .timeline-item{position:relative;padding:2.6rem 2.4rem 0}
 .timeline-item:not(:first-child){border-left:1px solid rgba(124,191,57,0.14)}
-.timeline-item::before{content:'';position:absolute;top:0;left:2.4rem;width:2.2rem;height:2px;background:var(--gb)}
+.lilypad{
+  position:absolute;top:0;left:2.4rem;transform:translateY(-62%);
+  width:2.7rem;height:2.7rem;border-radius:50%;background:var(--gb);
+  display:flex;align-items:center;justify-content:center;z-index:1;
+  box-shadow:0 5px 12px rgba(0,0,0,0.4);
+}
+.lilypad::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1.5px dashed rgba(13,22,8,0.3)}
+.lilypad::after{
+  content:'';position:absolute;top:50%;right:-4px;width:0;height:0;
+  transform:translateY(-50%) rotate(14deg);
+  border-style:solid;border-width:0.55rem 0.75rem 0.55rem 0;
+  border-color:transparent var(--black) transparent transparent;
+}
+.lilypad-num{position:relative;z-index:2;font-family:var(--fd);font-weight:800;font-size:1.05rem;color:var(--black)}
 .tl-tag{display:block;font-family:var(--fd);font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gb);margin-bottom:1rem}
 .timeline-item h3{font-family:var(--fd);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:1.2rem}
 .timeline-item ul{list-style:none;margin-bottom:1.3rem}
@@ -883,9 +896,9 @@ input[type="range"]::-moz-range-thumb{
 }
 @media(max-width:900px){
   .timeline{grid-template-columns:1fr}
-  .timeline-item{padding:2.2rem 0 0}
-  .timeline-item:not(:first-child){border-left:none;border-top:1px solid rgba(124,191,57,0.14);margin-top:0.4rem}
-  .timeline-item::before{left:0}
+  .timeline-item{padding:0}
+  .timeline-item:not(:first-child){border-left:none;border-top:1px solid rgba(124,191,57,0.14);margin-top:2.4rem;padding-top:2.2rem}
+  .lilypad{position:static;transform:none;margin-bottom:1rem}
   .timeline-frog{display:none}
 }
 
