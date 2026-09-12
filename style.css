@@ -5,7 +5,7 @@
   --muted:#8a9478;--border:rgba(107,166,65,0.14);
   --fd:'Bricolage Grotesque',sans-serif;
   --fb:'Inter',sans-serif;
-  --fs:'Caveat',cursive;
+  --fs:'Patrick Hand',cursive;
   --gutter:max(4rem, calc((100vw - 1400px) / 2));
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
@@ -664,7 +664,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 @media(max-width:700px){.metrics-strip{grid-template-columns:1fr}}
 
 /* SCRIPT ACCENT FONT */
-.script{font-family:var(--fs);font-weight:600;color:var(--gd);display:inline-block;transform:rotate(-2deg);line-height:1}
+.script{font-family:var(--fs);font-weight:400;color:var(--gd);display:inline-block;line-height:1}
 .light .script, .page-hero .script{color:var(--gb)}
 .cta-band .script{color:var(--cream)}
 
