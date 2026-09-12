@@ -152,25 +152,14 @@
           <button type="button" class="builder-opt" data-value="TikTok">TikTok</button>
           <button type="button" class="builder-opt" data-value="Facebook">Facebook</button>
           <button type="button" class="builder-opt" data-value="LinkedIn">LinkedIn</button>
+          <button type="button" class="builder-opt" data-value="YouTube">YouTube</button>
+          <button type="button" class="builder-opt" data-value="X">X</button>
         </div>
       </div>
     </div>
 
     <div class="builder-step step-tint-b">
       <div class="step-tag"><span class="step-dot"></span>Step 2</div>
-      <h3 class="step-heading">Monthly Shoot Cadence</h3>
-      <div class="builder-field">
-        <label class="slider-label">Shoot Days / Month</label>
-        <div class="builder-options" data-group="cadence">
-          <button type="button" class="builder-opt active" data-value="0">1 Shoot Day (Included)</button>
-          <button type="button" class="builder-opt" data-value="1">2 Shoot Days (Upgrade)</button>
-          <button type="button" class="builder-opt" data-value="2">Weekly Shoots (Full Retainer)</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="builder-step step-tint-c">
-      <div class="step-tag"><span class="step-dot"></span>Step 3</div>
       <h3 class="step-heading">Where You're Located</h3>
       <div class="location-field">
         <span class="location-icon">&#128205;</span>
@@ -363,9 +352,7 @@
   var hiddenSummary = document.getElementById('builder-hidden-summary');
   if (!groups.length && !steppers.length) return;
 
-  var cadenceNames = ['1 Shoot Day (Included)', '2 Shoot Days (Upgrade)', 'Weekly Shoots (Full Video Retainer)'];
-
-  var state = { video: 8, static: 12, platforms: ['Instagram'], cadence: 0 };
+  var state = { video: 8, static: 12, platforms: ['Instagram'] };
 
   for (var s = 0; s < steppers.length; s++) {
     (function(stepper){
@@ -417,10 +404,9 @@
 
   function update(){
     var platText = state.platforms.join(' + ');
-    var cadText = cadenceNames[state.cadence];
     var loc = (locationInput && locationInput.value) || 'wherever you are';
 
-    var summary = 'A ' + cadText.replace(' (Included)','').replace(' (Upgrade)','').replace(' (Full Video Retainer)','') + ' retainer, posting ' + state.video + ' video and ' + state.static + ' static posts a month, managing ' + platText + ', based in ' + loc + '.';
+    var summary = 'A retainer posting ' + state.video + ' video and ' + state.static + ' static posts a month, managing ' + platText + ', based in ' + loc + '.';
     summaryEl.innerHTML = '<strong>Your build:</strong> ' + summary;
     if (hiddenSummary) hiddenSummary.value = summary;
   }
