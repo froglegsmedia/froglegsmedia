@@ -723,6 +723,35 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .check-item span.ck-sub{display:block;font-size:0.82rem;color:var(--muted);font-weight:300;margin-top:0.15rem}
 @media(max-width:700px){.checklist{grid-template-columns:1fr}}
 
+/* CLIENTS GRID (mockup post/review showcase, clearly marked example) */
+.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.6rem}
+.mock-card{
+  position:relative;background:rgba(252,249,244,0.03);
+  border:1.5px dashed rgba(124,191,57,0.3);border-radius:14px;padding:1.3rem;
+}
+.mock-post-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.9rem}
+.mock-avatar{width:1.8rem;height:1.8rem;border-radius:50%;background:linear-gradient(135deg,var(--gb),var(--yellow));flex-shrink:0;display:inline-block}
+.mock-handle{font-family:var(--fd);font-size:0.78rem;font-weight:700;color:rgba(252,249,244,0.55)}
+.mock-media{
+  aspect-ratio:1/1;border-radius:10px;position:relative;
+  background:linear-gradient(135deg,rgba(124,191,57,0.22),rgba(242,187,19,0.16));
+  display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
+  border:1px dashed rgba(252,249,244,0.15);
+}
+.mock-play{font-size:1.6rem;color:rgba(252,249,244,0.5)}
+.mock-dots{display:flex;gap:0.4rem}
+.mock-dots i{width:7px;height:7px;border-radius:50%;background:rgba(252,249,244,0.4);display:inline-block}
+.mock-post-foot{display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(252,249,244,0.5)}
+.mock-post-foot span:last-child{color:rgba(252,249,244,0.7);font-style:italic}
+.mock-review{display:flex;flex-direction:column;justify-content:center}
+.mock-review .example-badge{align-self:flex-start}
+.mock-stars{color:var(--yellow);font-size:1.1rem;letter-spacing:0.15em;margin-bottom:1rem}
+.mock-quote{font-size:0.92rem;font-style:italic;color:rgba(252,249,244,0.72);line-height:1.6;margin-bottom:1.3rem}
+.mock-reviewer{display:flex;align-items:center;gap:0.7rem}
+.mock-name{font-family:var(--fd);font-size:0.85rem;font-weight:700;color:var(--cream)}
+.mock-sub{font-size:0.7rem;color:rgba(252,249,244,0.5)}
+@media(max-width:900px){.clients-grid{grid-template-columns:1fr}}
+
 /* METRICS STRIP */
 .metrics-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3.5rem}
 .metric-tile{background:var(--cream);padding:2.2rem 1.5rem;text-align:center}
@@ -826,10 +855,10 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* MONTH TIMELINE (no cards — editorial three-up strip divided by hairlines) */
-.timeline{margin-top:5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;border-top:2px solid rgba(124,191,57,0.3)}
+.timeline{margin-top:5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
 .timeline-item{position:relative;padding:2.6rem 2.4rem 0}
 .timeline-item:not(:first-child){border-left:1px solid rgba(124,191,57,0.14)}
-.timeline-item::before{content:'';position:absolute;top:-2px;left:2.4rem;width:2.2rem;height:2px;background:var(--gb)}
+.timeline-item::before{content:'';position:absolute;top:0;left:2.4rem;width:2.2rem;height:2px;background:var(--gb)}
 .tl-tag{display:block;font-family:var(--fd);font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gb);margin-bottom:1rem}
 .timeline-item h3{font-family:var(--fd);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:1.2rem}
 .timeline-item ul{list-style:none;margin-bottom:1.3rem}
