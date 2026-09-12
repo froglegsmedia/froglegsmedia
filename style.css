@@ -730,8 +730,8 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .metric-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.5rem}
 @media(max-width:700px){.metrics-strip{grid-template-columns:1fr}}
 
-/* SCRIPT ACCENT FONT */
-.script{font-family:var(--fs);font-weight:400;color:var(--gd);display:inline-block;line-height:1}
+/* ACCENT COLOR (same font as heading, color-only accent) */
+.script{font-family:inherit;font-weight:inherit;color:var(--gd);display:inline-block;line-height:inherit}
 .light .script, .page-hero .script{color:var(--gb)}
 .cta-band .script{color:var(--cream)}
 
