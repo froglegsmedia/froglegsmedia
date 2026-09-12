@@ -825,24 +825,19 @@ input[type="range"]::-moz-range-thumb{
   box-shadow:0 2px 8px rgba(13,22,8,0.3);cursor:pointer;
 }
 
-/* MONTH TIMELINE (horizontal, even cards with number watermark) */
-.timeline{margin-top:4.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;position:relative}
-.timeline-item{
-  background:var(--gray);border:1px solid rgba(124,191,57,0.12);border-radius:14px;
-  padding:2.4rem 1.7rem 1.9rem;position:relative;overflow:hidden;
-}
-.timeline-item::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gb)}
-.step-num{
-  position:absolute;top:0.3rem;right:1rem;font-family:var(--fd);font-weight:800;
-  font-size:3.6rem;color:rgba(124,191,57,0.14);line-height:1;pointer-events:none;user-select:none;
-}
-.timeline-item h3{font-family:var(--fd);font-size:1.15rem;font-weight:800;color:var(--cream);margin-bottom:1rem;position:relative;z-index:1;padding-right:2rem}
-.timeline-item ul{list-style:none;margin-bottom:1.2rem;position:relative;z-index:1}
-.timeline-item li{font-size:0.82rem;color:rgba(252,249,244,0.72);padding:0.3rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
+/* MONTH TIMELINE (no cards — editorial three-up strip divided by hairlines) */
+.timeline{margin-top:5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;border-top:2px solid rgba(124,191,57,0.3)}
+.timeline-item{position:relative;padding:2.6rem 2.4rem 0}
+.timeline-item:not(:first-child){border-left:1px solid rgba(124,191,57,0.14)}
+.timeline-item::before{content:'';position:absolute;top:-2px;left:2.4rem;width:2.2rem;height:2px;background:var(--gb)}
+.tl-tag{display:block;font-family:var(--fd);font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gb);margin-bottom:1rem}
+.timeline-item h3{font-family:var(--fd);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:1.2rem}
+.timeline-item ul{list-style:none;margin-bottom:1.3rem}
+.timeline-item li{font-size:0.85rem;color:rgba(252,249,244,0.72);padding:0.35rem 0;padding-left:1.1rem;position:relative;line-height:1.5}
 .timeline-item li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
-.month-proof{font-size:0.68rem;color:var(--gb);font-weight:700;border-top:1px solid rgba(124,191,57,0.15);padding-top:0.9rem;position:relative;z-index:1}
+.month-proof{font-size:0.7rem;color:var(--gb);font-weight:700;padding-top:1rem;margin-top:0.4rem;border-top:1px dashed rgba(124,191,57,0.2)}
 .timeline-frog{
-  position:absolute;top:-58px;left:0;width:92px;height:auto;
+  position:absolute;top:-70px;left:0;width:84px;height:auto;
   transform:translateX(-50%);
   filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));
   animation:frog-hop 5s ease-in-out infinite;
@@ -858,7 +853,10 @@ input[type="range"]::-moz-range-thumb{
   100%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
 }
 @media(max-width:900px){
-  .timeline{grid-template-columns:1fr;gap:1.4rem}
+  .timeline{grid-template-columns:1fr}
+  .timeline-item{padding:2.2rem 0 0}
+  .timeline-item:not(:first-child){border-left:none;border-top:1px solid rgba(124,191,57,0.14);margin-top:0.4rem}
+  .timeline-item::before{left:0}
   .timeline-frog{display:none}
 }
 
