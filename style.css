@@ -98,10 +98,10 @@ nav{
   width:24px;height:1px;background:var(--gb);
 }
 h1{
-  font-family:var(--fd);
+  font-family:var(--fs);
   font-size:clamp(3.8rem,6.8vw,7rem);
-  font-weight:800;line-height:0.95;
-  letter-spacing:-0.03em;
+  font-weight:400;line-height:0.95;
+  letter-spacing:normal;
   color:var(--cream);
   margin-bottom:2.2rem;
 }
@@ -181,9 +181,9 @@ section{padding:7rem var(--gutter)}
 .dark-eyebrow{color:var(--gb)}
 .dark-eyebrow::before{background:var(--gb)}
 h2{
-  font-family:var(--fd);
+  font-family:var(--fs);
   font-size:clamp(2.8rem,4.5vw,4.2rem);
-  font-weight:800;line-height:1.0;letter-spacing:-0.025em;
+  font-weight:400;line-height:1.0;letter-spacing:normal;
   margin-bottom:1.2rem;
   text-align:center;
 }
