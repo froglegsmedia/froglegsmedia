@@ -723,35 +723,61 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .check-item span.ck-sub{display:block;font-size:0.82rem;color:var(--muted);font-weight:300;margin-top:0.15rem}
 @media(max-width:700px){.checklist{grid-template-columns:1fr}}
 
-/* CLIENTS GRID (mockup post/review showcase, clearly marked example) */
-.clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.6rem}
+/* FEEDBACK WALL (scattered screenshot-style placeholder collage) */
+.feedback-wall{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.6rem 2rem;margin-top:3.2rem;padding:0.5rem 1rem 1.5rem}
+.wall-card{
+  position:relative;background:#fff;border-radius:10px;width:250px;
+  box-shadow:0 16px 32px rgba(0,0,0,0.4);padding:1.1rem 1.2rem 1.2rem;
+  transition:transform 0.25s ease,box-shadow 0.25s ease;
+}
+.wall-card:hover{transform:rotate(0deg) scale(1.04);box-shadow:0 20px 40px rgba(0,0,0,0.45);z-index:2}
+.wall-tape{
+  position:absolute;top:-11px;left:50%;width:64px;height:18px;
+  background:rgba(242,187,19,0.85);border-radius:2px;
+  transform:translateX(-50%) rotate(-3deg);
+  box-shadow:0 2px 4px rgba(0,0,0,0.2);
+}
+.rot-1{transform:rotate(-3deg)}
+.rot-2{transform:rotate(2deg);margin-top:1.8rem}
+.rot-3{transform:rotate(-1.5deg)}
+.rot-4{transform:rotate(2.5deg);margin-top:2.4rem}
+.rot-5{transform:rotate(-2deg)}
+.wall-msg-bubble{
+  background:#e9e9eb;color:var(--black);border-radius:16px 16px 16px 4px;
+  padding:0.7rem 0.9rem;font-size:0.82rem;line-height:1.5;margin-bottom:0.5rem;
+}
+.wall-msg-time{font-size:0.66rem;color:#8a8a8e;text-align:right}
+.wall-report-label{font-family:var(--fd);font-size:0.8rem;font-weight:800;color:var(--black);margin-bottom:0.9rem}
+.wall-stats-row{display:flex;justify-content:space-between;gap:0.4rem}
+.wall-stat{display:flex;flex-direction:column;align-items:center;gap:0.3rem;font-size:0.72rem;font-weight:700;color:var(--black)}
+.wall-stat span{font-size:0.85rem;color:var(--muted)}
+.wall-comment-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.7rem}
+.wall-comment-name{font-family:var(--fd);font-size:0.8rem;font-weight:700;color:var(--black)}
+.wall-comment-time{font-size:0.66rem;color:#8a8a8e}
+.wall-comment-text{font-size:0.82rem;color:var(--black);line-height:1.5;margin-bottom:0.7rem}
+.wall-comment-reply{
+  display:flex;align-items:center;gap:0.5rem;background:#f2f2f4;border-radius:10px;
+  padding:0.5rem 0.7rem;font-size:0.75rem;color:var(--muted);
+}
+.wall-report-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem}
+.wall-report-tile{background:#f5f5f2;border-radius:8px;padding:0.6rem 0.7rem}
+.wall-report-num{font-family:var(--fd);font-size:1.15rem;font-weight:800;color:var(--gd)}
+.wall-report-sub{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;margin-top:0.15rem}
+.mock-avatar{width:1.8rem;height:1.8rem;border-radius:50%;background:linear-gradient(135deg,var(--gb),var(--yellow));flex-shrink:0;display:inline-block}
 .mock-card{
   position:relative;background:rgba(252,249,244,0.03);
   border:1.5px dashed rgba(124,191,57,0.3);border-radius:14px;padding:1.3rem;
 }
-.mock-post-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.9rem}
-.mock-avatar{width:1.8rem;height:1.8rem;border-radius:50%;background:linear-gradient(135deg,var(--gb),var(--yellow));flex-shrink:0;display:inline-block}
-.mock-handle{font-family:var(--fd);font-size:0.78rem;font-weight:700;color:rgba(252,249,244,0.55)}
-.mock-media{
-  aspect-ratio:1/1;border-radius:10px;position:relative;
-  background:linear-gradient(135deg,rgba(124,191,57,0.22),rgba(242,187,19,0.16));
-  display:flex;align-items:center;justify-content:center;margin-bottom:1rem;
-  border:1px dashed rgba(252,249,244,0.15);
-}
-.mock-play{font-size:1.6rem;color:rgba(252,249,244,0.5)}
-.mock-dots{display:flex;gap:0.4rem}
-.mock-dots i{width:7px;height:7px;border-radius:50%;background:rgba(252,249,244,0.4);display:inline-block}
-.mock-post-foot{display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(252,249,244,0.5)}
-.mock-post-foot span:last-child{color:rgba(252,249,244,0.7);font-style:italic}
 .mock-review{display:flex;flex-direction:column}
 .mock-review .example-badge{align-self:flex-start}
-.mock-review .mock-post-head{margin-bottom:1.6rem}
 .mock-stars{color:var(--yellow);font-size:1.1rem;letter-spacing:0.15em;margin-bottom:1rem}
 .mock-quote{font-size:0.92rem;font-style:italic;color:rgba(252,249,244,0.72);line-height:1.6;margin-bottom:1.3rem}
 .mock-reviewer{display:flex;align-items:center;gap:0.7rem;margin-top:auto;padding-top:1rem}
 .mock-name{font-family:var(--fd);font-size:0.85rem;font-weight:700;color:var(--cream)}
 .mock-sub{font-size:0.7rem;color:rgba(252,249,244,0.5)}
-@media(max-width:900px){.clients-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .wall-card,.rot-1,.rot-2,.rot-3,.rot-4,.rot-5{transform:none;margin-top:0;width:100%;max-width:320px}
+}
 
 /* QUOTES GRID (second row of review placeholders, replaces old metrics strip) */
 .quotes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;margin-top:1.8rem}
