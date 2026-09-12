@@ -6,6 +6,7 @@
   --fd:'Bricolage Grotesque',sans-serif;
   --fb:'Inter',sans-serif;
   --fs:'Caveat',cursive;
+  --gutter:max(4rem, calc((100vw - 1400px) / 2));
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{background:var(--cream);color:var(--black);font-family:var(--fb);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -14,7 +15,7 @@ body{background:var(--cream);color:var(--black);font-family:var(--fb);overflow-x
 nav{
   position:fixed;top:0;left:0;right:0;z-index:9999;
   display:flex;justify-content:space-between;align-items:center;
-  padding:1.1rem 4rem;
+  padding:1.1rem var(--gutter);
   background:rgba(252,249,244,0.95);
   backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
@@ -67,7 +68,7 @@ nav{
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
-  padding:7rem 4rem 5rem;
+  padding:7rem var(--gutter) 5rem;
   gap:4rem;
   position:relative;overflow:hidden;
 }
@@ -170,7 +171,7 @@ h1 .outline{
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SHARED SECTION STYLES */
-section{padding:7rem 4rem}
+section{padding:7rem var(--gutter)}
 .eyebrow{
   font-family:var(--fd);font-size:0.7rem;font-weight:700;
   letter-spacing:0.2em;text-transform:uppercase;color:var(--gd);
@@ -485,7 +486,7 @@ form{display:flex;flex-direction:column;gap:1.1rem}
 
 /* FOOTER */
 footer{
-  background:var(--black);padding:1.8rem 4rem;
+  background:var(--black);padding:1.8rem var(--gutter);
   display:flex;justify-content:space-between;align-items:center;
   border-top:1px solid rgba(124,191,57,0.08);
 }
@@ -579,7 +580,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 /* PAGE HERO (subpages) */
 .page-hero{
   background:var(--black);color:var(--cream);
-  padding:9.5rem 4rem 5rem;position:relative;overflow:hidden;
+  padding:9.5rem var(--gutter) 5rem;position:relative;overflow:hidden;
 }
 .page-hero .hero-glow{
   position:absolute;top:-10%;right:-5%;width:55vw;height:80vh;
@@ -594,7 +595,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* CTA BAND */
-.cta-band{background:var(--gb);padding:5.5rem 4rem;text-align:center}
+.cta-band{background:var(--gb);padding:5.5rem var(--gutter);text-align:center}
 .cta-band-inner{max-width:640px;margin:0 auto}
 .cta-band .eyebrow{justify-content:center;color:var(--black)}
 .cta-band .eyebrow::before{background:var(--black)}
