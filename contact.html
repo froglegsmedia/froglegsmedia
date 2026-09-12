@@ -64,7 +64,7 @@
       </select>
     </div>
     <div class="fg"><label>Tell Us About It</label>
-      <textarea name="message" placeholder="What are you making? What's the deadline? What does a win look like for you?"></textarea>
+      <textarea name="message" id="message" placeholder="What are you making? What's the deadline? What does a win look like for you?"></textarea>
     </div>
     <button type="submit" class="fsub">Send It &rarr;</button>
   </form>
@@ -81,6 +81,11 @@
           if (select.options[i].value === service) { select.selectedIndex = i; break; }
         }
       }
+    }
+    var notes = params.get('notes');
+    if (notes) {
+      var msg = document.getElementById('message');
+      if (msg) { msg.value = notes; }
     }
   } catch (e) {}
 })();
