@@ -133,10 +133,12 @@
       <div class="slider-row">
         <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Content Mix</label><span class="slider-val" id="mix-val">Balanced</span></div>
         <input type="range" min="0" max="100" value="50" id="mix-slider">
+        <div class="slider-scale"><span>Photo-Heavy</span><span>Video-Heavy</span></div>
       </div>
       <div class="slider-row">
         <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Platforms Managed</label><span class="slider-val" id="platforms-val">2 Platforms</span></div>
         <input type="range" min="1" max="4" value="2" step="1" id="platforms-slider">
+        <div class="slider-scale"><span>1 Platform</span><span>4 Platforms</span></div>
       </div>
     </div>
 
@@ -145,16 +147,21 @@
       <div class="slider-row">
         <div class="slider-top"><label style="font-family:var(--fd);font-size:0.85rem;font-weight:700">Shoot Days / Month</label><span class="slider-val" id="cadence-val">1 Shoot Day (Included)</span></div>
         <input type="range" min="0" max="2" value="0" step="1" id="cadence-slider">
+        <div class="slider-scale"><span>1 Day (Included)</span><span>Weekly (Full Retainer)</span></div>
       </div>
     </div>
 
     <div class="builder-step">
       <span class="builder-step-label"><span class="builder-step-num">3</span> Where You're Located</span>
-      <input type="text" id="location-input" placeholder="City, State / Region" style="background:var(--cream);border:1px solid rgba(107,166,65,0.15);color:var(--black);padding:0.8rem 1rem;font-family:var(--fb);font-size:0.9rem;font-weight:300;border-radius:5px;outline:none;width:100%;max-width:360px">
-      <p style="font-size:0.8rem;color:var(--muted);margin-top:0.7rem;font-weight:300">We travel for shoots &mdash; tell us where and we'll sort logistics on the call.</p>
+      <div class="location-field">
+        <span class="location-icon">&#128205;</span>
+        <input type="text" id="location-input" placeholder="City, State / Region">
+      </div>
+      <p class="builder-hint">We travel for shoots &mdash; tell us where and we'll sort logistics on the call.</p>
     </div>
 
     <div class="builder-summary">
+      <span class="builder-summary-icon">&#10003;</span>
       <p class="builder-summary-text" id="builder-summary-text">Slide the options above and we'll build a summary here.</p>
     </div>
 
@@ -355,6 +362,14 @@
     return 'Balanced';
   }
 
+  function fillTrack(el){
+    var min = parseFloat(el.min || 0);
+    var max = parseFloat(el.max || 100);
+    var val = parseFloat(el.value);
+    var pct = ((val - min) / (max - min)) * 100;
+    el.style.background = 'linear-gradient(to right, var(--gd) 0%, var(--gd) ' + pct + '%, var(--border) ' + pct + '%, var(--border) 100%)';
+  }
+
   function update(){
     var mixV = parseInt(mixSlider.value, 10);
     var platV = parseInt(platformsSlider.value, 10);
@@ -367,6 +382,10 @@
     mixVal.textContent = mixText;
     platformsVal.textContent = platV + ' Platform' + (platV > 1 ? 's' : '');
     cadenceVal.textContent = cadText;
+
+    fillTrack(mixSlider);
+    fillTrack(platformsSlider);
+    fillTrack(cadenceSlider);
 
     var summary = 'A ' + cadText.replace(' (Included)','').replace(' (Upgrade)','').replace(' (Full Video Retainer)','') + ' retainer, ' + mixText.toLowerCase() + ', managing ' + platText + ', based in ' + loc + '.';
     summaryEl.innerHTML = '<strong>Your build:</strong> ' + summary;
