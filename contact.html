@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &mdash; Frog Legs Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="flm-favicon.png">
+
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="FLM LOGO CRAYON small.jpg" alt="Frog Legs Media"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="company.html">Company</a></li>
+    <li class="nav-drop">
+      <span class="nav-drop-toggle">Services <span class="caret">&#9662;</span></span>
+      <div class="nav-drop-menu">
+        <a href="video-production.html">Video Production</a>
+        <a href="photography.html">Photography</a>
+        <a href="custom-music.html">Custom Music</a>
+        <a href="social-media-management.html">Social Media Mgmt</a>
+        <a href="paid-ads.html">Paid Ad Management</a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html" class="current">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Discovery Call</a></li>
+  </ul>
+</nav>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:9.5rem">
+  <div class="contact-l">
+    <div class="eyebrow">Book a Discovery Call</div>
+    <h2>Let's make<br>something<br><span>worth watching.</span></h2>
+    <p class="contact-sub">Whether you need one video or a full retainer covering video, photo, music, social, and ads &mdash; Tyler wants to hear it. No obligation, no sales pitch. Just a straight conversation about what you're trying to build.</p>
+    <div class="cdetails">
+      <div class="crow"><span class="clabel">Contact</span><span class="cval">Tyler Forrest</span></div>
+      <div class="crow"><span class="clabel">Email</span><span class="cval">ribbit@froglegsmedia.com</span></div>
+      <div class="crow"><span class="clabel">Available</span><span class="cval">Worldwide</span></div>
+    </div>
+  </div>
+  <form action="https://formspree.io/f/mnjokeya" method="POST" enctype="application/x-www-form-urlencoded">
+    <div class="form-row">
+      <div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="Alex"></div>
+      <div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Rivera"></div>
+    </div>
+    <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@agency.com"></div>
+    <div class="fg"><label>Company / Agency</label><input type="text" name="company" placeholder="Acme Creative"></div>
+    <div class="fg"><label>What Do You Need?</label>
+      <select name="project_type" id="project_type">
+        <option value="">Pick what you're after</option>
+        <option>Video Production</option>
+        <option>Photography</option>
+        <option>Custom Music / Jingle</option>
+        <option>Social Media Management</option>
+        <option>Paid Ad Management</option>
+        <option>A Mix of the Above</option>
+        <option>Honestly Not Sure Yet</option>
+      </select>
+    </div>
+    <div class="fg"><label>Tell Us About It</label>
+      <textarea name="message" placeholder="What are you making? What's the deadline? What does a win look like for you?"></textarea>
+    </div>
+    <button type="submit" class="fsub">Send It &rarr;</button>
+  </form>
+</section>
+<script>
+(function(){
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var service = params.get('service');
+    if (service) {
+      var select = document.getElementById('project_type');
+      if (select) {
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === service) { select.selectedIndex = i; break; }
+        }
+      }
+    }
+  } catch (e) {}
+})();
+</script>
+
+<footer>
+  <div class="fl"><img src="FLM LOGO CRAYON small.jpg" alt="Frog Legs Media" style="height:36px;width:auto;opacity:0.8"></div>
+  <p>&copy; 2026 Frog Legs Media. All rights reserved.</p>
+  <p>ribbit@froglegsmedia.com</p>
+</footer>
+
+</body></html>
