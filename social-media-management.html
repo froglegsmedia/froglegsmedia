@@ -130,20 +130,28 @@
       <div class="step-tag"><span class="step-dot"></span>Step 1</div>
       <h3 class="step-heading">Content &amp; Posting</h3>
       <div class="builder-field">
-        <label class="slider-label">Content Mix</label>
-        <div class="builder-options" data-group="mix">
-          <button type="button" class="builder-opt" data-value="0">Photo-Heavy</button>
-          <button type="button" class="builder-opt active" data-value="1">Balanced</button>
-          <button type="button" class="builder-opt" data-value="2">Video-Heavy</button>
+        <label class="slider-label">Video Posts / Month</label>
+        <div class="stepper" data-stepper="video" data-min="0" data-max="20" data-value="8">
+          <button type="button" class="stepper-btn" data-dir="-1" aria-label="Fewer video posts">&#8722;</button>
+          <span class="stepper-value" id="video-value">8</span>
+          <button type="button" class="stepper-btn" data-dir="1" aria-label="More video posts">&#43;</button>
+        </div>
+      </div>
+      <div class="builder-field">
+        <label class="slider-label">Static Posts / Month</label>
+        <div class="stepper" data-stepper="static" data-min="0" data-max="30" data-value="12">
+          <button type="button" class="stepper-btn" data-dir="-1" aria-label="Fewer static posts">&#8722;</button>
+          <span class="stepper-value" id="static-value">12</span>
+          <button type="button" class="stepper-btn" data-dir="1" aria-label="More static posts">&#43;</button>
         </div>
       </div>
       <div class="builder-field">
         <label class="slider-label">Platforms Managed</label>
-        <div class="builder-options" data-group="platforms">
-          <button type="button" class="builder-opt" data-value="1">1 Platform</button>
-          <button type="button" class="builder-opt active" data-value="2">2 Platforms</button>
-          <button type="button" class="builder-opt" data-value="3">3 Platforms</button>
-          <button type="button" class="builder-opt" data-value="4">4 Platforms</button>
+        <div class="builder-options" data-group="platforms" data-multi="true">
+          <button type="button" class="builder-opt active" data-value="Instagram">Instagram</button>
+          <button type="button" class="builder-opt" data-value="TikTok">TikTok</button>
+          <button type="button" class="builder-opt" data-value="Facebook">Facebook</button>
+          <button type="button" class="builder-opt" data-value="LinkedIn">LinkedIn</button>
         </div>
       </div>
     </div>
@@ -349,27 +357,58 @@
 <script>
 (function(){
   var groups = document.querySelectorAll('.builder-options');
+  var steppers = document.querySelectorAll('.stepper');
   var locationInput = document.getElementById('location-input');
   var summaryEl = document.getElementById('builder-summary-text');
   var hiddenSummary = document.getElementById('builder-hidden-summary');
-  if (!groups.length) return;
+  if (!groups.length && !steppers.length) return;
 
-  var mixNames = ['More Photo-Heavy', 'Balanced', 'More Video-Heavy'];
-  var platformNames = ['Instagram', 'Instagram + TikTok', 'Instagram + TikTok + Facebook', 'Instagram + TikTok + Facebook + LinkedIn'];
   var cadenceNames = ['1 Shoot Day (Included)', '2 Shoot Days (Upgrade)', 'Weekly Shoots (Full Video Retainer)'];
 
-  var state = { mix: 1, platforms: 2, cadence: 0 };
+  var state = { video: 8, static: 12, platforms: ['Instagram'], cadence: 0 };
+
+  for (var s = 0; s < steppers.length; s++) {
+    (function(stepper){
+      var key = stepper.getAttribute('data-stepper');
+      var min = parseInt(stepper.getAttribute('data-min'), 10);
+      var max = parseInt(stepper.getAttribute('data-max'), 10);
+      var valueEl = stepper.querySelector('.stepper-value');
+      var btns = stepper.querySelectorAll('.stepper-btn');
+      for (var b = 0; b < btns.length; b++) {
+        btns[b].addEventListener('click', function(e){
+          var dir = parseInt(e.currentTarget.getAttribute('data-dir'), 10);
+          var next = state[key] + dir;
+          if (next < min) next = min;
+          if (next > max) next = max;
+          state[key] = next;
+          valueEl.textContent = next;
+          update();
+        });
+      }
+    })(steppers[s]);
+  }
 
   for (var i = 0; i < groups.length; i++) {
     (function(group){
       var name = group.getAttribute('data-group');
+      var multi = group.getAttribute('data-multi') === 'true';
       var opts = group.querySelectorAll('.builder-opt');
       for (var j = 0; j < opts.length; j++) {
         opts[j].addEventListener('click', function(e){
           var btn = e.currentTarget;
-          for (var k = 0; k < opts.length; k++) { opts[k].classList.remove('active'); }
-          btn.classList.add('active');
-          state[name] = parseInt(btn.getAttribute('data-value'), 10);
+          if (multi) {
+            var alreadyActive = btn.classList.contains('active');
+            var activeCount = group.querySelectorAll('.builder-opt.active').length;
+            if (alreadyActive && activeCount <= 1) return;
+            btn.classList.toggle('active');
+            var selected = [];
+            for (var k = 0; k < opts.length; k++) { if (opts[k].classList.contains('active')) selected.push(opts[k].getAttribute('data-value')); }
+            state[name] = selected;
+          } else {
+            for (var k = 0; k < opts.length; k++) { opts[k].classList.remove('active'); }
+            btn.classList.add('active');
+            state[name] = parseInt(btn.getAttribute('data-value'), 10);
+          }
           update();
         });
       }
@@ -377,12 +416,11 @@
   }
 
   function update(){
-    var mixText = mixNames[state.mix];
-    var platText = platformNames[state.platforms - 1];
+    var platText = state.platforms.join(' + ');
     var cadText = cadenceNames[state.cadence];
     var loc = (locationInput && locationInput.value) || 'wherever you are';
 
-    var summary = 'A ' + cadText.replace(' (Included)','').replace(' (Upgrade)','').replace(' (Full Video Retainer)','') + ' retainer, ' + mixText.toLowerCase() + ', managing ' + platText + ', based in ' + loc + '.';
+    var summary = 'A ' + cadText.replace(' (Included)','').replace(' (Upgrade)','').replace(' (Full Video Retainer)','') + ' retainer, posting ' + state.video + ' video and ' + state.static + ' static posts a month, managing ' + platText + ', based in ' + loc + '.';
     summaryEl.innerHTML = '<strong>Your build:</strong> ' + summary;
     if (hiddenSummary) hiddenSummary.value = summary;
   }
