@@ -1004,7 +1004,7 @@ input[type="range"]::-moz-range-thumb{
   width:210px;height:auto;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
   animation:frog-jump-loop 3s infinite;
-  transform-origin:bottom center;
+  transform-origin:center center;
 }
 @keyframes frog-jump-loop{
   0%{transform:translateY(0) rotate(0deg);animation-timing-function:ease-out}
@@ -1090,14 +1090,14 @@ input[type="range"]::-moz-range-thumb{
 @media(max-width:500px){.stats-row{grid-template-columns:1fr}}
 
 /* ACCORDION FAQ */
-.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start}
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;margin-bottom:-22rem}
 .faq-intro{align-self:stretch}
 .faq-intro-inner{position:sticky;top:6rem}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
-.faq-acc{max-width:none}
+.faq-acc{max-width:none;padding-bottom:22rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
@@ -1128,7 +1128,8 @@ input[type="range"]::-moz-range-thumb{
 .faq-acc details[open] .faq-toggle::after{opacity:0}
 .faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
 @media(max-width:900px){
-  .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
+  .faq-wrap{grid-template-columns:1fr;gap:2.4rem;margin-bottom:0}
+  .faq-acc{padding-bottom:0}
   .faq-intro-inner{position:static}
   .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .faq-intro .btn-text{display:block;text-align:center}
