@@ -998,19 +998,28 @@ input[type="range"]::-moz-range-thumb{
 }
 .spin-frog-wrap{
   background:var(--cream);display:flex;justify-content:center;
-  padding:0.5rem 0 3.5rem;
+  padding:4.5rem 0 3.5rem;
+}
+.spin-frog-hop{
+  animation:frog-hop 3s infinite;
 }
 .spin-frog{
-  width:210px;height:auto;
+  width:210px;height:auto;display:block;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
-  animation:frog-jump-loop 3s infinite;
+  animation:frog-spin 3s infinite;
+  animation-timing-function:linear;
   transform-origin:center center;
 }
-@keyframes frog-jump-loop{
-  0%{transform:translateY(0) rotate(0deg);animation-timing-function:ease-out}
-  18%{transform:translateY(-115px) rotate(180deg);animation-timing-function:ease-in}
-  36%{transform:translateY(0) rotate(360deg);animation-timing-function:linear}
-  100%{transform:translateY(0) rotate(360deg)}
+@keyframes frog-hop{
+  0%{transform:translateY(0);animation-timing-function:ease-out}
+  18%{transform:translateY(-150px);animation-timing-function:ease-in}
+  36%{transform:translateY(0)}
+  100%{transform:translateY(0)}
+}
+@keyframes frog-spin{
+  0%{transform:rotate(0deg)}
+  36%{transform:rotate(360deg)}
+  100%{transform:rotate(360deg)}
 }
 @media(max-width:700px){
   .spin-frog{width:140px}
