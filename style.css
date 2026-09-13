@@ -937,7 +937,7 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* MONTH TIMELINE (no cards — editorial three-up strip divided by hairlines) */
-.timeline{margin-top:6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.timeline{margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
 .timeline-item{position:relative;padding:2.6rem 2.4rem 0}
 .timeline-item:not(:first-child){border-left:1px solid rgba(124,191,57,0.14)}
 .lilypad{
@@ -961,7 +961,7 @@ input[type="range"]::-moz-range-thumb{
 .timeline-item li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
 .month-proof{font-size:0.7rem;color:var(--gb);font-weight:700;padding-top:1rem;margin-top:0.4rem;border-top:1px dashed rgba(124,191,57,0.2)}
 .timeline-frog{
-  position:absolute;top:-70px;left:0;width:84px;height:auto;
+  position:absolute;top:-48px;left:0;width:84px;height:auto;
   transform:translateX(-50%);
   filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));
   animation:frog-hop 5s ease-in-out infinite;
@@ -1001,22 +1001,22 @@ input[type="range"]::-moz-range-thumb{
   padding:4.5rem 0 3.5rem;
 }
 .spin-frog-hop{
-  animation:frog-hop 3s infinite;
+  animation:spin-frog-hop 3s infinite;
 }
 .spin-frog{
   width:210px;height:auto;display:block;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
-  animation:frog-spin 3s infinite;
+  animation:spin-frog-spin 3s infinite;
   animation-timing-function:linear;
   transform-origin:center center;
 }
-@keyframes frog-hop{
+@keyframes spin-frog-hop{
   0%{transform:translateY(0);animation-timing-function:ease-out}
   18%{transform:translateY(-150px);animation-timing-function:ease-in}
   36%{transform:translateY(0)}
   100%{transform:translateY(0)}
 }
-@keyframes frog-spin{
+@keyframes spin-frog-spin{
   0%{transform:rotate(0deg)}
   36%{transform:rotate(360deg)}
   100%{transform:rotate(360deg)}
