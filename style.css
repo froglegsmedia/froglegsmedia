@@ -996,13 +996,6 @@ input[type="range"]::-moz-range-thumb{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-42px)}
 }
-.faq-frog{animation:frog-flip 2.4s ease-in-out infinite}
-@keyframes frog-flip{
-  0%{transform:translateY(0) rotate(0deg)}
-  35%{transform:translateY(-46px) rotate(180deg)}
-  65%{transform:translateY(-46px) rotate(360deg)}
-  100%{transform:translateY(0) rotate(360deg)}
-}
 .spin-frog-wrap{
   background:var(--cream);display:flex;justify-content:center;
   padding:2.5rem 0 3.5rem;
