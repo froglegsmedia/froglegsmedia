@@ -569,6 +569,65 @@
   window.addEventListener('resize', render);
   render();
 })();
+
+(function(){
+  var wrap = document.querySelector('.faq-wrap');
+  var intro = document.querySelector('.faq-intro');
+  var inner = document.querySelector('.faq-intro-inner');
+  if (!wrap || !intro || !inner) return;
+
+  function topOffsetPx(){
+    var rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    return 6 * rootPx;
+  }
+
+  function reset(){
+    inner.style.position = '';
+    inner.style.top = '';
+    inner.style.left = '';
+    inner.style.width = '';
+  }
+
+  // Pins the intro at topOffsetPx() while the list scrolls beneath it, then
+  // lets it settle at the bottom of the list (never past it) once there's no
+  // longer room above the list's real end to hold it at that offset. This is
+  // plain geometry (no fake spacer / negative-margin tricks that can desync
+  // from the page's real scroll distance), so it can never overlap content
+  // that comes after the FAQ section.
+  function update(){
+    if (window.innerWidth <= 900) { reset(); return; }
+
+    var off = topOffsetPx();
+    var wrapRect = wrap.getBoundingClientRect();
+    var introRect = intro.getBoundingClientRect();
+    var innerHeight = inner.offsetHeight;
+
+    if (wrapRect.top > off) {
+      reset();
+    } else if (wrapRect.bottom - innerHeight < off) {
+      inner.style.position = 'absolute';
+      inner.style.left = '0';
+      inner.style.width = introRect.width + 'px';
+      inner.style.top = (wrap.offsetHeight - innerHeight) + 'px';
+    } else {
+      inner.style.position = 'fixed';
+      inner.style.top = off + 'px';
+      inner.style.left = introRect.left + 'px';
+      inner.style.width = introRect.width + 'px';
+    }
+  }
+
+  var ticking2 = false;
+  function onScroll2(){
+    if (ticking2) return;
+    ticking2 = true;
+    requestAnimationFrame(function(){ update(); ticking2 = false; });
+  }
+
+  window.addEventListener('scroll', onScroll2, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
 </script>
 
 <footer>

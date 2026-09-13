@@ -968,12 +968,12 @@ input[type="range"]::-moz-range-thumb{
   z-index:2;pointer-events:none;
 }
 @keyframes frog-hop{
-  0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
-  15%{left:33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);}
-  30%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
-  45%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
-  60%{left:66%;transform:translateX(-50%) translateY(-46px) rotate(4deg);}
-  75%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
+  0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
+  15%{left:33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  30%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-in-out}
+  45%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
+  60%{left:66%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  75%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-in-out}
   100%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
 }
 @media(max-width:900px){
@@ -997,8 +997,8 @@ input[type="range"]::-moz-range-thumb{
   50%{transform:translateY(-42px)}
 }
 .spin-frog-wrap{
-  background:var(--cream);display:flex;justify-content:center;
-  padding:4.5rem 0 3.5rem;
+  background:var(--cream);display:flex;justify-content:flex-start;
+  padding:4.5rem var(--gutter) 3.5rem;
 }
 .spin-frog-hop{
   animation:spin-frog-hop 3s infinite;
@@ -1099,14 +1099,13 @@ input[type="range"]::-moz-range-thumb{
 @media(max-width:500px){.stats-row{grid-template-columns:1fr}}
 
 /* ACCORDION FAQ */
-.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;margin-bottom:-22rem}
-.faq-intro{align-self:stretch}
-.faq-intro-inner{position:sticky;top:6rem}
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;position:relative}
+.faq-intro-inner{position:static}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
-.faq-acc{max-width:none;padding-bottom:22rem}
+.faq-acc{max-width:none}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
@@ -1137,9 +1136,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-acc details[open] .faq-toggle::after{opacity:0}
 .faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
 @media(max-width:900px){
-  .faq-wrap{grid-template-columns:1fr;gap:2.4rem;margin-bottom:0}
-  .faq-acc{padding-bottom:0}
-  .faq-intro-inner{position:static}
+  .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
   .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .faq-intro .btn-text{display:block;text-align:center}
 }
