@@ -9,7 +9,7 @@
   --gutter:max(4rem, calc((100vw - 1400px) / 2));
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{background:var(--cream);color:var(--black);font-family:var(--fb);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--black);font-family:var(--fb);overflow-x:clip;-webkit-font-smoothing:antialiased}
 
 /* NAV */
 nav{
@@ -1095,7 +1095,8 @@ input[type="range"]::-moz-range-thumb{
 
 /* ACCORDION FAQ */
 .faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start}
-.faq-intro{position:sticky;top:6rem}
+.faq-intro{align-self:stretch}
+.faq-intro-inner{position:sticky;top:6rem}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
@@ -1132,7 +1133,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
 @media(max-width:900px){
   .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
-  .faq-intro{position:static}
+  .faq-intro-inner{position:static}
   .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .faq-intro .btn-text{display:block;text-align:center}
 }
