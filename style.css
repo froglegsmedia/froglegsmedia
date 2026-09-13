@@ -986,6 +986,16 @@ input[type="range"]::-moz-range-thumb{
 
 /* ITEMIZED — CALL SHEET */
 .itemized-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:5rem;align-items:center}
+.itemized-frog{
+  width:76px;height:auto;display:block;margin-bottom:1rem;
+  filter:drop-shadow(0 8px 6px rgba(13,22,8,0.22));
+  animation:frog-bounce 2.6s ease-in-out infinite;
+  transform-origin:bottom center;
+}
+@keyframes frog-bounce{
+  0%,100%{transform:translateY(0) rotate(-4deg)}
+  50%{transform:translateY(-20px) rotate(4deg)}
+}
 .itemized-copy h2,.itemized-copy .section-intro{text-align:left;margin-left:0;margin-right:0}
 .itemized-copy .section-intro{margin-bottom:1.4rem}
 .itemized-note{
@@ -1032,6 +1042,7 @@ input[type="range"]::-moz-range-thumb{
 
 @media(max-width:900px){
   .itemized-wrap{grid-template-columns:1fr;gap:2.8rem}
+  .itemized-frog{margin-left:auto;margin-right:auto}
   .itemized-copy h2,.itemized-copy .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .itemized-note{display:block;margin:0 auto}
   .itemized-copy .hero-ctas{justify-content:center}
