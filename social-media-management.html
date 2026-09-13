@@ -146,6 +146,7 @@
 
 <!-- RETAINER BUILDER -->
 <section id="builder-section">
+  <div class="hop-track" id="hop-track"><img class="hop-frog-lg" id="hop-frog-lg" src="frog-leap.png" alt="" aria-hidden="true"></div>
   <h2>Build Your Own<br><span class="script">Retainer.</span></h2>
   <p class="section-intro">Everything's scoped to what your brand actually needs. Pick the options below and we'll turn it into a real quote, no generic packages.</p>
 
@@ -528,6 +529,40 @@
 
   if (locationInput) locationInput.addEventListener('input', update);
   update();
+})();
+
+(function(){
+  var track = document.getElementById('hop-track');
+  var frog = document.getElementById('hop-frog-lg');
+  if (!track || !frog) return;
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function render(){
+    var rect = track.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var total = rect.height + vh;
+    var traveled = vh - rect.top;
+    var progress = clamp(traveled / total, 0, 1);
+
+    var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
+    var x = progress * maxX;
+    var hop = Math.abs(Math.sin(progress * Math.PI * 5)) * 44;
+    var rotate = Math.sin(progress * Math.PI * 5) >= 0 ? -8 : 6;
+
+    frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
+  }
+
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ render(); ticking = false; });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', render);
+  render();
 })();
 </script>
 

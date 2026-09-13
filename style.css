@@ -630,6 +630,19 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .nav-links a.current{color:var(--black)}
 
 /* RETAINER BUILDER */
+#builder-section{position:relative}
+.hop-track{
+  position:absolute;top:-130px;left:0;right:0;height:230px;
+  overflow:visible;pointer-events:none;z-index:3;
+}
+.hop-frog-lg{
+  position:absolute;bottom:0;left:0;width:132px;height:auto;
+  filter:drop-shadow(0 10px 8px rgba(0,0,0,0.28));
+  will-change:transform;
+}
+@media(max-width:900px){
+  .hop-track{display:none}
+}
 .builder{
   position:relative;overflow:hidden;
   background:rgba(242,132,92,0.09);
