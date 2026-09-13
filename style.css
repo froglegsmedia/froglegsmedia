@@ -1025,6 +1025,14 @@ input[type="range"]::-moz-range-thumb{
 .example-card .ex-attr{font-family:var(--fd);font-size:0.78rem;font-weight:700;color:var(--black)}
 .example-note{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:1.5rem}
 
+/* MONTHLY STATS (illustrative example categories) */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3rem}
+.stat-col{border-left:2px solid var(--gb);padding-left:1.2rem}
+.stat-num{font-family:var(--fd);font-size:2.6rem;font-weight:800;color:var(--yellow);line-height:1}
+.stat-label{font-size:0.85rem;color:rgba(252,249,244,0.65);margin-top:0.6rem;line-height:1.5}
+@media(max-width:900px){.stats-row{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:500px){.stats-row{grid-template-columns:1fr}}
+
 /* ACCORDION FAQ */
 .faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start}
 .faq-intro{position:sticky;top:6rem}
