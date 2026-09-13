@@ -989,12 +989,12 @@ input[type="range"]::-moz-range-thumb{
 .itemized-frog{
   width:76px;height:auto;display:block;margin-bottom:1rem;
   filter:drop-shadow(0 8px 6px rgba(13,22,8,0.22));
-  animation:frog-bounce 2.6s ease-in-out infinite;
+  animation:frog-bounce 2s ease-in-out infinite;
   transform-origin:bottom center;
 }
 @keyframes frog-bounce{
-  0%,100%{transform:translateY(0) rotate(-4deg)}
-  50%{transform:translateY(-20px) rotate(4deg)}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-42px)}
 }
 .itemized-copy h2,.itemized-copy .section-intro{text-align:left;margin-left:0;margin-right:0}
 .itemized-copy .section-intro{margin-bottom:1.4rem}
