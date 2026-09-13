@@ -996,6 +996,13 @@ input[type="range"]::-moz-range-thumb{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-42px)}
 }
+.faq-frog{animation:frog-flip 2.4s ease-in-out infinite}
+@keyframes frog-flip{
+  0%{transform:translateY(0) rotate(0deg)}
+  35%{transform:translateY(-46px) rotate(180deg)}
+  65%{transform:translateY(-46px) rotate(360deg)}
+  100%{transform:translateY(0) rotate(360deg)}
+}
 .itemized-copy h2,.itemized-copy .section-intro{text-align:left;margin-left:0;margin-right:0}
 .itemized-copy .section-intro{margin-bottom:1.4rem}
 .itemized-note{
