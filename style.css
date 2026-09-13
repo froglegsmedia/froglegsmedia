@@ -1003,6 +1003,22 @@ input[type="range"]::-moz-range-thumb{
   65%{transform:translateY(-46px) rotate(360deg)}
   100%{transform:translateY(0) rotate(360deg)}
 }
+.spin-frog-wrap{
+  background:var(--cream);display:flex;justify-content:center;
+  padding:2.5rem 0 3.5rem;
+}
+.spin-frog{
+  width:210px;height:auto;
+  filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
+  animation:spin-frog 5s linear infinite;
+}
+@keyframes spin-frog{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+@media(max-width:700px){
+  .spin-frog{width:140px}
+}
 .itemized-copy h2,.itemized-copy .section-intro{text-align:left;margin-left:0;margin-right:0}
 .itemized-copy .section-intro{margin-bottom:1.4rem}
 .itemized-note{
