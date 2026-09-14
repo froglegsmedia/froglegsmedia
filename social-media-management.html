@@ -575,7 +575,8 @@
   var wrap = document.querySelector('.faq-wrap');
   var intro = document.querySelector('.faq-intro');
   var inner = document.querySelector('.faq-intro-inner');
-  if (!wrap || !intro || !inner) return;
+  var acc = document.querySelector('.faq-acc');
+  if (!wrap || !intro || !inner || !acc) return;
 
   function topOffsetPx(){
     var rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
@@ -589,12 +590,25 @@
     inner.style.width = '';
   }
 
+  // Real (not faked) bottom padding on the question list, sized to the
+  // heading's own height. This gives the pin genuine extra room to hold
+  // through every question before it has to let go, so it stays anchored
+  // for the whole time there's an actual question on screen and only
+  // settles once the list is done - into blank space, never over content.
+  // No compensating negative margin anywhere, so nothing downstream can
+  // ever get pulled up and overlapped by it.
+  function ensureBuffer(){
+    if (window.innerWidth <= 900) { acc.style.paddingBottom = ''; return; }
+    var wasPosition = inner.style.position;
+    reset();
+    var naturalHeight = inner.offsetHeight;
+    inner.style.position = wasPosition;
+    acc.style.paddingBottom = (naturalHeight + 40) + 'px';
+  }
+
   // Pins the intro at topOffsetPx() while the list scrolls beneath it, then
   // lets it settle at the bottom of the list (never past it) once there's no
-  // longer room above the list's real end to hold it at that offset. This is
-  // plain geometry (no fake spacer / negative-margin tricks that can desync
-  // from the page's real scroll distance), so it can never overlap content
-  // that comes after the FAQ section.
+  // longer room above the list's real end to hold it at that offset.
   function update(){
     if (window.innerWidth <= 900) { reset(); return; }
 
@@ -625,8 +639,15 @@
     requestAnimationFrame(function(){ update(); ticking2 = false; });
   }
 
+  var resizing2 = null;
+  function onResize2(){
+    clearTimeout(resizing2);
+    resizing2 = setTimeout(function(){ ensureBuffer(); update(); }, 80);
+  }
+
   window.addEventListener('scroll', onScroll2, { passive: true });
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', onResize2);
+  ensureBuffer();
   update();
 })();
 </script>

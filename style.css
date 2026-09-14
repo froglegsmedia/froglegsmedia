@@ -968,17 +968,24 @@ input[type="range"]::-moz-range-thumb{
   position:absolute;top:-48px;left:0;width:84px;height:auto;
   transform:translateX(-50%);
   filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));
-  animation:frog-hop 5s ease-in-out infinite;
+  animation:frog-hop 6s ease-in-out infinite;
   z-index:2;pointer-events:none;
 }
+/* Continuous hop loop: pad1->pad2->pad3->pad2->pad1, no rest holds anywhere,
+   so the frog is always mid-motion (fixes "stops mid jump"). Each hop's
+   launch half uses ease-out and its landing half uses ease-in so velocity
+   bottoms out exactly once at the peak instead of double-decelerating. The
+   100% pose matches the 0% pose exactly, so the loop restart is seamless. */
 @keyframes frog-hop{
   0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  15%{left:33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  30%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-in-out}
-  45%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  60%{left:66%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  75%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-in-out}
-  100%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
+  12.5%{left:33.33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  25%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
+  37.5%{left:66.67%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  50%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
+  62.5%{left:66.67%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  75%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
+  87.5%{left:33.33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
+  100%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
 }
 @media(max-width:900px){
   .timeline{grid-template-columns:1fr}
