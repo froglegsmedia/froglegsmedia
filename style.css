@@ -245,7 +245,7 @@ h2.light span{color:var(--gb)}
 }
 .svc-card{
   background:var(--cream);padding:2.5rem 2rem;
-  position:relative;overflow:hidden;
+  position:relative;overflow:visible;
   display:flex;flex-direction:column;
   transition:background 0.25s;
 }
@@ -261,6 +261,7 @@ h2.light span{color:var(--gb)}
   letter-spacing:0.2em;color:var(--gd);
   margin-bottom:1.8rem;opacity:0.5;
 }
+.svc-lilypad{position:absolute;top:0;left:2rem;transform:translateY(-50%);z-index:2}
 .svc-icon{font-size:1.8rem;display:block;margin-bottom:1rem;line-height:1}
 .svc-name{
   font-family:var(--fd);font-size:1.15rem;font-weight:700;
@@ -1133,6 +1134,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
 .faq-acc{max-width:none}
+.faq-acc-standalone{max-width:760px;margin-top:1.5rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
