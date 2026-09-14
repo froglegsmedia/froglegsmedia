@@ -221,6 +221,7 @@ h2.light span{color:var(--gb)}
   letter-spacing:0.15em;color:var(--gd);opacity:0.6;
   padding-top:0.25rem;
 }
+.lilypad.p-lilypad{position:static;transform:none;align-self:start}
 .p-name{
   font-family:var(--fd);font-size:1.3rem;font-weight:700;
   letter-spacing:-0.01em;color:var(--black);
