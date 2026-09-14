@@ -221,7 +221,7 @@ h2.light span{color:var(--gb)}
   letter-spacing:0.15em;color:var(--gd);opacity:0.6;
   padding-top:0.25rem;
 }
-.lilypad.p-lilypad{position:static;transform:none;align-self:start}
+.lilypad.p-lilypad{position:relative;transform:none;align-self:start}
 .p-name{
   font-family:var(--fd);font-size:1.3rem;font-weight:700;
   letter-spacing:-0.01em;color:var(--black);
@@ -237,33 +237,51 @@ h2.light span{color:var(--gb)}
   border:1px solid var(--border);color:var(--gd);border-radius:3px;
 }
 
-/* SERVICES */
+/* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
+   staggered like pads on water, ripple accent, no boxed grid-lines. */
 #services{background:var(--cream)}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
+  gap:2.1rem 1.6rem;
 }
 .svc-card{
-  background:var(--cream);padding:2.5rem 2rem;
+  background:#fff;padding:2.6rem 2rem 2.3rem;
+  border-radius:28px 28px 8px 28px;
   position:relative;overflow:visible;
   display:flex;flex-direction:column;
-  transition:background 0.25s;
+  border:1px solid rgba(13,22,8,0.07);
+  box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -20px rgba(13,22,8,0.28);
+  transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
 }
-.svc-card:hover{background:#f3f0e9}
+.svc-card::before{
+  content:'';position:absolute;right:-14px;bottom:-14px;
+  width:64px;height:64px;border-radius:50%;
+  border:1.5px solid rgba(124,191,57,0.18);
+  pointer-events:none;
+}
+.svc-card:hover{background:#fdfcf9;transform:translateY(-5px);box-shadow:0 1px 0 rgba(13,22,8,0.05),0 26px 40px -18px rgba(13,22,8,0.34)}
+@media(min-width:769px){
+  .svc-grid>.svc-card:nth-child(even){margin-top:1.7rem}
+}
 .svc-top{
-  height:3px;position:absolute;top:0;left:0;right:0;
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.4s ease;
+  height:5px;position:absolute;bottom:0;left:1.6rem;right:2.4rem;
+  border-radius:3px;opacity:0.4;
+  transition:opacity 0.3s ease;
 }
-.svc-card:hover .svc-top{transform:scaleX(1)}
+.svc-card:hover .svc-top{opacity:1}
 .svc-num{
   font-family:var(--fd);font-size:0.65rem;font-weight:700;
   letter-spacing:0.2em;color:var(--gd);
   margin-bottom:1.8rem;opacity:0.5;
 }
 .card-lilypad{position:absolute;top:0;left:2rem;transform:translateY(-50%);z-index:2}
-.svc-icon{font-size:1.8rem;display:block;margin-bottom:1rem;line-height:1}
+.svc-icon-wrap{
+  width:3.1rem;height:3.1rem;border-radius:13px 13px 4px 13px;
+  background:rgba(124,191,57,0.13);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.3rem;color:var(--gd);
+}
+.svc-icon-wrap svg{width:1.5rem;height:1.5rem}
 .svc-name{
   font-family:var(--fd);font-size:1.15rem;font-weight:700;
   letter-spacing:-0.01em;color:var(--black);margin-bottom:0.6rem;
@@ -318,27 +336,38 @@ h2.light span{color:var(--gb)}
 }
 .wc-body strong{color:rgba(252,249,244,0.8);font-weight:500}
 
-/* FORMATS */
+/* FORMATS — same pond-tile treatment as SERVICES */
 #formats{background:var(--cream)}
 .formats-grid{
   display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
+  gap:2.1rem 1.6rem;
   margin-top:4.5rem;
 }
 .fmt-card{
-  background:var(--cream);padding:2.5rem 2rem;
+  background:#fff;padding:2.5rem 1.8rem 2.2rem;
+  border-radius:28px 28px 8px 28px;
   position:relative;overflow:visible;
-  transition:background 0.25s;
+  border:1px solid rgba(13,22,8,0.07);
+  box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -20px rgba(13,22,8,0.28);
+  transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
 }
-.fmt-card:hover{background:#f3f0e9}
+.fmt-card::before{
+  content:'';position:absolute;right:-14px;bottom:-14px;
+  width:64px;height:64px;border-radius:50%;
+  border:1.5px solid rgba(124,191,57,0.18);
+  pointer-events:none;
+}
+.fmt-card:hover{background:#fdfcf9;transform:translateY(-5px);box-shadow:0 1px 0 rgba(13,22,8,0.05),0 26px 40px -18px rgba(13,22,8,0.34)}
+@media(min-width:769px){
+  .formats-grid>.fmt-card:nth-child(even){margin-top:1.7rem}
+}
 .fmt-top{
-  height:3px;
-  position:absolute;top:0;left:0;right:0;
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 0.4s ease;
+  height:5px;
+  position:absolute;bottom:0;left:1.4rem;right:2.2rem;
+  border-radius:3px;opacity:0.4;
+  transition:opacity 0.3s ease;
 }
-.fmt-card:hover .fmt-top{transform:scaleX(1)}
+.fmt-card:hover .fmt-top{opacity:1}
 .t-yellow{background:var(--yellow)}
 .t-green{background:var(--gb)}
 .t-gd{background:var(--gd)}
@@ -349,7 +378,6 @@ h2.light span{color:var(--gb)}
   letter-spacing:0.2em;color:var(--gd);
   margin-bottom:1.8rem;opacity:0.5;
 }
-.fmt-icon{font-size:1.8rem;display:block;margin-bottom:1rem;line-height:1}
 .fmt-name{
   font-family:var(--fd);font-size:1.15rem;font-weight:700;
   letter-spacing:-0.01em;color:var(--black);margin-bottom:0.6rem;
@@ -1001,7 +1029,7 @@ input[type="range"]::-moz-range-thumb{
   .timeline{grid-template-columns:1fr}
   .timeline-item{padding:0}
   .timeline-item:not(:first-child){border-left:none;border-top:1px solid rgba(124,191,57,0.14);margin-top:2.4rem;padding-top:2.2rem}
-  .lilypad{position:static;transform:none;margin-bottom:1rem}
+  .lilypad{position:relative;transform:none;margin-bottom:1rem}
   .timeline-frog{display:none}
 }
 
