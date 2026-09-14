@@ -261,7 +261,7 @@ h2.light span{color:var(--gb)}
   letter-spacing:0.2em;color:var(--gd);
   margin-bottom:1.8rem;opacity:0.5;
 }
-.svc-lilypad{position:absolute;top:0;left:2rem;transform:translateY(-50%);z-index:2}
+.card-lilypad{position:absolute;top:0;left:2rem;transform:translateY(-50%);z-index:2}
 .svc-icon{font-size:1.8rem;display:block;margin-bottom:1rem;line-height:1}
 .svc-name{
   font-family:var(--fd);font-size:1.15rem;font-weight:700;
@@ -327,7 +327,7 @@ h2.light span{color:var(--gb)}
 }
 .fmt-card{
   background:var(--cream);padding:2.5rem 2rem;
-  position:relative;overflow:hidden;
+  position:relative;overflow:visible;
   transition:background 0.25s;
 }
 .fmt-card:hover{background:#f3f0e9}
@@ -952,12 +952,6 @@ input[type="range"]::-moz-range-thumb{
   box-shadow:0 5px 12px rgba(0,0,0,0.4);
 }
 .lilypad::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1.5px dashed rgba(13,22,8,0.3)}
-.lilypad::after{
-  content:'';position:absolute;top:50%;right:-4px;width:0;height:0;
-  transform:translateY(-50%) rotate(14deg);
-  border-style:solid;border-width:0.55rem 0.75rem 0.55rem 0;
-  border-color:transparent var(--black) transparent transparent;
-}
 .lilypad-num{position:relative;z-index:2;font-family:var(--fd);font-weight:800;font-size:1.05rem;color:var(--black)}
 .tl-tag{display:block;font-family:var(--fd);font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gb);margin-bottom:1rem}
 .timeline-item h3{font-family:var(--fd);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:1.2rem}
