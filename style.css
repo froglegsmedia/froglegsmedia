@@ -1023,13 +1023,13 @@ input[type="range"]::-moz-range-thumb{
 }
 .spin-frog-wrap{
   background:var(--cream);display:flex;justify-content:flex-start;
-  padding:0 var(--gutter) 0;
+  padding:0.5rem var(--gutter) 1.5rem;
 }
 .spin-frog-hop{
   animation:spin-frog-hop 3s infinite;
 }
 .spin-frog{
-  width:172px;height:auto;display:block;
+  width:210px;height:auto;display:block;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
   animation:spin-frog-spin 3s infinite;
   animation-timing-function:linear;
