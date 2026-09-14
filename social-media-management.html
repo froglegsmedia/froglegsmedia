@@ -536,37 +536,101 @@
 })();
 
 (function(){
-  var track = document.getElementById('hop-track');
-  var frog = document.getElementById('hop-frog-lg');
-  if (!track || !frog) return;
-
+  // All frog graphics on this page move only in response to scroll
+  // position (no timers) -- each frog's motion is a function of how far
+  // its own section has scrolled through the viewport (0 = not reached
+  // yet, 1 = fully scrolled past).
   function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
-
-  function render(){
-    var rect = track.getBoundingClientRect();
+  function progressFor(el){
+    var rect = el.getBoundingClientRect();
     var vh = window.innerHeight || document.documentElement.clientHeight;
     var total = rect.height + vh;
     var traveled = vh - rect.top;
-    var progress = clamp(traveled / total, 0, 1);
+    return clamp(traveled / total, 0, 1);
+  }
 
-    var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
-    var x = progress * maxX;
-    var hop = Math.abs(Math.sin(progress * Math.PI * 5)) * 44;
-    var rotate = Math.sin(progress * Math.PI * 5) >= 0 ? -8 : 6;
+  var renders = [];
 
-    frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
+  // Retainer-builder track frog: hops left-to-right along the track.
+  (function(){
+    var track = document.getElementById('hop-track');
+    var frog = document.getElementById('hop-frog-lg');
+    if (!track || !frog) return;
+    renders.push(function(){
+      var p = progressFor(track);
+      var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
+      var x = p * maxX;
+      var hop = Math.abs(Math.sin(p * Math.PI * 5)) * 44;
+      var rotate = Math.sin(p * Math.PI * 5) >= 0 ? -8 : 6;
+      frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
+    });
+  })();
+
+  // Month-timeline frog: hops pad1 -> pad2 -> pad3, forward only.
+  (function(){
+    var container = document.querySelector('#smm-pipeline .timeline');
+    var frog = document.querySelector('.timeline-frog');
+    if (!container || !frog) return;
+    var pads = [16.666, 50, 83.333];
+    renders.push(function(){
+      var p = progressFor(container);
+      var seg = p >= 1 ? 1 : Math.floor(p * 2);
+      var local = clamp((p * 2) - seg, 0, 1);
+      var startPad = pads[seg], endPad = pads[seg + 1];
+      var left = startPad + (endPad - startPad) * local;
+      var hop = Math.sin(local * Math.PI) * 46;
+      var rotate = local < 0.5 ? (-6 + local * 20) : (4 - (local - 0.5) * 20);
+      frog.style.left = left.toFixed(2) + '%';
+      frog.style.transform = 'translateX(-50%) translateY(' + (-hop).toFixed(1) + 'px) rotate(' + rotate.toFixed(1) + 'deg)';
+    });
+  })();
+
+  // Call-sheet frog: bounces in place as its section scrolls by.
+  (function(){
+    var container = document.getElementById('itemized');
+    var frog = document.querySelector('.itemized-frog');
+    if (!container || !frog) return;
+    renders.push(function(){
+      var p = progressFor(container);
+      var bounce = Math.abs(Math.sin(p * Math.PI * 6)) * 40;
+      frog.style.transform = 'translateY(' + (-bounce).toFixed(1) + 'px)';
+    });
+  })();
+
+  // Bottom CTA-band frog: flips head-over-heels as the band scrolls by.
+  // Uses a fixed scroll distance (not the section's full height) so the
+  // flip reliably completes even though this band sits right above the
+  // footer with little scroll room left after it.
+  (function(){
+    var container = document.querySelector('.cta-band');
+    var frog = document.querySelector('.spin-frog');
+    if (!container || !frog) return;
+    renders.push(function(){
+      var rect = container.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var start = vh * 0.85;
+      var range = 480;
+      var q = clamp((start - rect.top) / range, 0, 1);
+      var hop = Math.sin(q * Math.PI) * 70;
+      var rotate = q * 360;
+      frog.style.transform = 'translateY(' + (-hop).toFixed(1) + 'px) rotate(' + rotate.toFixed(1) + 'deg)';
+    });
+  })();
+
+  function renderAll(){
+    for (var i = 0; i < renders.length; i++) renders[i]();
   }
 
   var ticking = false;
   function onScroll(){
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(function(){ render(); ticking = false; });
+    requestAnimationFrame(function(){ renderAll(); ticking = false; });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', render);
-  render();
+  window.addEventListener('resize', renderAll);
+  renderAll();
 })();
 
 </script>

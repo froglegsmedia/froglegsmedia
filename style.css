@@ -1027,42 +1027,16 @@ input[type="range"]::-moz-range-thumb{
 .timeline-item li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
 .month-proof{font-size:0.7rem;color:var(--gb);font-weight:700;padding-top:1rem;margin-top:0.4rem;border-top:1px dashed rgba(124,191,57,0.2)}
 .timeline-frog{
-  position:absolute;top:-48px;left:0;width:84px;height:auto;opacity:1;
+  position:absolute;top:-48px;left:16.666%;width:84px;height:auto;opacity:1;
   transform:translateX(-50%);
   filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));
-  animation:frog-hop 4s linear infinite;
+  will-change:transform,left;
   z-index:2;pointer-events:none;
 }
-/* Forward-only hop: pad1->pad2->pad3, never backward. Each hop is sampled
-   at 9 points along a true parabola (constant-deceleration arc, matching
-   real projectile motion) with the whole animation running on a single
-   linear timing function - no per-keyframe easing - so there's no flat
-   "hang" at the peak the way chained ease-out/ease-in produces. Once it
-   lands on the last pad it fades out, jumps back to pad 1 while invisible,
-   and fades back in, so the return trip is never seen as a reverse hop. */
-@keyframes frog-hop{
-  0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
-  5.625%{left:20.833%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
-  11.25%{left:25%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
-  16.875%{left:29.166%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
-  22.5%{left:33.333%;transform:translateX(-50%) translateY(-46px) rotate(4deg);opacity:1}
-  28.125%{left:37.5%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
-  33.75%{left:41.666%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
-  39.375%{left:45.833%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
-  45%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
-  50.625%{left:54.166%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
-  56.25%{left:58.333%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
-  61.875%{left:62.5%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
-  67.5%{left:66.666%;transform:translateX(-50%) translateY(-46px) rotate(4deg);opacity:1}
-  73.125%{left:70.833%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
-  78.75%{left:75%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
-  84.375%{left:79.166%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
-  90%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
-  93%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:0}
-  93.001%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:0}
-  96%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
-  100%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
-}
+/* Forward-only hop: pad1->pad2->pad3, driven entirely by scroll position
+   (see the combined scroll-render script at the bottom of the page) rather
+   than a timer, so the frog only moves while the user is actually scrolling
+   through this section. */
 @media(max-width:900px){
   .timeline{grid-template-columns:1fr}
   .timeline-item{padding:0}
@@ -1076,38 +1050,23 @@ input[type="range"]::-moz-range-thumb{
 .itemized-frog{
   width:76px;height:auto;display:block;margin-bottom:1rem;
   filter:drop-shadow(0 8px 6px rgba(13,22,8,0.22));
-  animation:frog-bounce 2s ease-in-out infinite;
   transform-origin:bottom center;
+  will-change:transform;
 }
-@keyframes frog-bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-42px)}
-}
+/* Bounce amplitude is driven by scroll progress through #itemized (see the
+   combined scroll-render script), not a timer. */
 .spin-frog-wrap{
   display:flex;justify-content:center;
   margin-bottom:1.5rem;
 }
-.spin-frog-hop{
-  animation:spin-frog-hop 3s infinite;
-}
 .spin-frog{
   width:150px;height:auto;display:block;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
-  animation:spin-frog-spin 3s infinite;
-  animation-timing-function:linear;
   transform-origin:center center;
+  will-change:transform;
 }
-@keyframes spin-frog-hop{
-  0%{transform:translateY(0);animation-timing-function:ease-out}
-  18%{transform:translateY(-150px);animation-timing-function:ease-in}
-  36%{transform:translateY(0)}
-  100%{transform:translateY(0)}
-}
-@keyframes spin-frog-spin{
-  0%{transform:rotate(0deg)}
-  36%{transform:rotate(360deg)}
-  100%{transform:rotate(360deg)}
-}
+/* Hop + spin driven by scroll progress through .cta-band (see the combined
+   scroll-render script), not a timer. */
 @media(max-width:700px){
   .spin-frog{width:140px}
 }
