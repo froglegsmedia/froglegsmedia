@@ -362,7 +362,7 @@ h2.light span{color:var(--gb)}
   z-index:2;
 }
 .orient-frame.orient-fold-closed{
-  width:130px;aspect-ratio:7/10;border-radius:8px 34px 34px 8px;padding:9px;
+  width:130px;aspect-ratio:4/5;border-radius:8px 34px 34px 8px;padding:9px;
 }
 .orient-frame.orient-fold-closed .orient-screen{border-radius:4px 26px 26px 4px}
 .orient-frame.orient-fold{
