@@ -201,7 +201,12 @@ h2.light span{color:var(--gb)}
 .section-intro strong{color:var(--black);font-weight:600}
 
 /* PIPELINE — clean numbered list */
-#pipeline{background:var(--cream);padding-top:2rem;padding-bottom:2rem}
+#pipeline{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
+/* SMM page's own timeline/FAQ sections are on unique IDs (#smm-pipeline,
+   #smm-faq) specifically so they never inherit changes made here — kept
+   at their original (pre-redesign) padding, untouched. */
+#smm-pipeline{background:var(--cream);padding-top:2rem}
+#smm-faq{background:var(--cream)}
   @media(max-width:768px){
   .pipeline-logo{display:none}
   .hero-right{display:block;width:100%;margin-bottom:2rem}
@@ -239,7 +244,7 @@ h2.light span{color:var(--gb)}
 
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
    evenly aligned, no boxed grid-lines. */
-#services{background:var(--cream)}
+#services{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:2.1rem 1.6rem;
@@ -329,7 +334,7 @@ h2.light span{color:var(--gb)}
 .wc-body strong{color:rgba(252,249,244,0.8);font-weight:500}
 
 /* FORMATS — same pond-tile treatment as SERVICES, evenly aligned */
-#formats{background:var(--cream)}
+#formats{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
 .orient-demo{
   display:flex;justify-content:center;align-items:flex-end;
   gap:3.5rem;flex-wrap:wrap;margin-bottom:1rem;
@@ -420,7 +425,11 @@ h2.light span{color:var(--gb)}
 }
 
 /* WORK */
-#work{background:var(--gray)}
+#work{background:var(--gray);padding-top:3rem;padding-bottom:3rem}
+/* Portfolio page's full-page gallery keeps its own original, more
+   spacious padding — it's a single standalone section, not part of a
+   sequence that needs even inter-section spacing. */
+#portfolio-work{background:var(--gray)}
 #work .eyebrow{color:var(--gb)}
 #work .eyebrow::before{background:var(--gb)}
 .w-header{
@@ -612,6 +621,9 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .w-header{flex-direction:column;gap:1rem;align-items:flex-start}
   .cred-bar{margin-bottom:2rem}
 
+  /* FAQ */
+  #faq{padding:4rem 1.5rem}
+
   /* CONTACT */
   #contact{
     grid-template-columns:1fr;
@@ -672,7 +684,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:4rem;padding-bottom:6rem}
+#faq{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
