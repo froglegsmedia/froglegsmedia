@@ -238,11 +238,12 @@ h2.light span{color:var(--gb)}
 }
 
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
-   staggered like pads on water, ripple accent, no boxed grid-lines. */
+   evenly aligned, no boxed grid-lines. */
 #services{background:var(--cream)}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:2.1rem 1.6rem;
+  align-items:stretch;
 }
 .svc-card{
   background:#fff;padding:2.6rem 2rem 2.3rem;
@@ -253,16 +254,7 @@ h2.light span{color:var(--gb)}
   box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -20px rgba(13,22,8,0.28);
   transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
 }
-.svc-card::before{
-  content:'';position:absolute;right:-14px;bottom:-14px;
-  width:64px;height:64px;border-radius:50%;
-  border:1.5px solid rgba(124,191,57,0.18);
-  pointer-events:none;
-}
 .svc-card:hover{background:#fdfcf9;transform:translateY(-5px);box-shadow:0 1px 0 rgba(13,22,8,0.05),0 26px 40px -18px rgba(13,22,8,0.34)}
-@media(min-width:769px){
-  .svc-grid>.svc-card:nth-child(even){margin-top:1.7rem}
-}
 .svc-top{
   height:5px;position:absolute;bottom:0;left:1.6rem;right:2.4rem;
   border-radius:3px;opacity:0.4;
@@ -336,31 +328,24 @@ h2.light span{color:var(--gb)}
 }
 .wc-body strong{color:rgba(252,249,244,0.8);font-weight:500}
 
-/* FORMATS — same pond-tile treatment as SERVICES */
+/* FORMATS — same pond-tile treatment as SERVICES, evenly aligned */
 #formats{background:var(--cream)}
 .formats-grid{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:2.1rem 1.6rem;
   margin-top:4.5rem;
+  align-items:stretch;
 }
 .fmt-card{
   background:#fff;padding:2.5rem 1.8rem 2.2rem;
   border-radius:28px 28px 8px 28px;
   position:relative;overflow:visible;
+  display:flex;flex-direction:column;
   border:1px solid rgba(13,22,8,0.07);
   box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -20px rgba(13,22,8,0.28);
   transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
 }
-.fmt-card::before{
-  content:'';position:absolute;right:-14px;bottom:-14px;
-  width:64px;height:64px;border-radius:50%;
-  border:1.5px solid rgba(124,191,57,0.18);
-  pointer-events:none;
-}
 .fmt-card:hover{background:#fdfcf9;transform:translateY(-5px);box-shadow:0 1px 0 rgba(13,22,8,0.05),0 26px 40px -18px rgba(13,22,8,0.34)}
-@media(min-width:769px){
-  .formats-grid>.fmt-card:nth-child(even){margin-top:1.7rem}
-}
 .fmt-top{
   height:5px;
   position:absolute;bottom:0;left:1.4rem;right:2.2rem;
