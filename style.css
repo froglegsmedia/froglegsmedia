@@ -1124,21 +1124,16 @@ input[type="range"]::-moz-range-thumb{
 @media(max-width:500px){.stats-row{grid-template-columns:1fr}}
 
 /* ACCORDION FAQ */
-/* FAQ heading: native CSS position:sticky, no JS. align-items:stretch makes
-   .faq-intro (the left grid cell) exactly as tall as .faq-acc (the taller
-   right column), which gives .faq-intro-inner's sticky a container to
-   travel and release inside. The padding-bottom on .faq-acc is real (no
-   compensating negative margin anywhere) and sized comfortably larger than
-   the heading block itself, so the sticky heading stays pinned through
-   every single question and only releases into that blank space once the
-   list is actually finished - it can never overlap the CTA band after it. */
-.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:stretch;position:relative}
-.faq-intro-inner{position:-webkit-sticky;position:sticky;top:6rem}
+/* Plain, normal flow - no position:sticky, no JS. The heading just scrolls
+   with the page like every other section on the site (e.g. "What's
+   Actually In The Retainer"). */
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;position:relative}
+.faq-intro-inner{position:static}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
-.faq-acc{max-width:none;padding-bottom:20rem}
+.faq-acc{max-width:none}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
@@ -1170,8 +1165,6 @@ input[type="range"]::-moz-range-thumb{
 .faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
 @media(max-width:900px){
   .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
-  .faq-intro-inner{position:static;top:auto}
-  .faq-acc{padding-bottom:0}
   .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .faq-intro .btn-text{display:block;text-align:center}
 }
