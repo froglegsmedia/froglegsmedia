@@ -616,7 +616,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:6rem;padding-bottom:0}
+#faq{background:var(--cream);padding-top:6rem;padding-bottom:6rem}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
@@ -1022,14 +1022,14 @@ input[type="range"]::-moz-range-thumb{
   50%{transform:translateY(-42px)}
 }
 .spin-frog-wrap{
-  background:var(--cream);display:flex;justify-content:flex-start;
-  padding:0 var(--gutter) 1.5rem;
+  display:flex;justify-content:center;
+  margin-bottom:1.5rem;
 }
 .spin-frog-hop{
   animation:spin-frog-hop 3s infinite;
 }
 .spin-frog{
-  width:172px;height:auto;display:block;
+  width:150px;height:auto;display:block;
   filter:drop-shadow(0 16px 12px rgba(13,22,8,0.25));
   animation:spin-frog-spin 3s infinite;
   animation-timing-function:linear;
