@@ -817,16 +817,20 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 /* PHONE MOCKUP */
 .phone-mock{
   position:relative;width:230px;max-width:80vw;
-  background:#0d1608;border-radius:32px;padding:10px;
+  background:#0d1608;border-radius:46px;padding:10px;
   box-shadow:0 30px 70px rgba(0,0,0,0.5);
   border:2px solid rgba(255,255,255,0.08);
 }
 .phone-mock-lg{width:300px}
 .hero-h1-sm{font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1.05;margin-bottom:1.2rem}
-.phone-screen{background:var(--cream);border-radius:24px;overflow:hidden}
-.phone-topbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--border)}
-.phone-topbar .dot{width:16px;height:16px;border-radius:50%;background:var(--gd)}
-.phone-topbar .dot:last-of-type{background:var(--yellow)}
+.phone-island{
+  position:absolute;top:22px;left:50%;transform:translateX(-50%);
+  width:32%;height:22px;background:#000;border-radius:999px;
+  z-index:3;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.phone-screen{background:var(--cream);border-radius:38px;overflow:hidden;position:relative}
+.phone-topbar{display:flex;align-items:center;justify-content:center;gap:6px;padding:26px 12px 10px;border-bottom:1px solid var(--border)}
+.phone-topbar .avatar-dot{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--gb),var(--orange))}
 .phone-handle{font-family:var(--fd);font-size:0.62rem;font-weight:700;color:var(--black);margin-left:4px}
 .phone-content{
   aspect-ratio:4/5;
