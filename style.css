@@ -201,7 +201,7 @@ h2.light span{color:var(--gb)}
 .section-intro strong{color:var(--black);font-weight:600}
 
 /* PIPELINE — clean numbered list */
-#pipeline{background:var(--cream);padding-top:8rem;padding-bottom:4rem}
+#pipeline{background:var(--cream);padding-top:8rem;padding-bottom:4rem;position:relative}
 /* SMM page's own timeline/FAQ sections are on unique IDs (#smm-pipeline,
    #smm-faq) so they can't accidentally inherit changes made to #pipeline/
    #faq above meant for the other pages -- but they're brought to the same
