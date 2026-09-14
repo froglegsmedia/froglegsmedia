@@ -1133,7 +1133,7 @@ input[type="range"]::-moz-range-thumb{
    every single question and only releases into that blank space once the
    list is actually finished - it can never overlap the CTA band after it. */
 .faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:stretch;position:relative}
-.faq-intro-inner{position:sticky;top:6rem}
+.faq-intro-inner{position:-webkit-sticky;position:sticky;top:6rem}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
