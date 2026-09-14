@@ -201,13 +201,13 @@ h2.light span{color:var(--gb)}
 .section-intro strong{color:var(--black);font-weight:600}
 
 /* PIPELINE — clean numbered list */
-#pipeline{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
+#pipeline{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
 /* SMM page's own timeline/FAQ sections are on unique IDs (#smm-pipeline,
    #smm-faq) so they can't accidentally inherit changes made to #pipeline/
    #faq above meant for the other pages -- but they're brought to the same
    even 96px inter-section rhythm as the rest of the site below. */
-#smm-pipeline{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
-#smm-faq{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
+#smm-pipeline{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
+#smm-faq{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
   @media(max-width:768px){
   .pipeline-logo{display:none}
   .hero-right{display:block;width:100%;margin-bottom:2rem}
@@ -245,7 +245,7 @@ h2.light span{color:var(--gb)}
 
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
    evenly aligned, no boxed grid-lines. */
-#services{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
+#services{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:2.1rem 1.6rem;
@@ -335,7 +335,7 @@ h2.light span{color:var(--gb)}
 .wc-body strong{color:rgba(252,249,244,0.8);font-weight:500}
 
 /* FORMATS — same pond-tile treatment as SERVICES, evenly aligned */
-#formats{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
+#formats{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
 .orient-demo{
   display:flex;justify-content:center;align-items:flex-end;
   gap:3.5rem;flex-wrap:wrap;margin-bottom:1rem;
@@ -426,7 +426,7 @@ h2.light span{color:var(--gb)}
 }
 
 /* WORK */
-#work{background:var(--gray);padding-top:4rem;padding-bottom:3.5rem}
+#work{background:var(--gray);padding-top:8rem;padding-bottom:3.5rem}
 /* Portfolio page's full-page gallery keeps its own original, more
    spacious padding — it's a single standalone section, not part of a
    sequence that needs even inter-section spacing. */
@@ -685,7 +685,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:4rem;padding-bottom:3.5rem}
+#faq{background:var(--cream);padding-top:8rem;padding-bottom:3.5rem}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
@@ -699,7 +699,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .nav-links a.current{color:var(--black)}
 
 /* RETAINER BUILDER */
-#builder-section{position:relative;padding-top:4rem;padding-bottom:3.5rem}
+#builder-section{position:relative;padding-top:8rem;padding-bottom:3.5rem}
 .hop-track{
   position:absolute;top:-130px;left:0;right:0;height:230px;
   overflow:visible;pointer-events:none;z-index:3;
@@ -819,7 +819,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 @media(max-width:700px){.checklist{grid-template-columns:1fr}}
 
 /* FEEDBACK WALL (scattered screenshot-style placeholder collage) */
-#proof{padding-top:4rem;padding-bottom:3.5rem}
+#proof{padding-top:8rem;padding-bottom:3.5rem}
 .feedback-wall{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.6rem 2rem;margin-top:3.2rem;padding:0.5rem 1rem 1.5rem}
 .wall-card{
   position:relative;background:#fff;border-radius:10px;width:250px;
@@ -945,7 +945,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 .ig-note-text{font-size:0.8rem;color:var(--muted)}
 .ig-note-text a{color:var(--gd);font-weight:700;text-decoration:underline}
-#reels{padding-top:4rem;padding-bottom:3.5rem}
+#reels{padding-top:8rem;padding-bottom:3.5rem}
 .reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.6rem}
 .reel-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,22,8,0.08)}
 .reel-top{display:flex;align-items:center;gap:6px;padding:0.6rem 0.8rem;border-bottom:1px solid var(--border)}
@@ -1075,7 +1075,7 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* ITEMIZED — CALL SHEET */
-#itemized{padding-top:4rem;padding-bottom:3.5rem}
+#itemized{padding-top:8rem;padding-bottom:3.5rem}
 .itemized-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:5rem;align-items:center}
 .itemized-frog{
   width:76px;height:auto;display:block;margin-bottom:1rem;
@@ -1182,7 +1182,7 @@ input[type="range"]::-moz-range-thumb{
 .example-note{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:1.5rem}
 
 /* MONTHLY STATS (illustrative example categories) */
-#stats{padding-top:4rem;padding-bottom:3.5rem}
+#stats{padding-top:8rem;padding-bottom:3.5rem}
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3rem}
 .stat-col{border-left:2px solid var(--gb);padding-left:1.2rem}
 .stat-num{font-family:var(--fd);font-size:2.6rem;font-weight:800;color:var(--yellow);line-height:1}
@@ -1200,7 +1200,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
 .faq-acc{max-width:none}
-.faq-acc-standalone{max-width:760px;margin-top:7.5rem}
+.faq-acc-standalone{max-width:760px;margin-top:11.5rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
