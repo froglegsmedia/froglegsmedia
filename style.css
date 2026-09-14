@@ -965,27 +965,41 @@ input[type="range"]::-moz-range-thumb{
 .timeline-item li::before{content:'\2022';position:absolute;left:0;color:var(--gb);font-weight:700}
 .month-proof{font-size:0.7rem;color:var(--gb);font-weight:700;padding-top:1rem;margin-top:0.4rem;border-top:1px dashed rgba(124,191,57,0.2)}
 .timeline-frog{
-  position:absolute;top:-48px;left:0;width:84px;height:auto;
+  position:absolute;top:-48px;left:0;width:84px;height:auto;opacity:1;
   transform:translateX(-50%);
   filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));
-  animation:frog-hop 6s ease-in-out infinite;
+  animation:frog-hop 4s linear infinite;
   z-index:2;pointer-events:none;
 }
-/* Continuous hop loop: pad1->pad2->pad3->pad2->pad1, no rest holds anywhere,
-   so the frog is always mid-motion (fixes "stops mid jump"). Each hop's
-   launch half uses ease-out and its landing half uses ease-in so velocity
-   bottoms out exactly once at the peak instead of double-decelerating. The
-   100% pose matches the 0% pose exactly, so the loop restart is seamless. */
+/* Forward-only hop: pad1->pad2->pad3, never backward. Each hop is sampled
+   at 9 points along a true parabola (constant-deceleration arc, matching
+   real projectile motion) with the whole animation running on a single
+   linear timing function - no per-keyframe easing - so there's no flat
+   "hang" at the peak the way chained ease-out/ease-in produces. Once it
+   lands on the last pad it fades out, jumps back to pad 1 while invisible,
+   and fades back in, so the return trip is never seen as a reverse hop. */
 @keyframes frog-hop{
-  0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  12.5%{left:33.33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  25%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  37.5%{left:66.67%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  50%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  62.5%{left:66.67%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  75%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);animation-timing-function:ease-out}
-  87.5%{left:33.33%;transform:translateX(-50%) translateY(-46px) rotate(4deg);animation-timing-function:ease-in}
-  100%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);}
+  0%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
+  5.625%{left:20.833%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
+  11.25%{left:25%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
+  16.875%{left:29.166%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
+  22.5%{left:33.333%;transform:translateX(-50%) translateY(-46px) rotate(4deg);opacity:1}
+  28.125%{left:37.5%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
+  33.75%{left:41.666%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
+  39.375%{left:45.833%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
+  45%{left:50%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
+  50.625%{left:54.166%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
+  56.25%{left:58.333%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
+  61.875%{left:62.5%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
+  67.5%{left:66.666%;transform:translateX(-50%) translateY(-46px) rotate(4deg);opacity:1}
+  73.125%{left:70.833%;transform:translateX(-50%) translateY(-43.1px) rotate(3.4deg);opacity:1}
+  78.75%{left:75%;transform:translateX(-50%) translateY(-34.5px) rotate(1.5deg);opacity:1}
+  84.375%{left:79.166%;transform:translateX(-50%) translateY(-20.1px) rotate(-1.6deg);opacity:1}
+  90%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
+  93%{left:83.333%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:0}
+  93.001%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:0}
+  96%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
+  100%{left:16.666%;transform:translateX(-50%) translateY(0) rotate(-6deg);opacity:1}
 }
 @media(max-width:900px){
   .timeline{grid-template-columns:1fr}
@@ -1110,13 +1124,21 @@ input[type="range"]::-moz-range-thumb{
 @media(max-width:500px){.stats-row{grid-template-columns:1fr}}
 
 /* ACCORDION FAQ */
-.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;position:relative}
-.faq-intro-inner{position:static}
+/* FAQ heading: native CSS position:sticky, no JS. align-items:stretch makes
+   .faq-intro (the left grid cell) exactly as tall as .faq-acc (the taller
+   right column), which gives .faq-intro-inner's sticky a container to
+   travel and release inside. The padding-bottom on .faq-acc is real (no
+   compensating negative margin anywhere) and sized comfortably larger than
+   the heading block itself, so the sticky heading stays pinned through
+   every single question and only releases into that blank space once the
+   list is actually finished - it can never overlap the CTA band after it. */
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:stretch;position:relative}
+.faq-intro-inner{position:sticky;top:6rem}
 .faq-intro h2,.faq-intro .section-intro{text-align:left;margin-left:0;margin-right:0}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
-.faq-acc{max-width:none}
+.faq-acc{max-width:none;padding-bottom:20rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
@@ -1148,6 +1170,8 @@ input[type="range"]::-moz-range-thumb{
 .faq-acc .faq-a-acc{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-top:1rem;padding-left:2.9rem}
 @media(max-width:900px){
   .faq-wrap{grid-template-columns:1fr;gap:2.4rem}
+  .faq-intro-inner{position:static;top:auto}
+  .faq-acc{padding-bottom:0}
   .faq-intro h2,.faq-intro .section-intro{text-align:center;margin-left:auto;margin-right:auto}
   .faq-intro .btn-text{display:block;text-align:center}
 }
