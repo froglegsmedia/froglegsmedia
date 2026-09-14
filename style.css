@@ -201,7 +201,7 @@ h2.light span{color:var(--gb)}
 .section-intro strong{color:var(--black);font-weight:600}
 
 /* PIPELINE — clean numbered list */
-#pipeline{background:var(--cream);padding-top:8rem;padding-bottom:8rem}
+#pipeline{background:var(--cream);padding-top:8rem;padding-bottom:4rem}
 /* SMM page's own timeline/FAQ sections are on unique IDs (#smm-pipeline,
    #smm-faq) so they can't accidentally inherit changes made to #pipeline/
    #faq above meant for the other pages -- but they're brought to the same
@@ -714,7 +714,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:8rem;padding-bottom:8rem}
+#faq{background:var(--cream);padding-top:4rem;padding-bottom:8rem}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
@@ -1229,7 +1229,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
 .faq-acc{max-width:none}
-.faq-acc-standalone{max-width:760px;margin-top:16rem}
+.faq-acc-standalone{max-width:760px;margin-top:8rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
