@@ -714,7 +714,25 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:4rem;padding-bottom:8rem}
+#faq{background:var(--cream);padding-top:4rem;padding-bottom:8rem;position:relative}
+.faq-spin-frog{
+  position:absolute;top:62%;right:9%;
+  width:230px;transform:translateY(-50%);
+  pointer-events:none;z-index:1;
+}
+.faq-spin-frog img{
+  width:100%;height:auto;display:block;
+  filter:drop-shadow(0 20px 30px rgba(13,22,8,0.15));
+  animation:faq-slow-spin 34s linear infinite;
+  transform-origin:center center;
+}
+@keyframes faq-slow-spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+@media(max-width:1150px){
+  .faq-spin-frog{display:none}
+}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
