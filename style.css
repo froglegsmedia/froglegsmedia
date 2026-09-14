@@ -1127,7 +1127,7 @@ input[type="range"]::-moz-range-thumb{
 /* Plain, normal flow - no position:sticky, no JS. The heading just scrolls
    with the page like every other section on the site (e.g. "What's
    Actually In The Retainer"). */
-.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:start;position:relative}
+.faq-wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:4rem;align-items:center;position:relative}
 .faq-intro-inner{position:static;text-align:left}
 .faq-intro .section-intro{margin-bottom:1.6rem}
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
