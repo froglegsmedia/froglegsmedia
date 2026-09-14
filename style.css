@@ -201,7 +201,7 @@ h2.light span{color:var(--gb)}
 .section-intro strong{color:var(--black);font-weight:600}
 
 /* PIPELINE — clean numbered list */
-#pipeline{background:var(--cream);padding-top:2rem}
+#pipeline{background:var(--cream);padding-top:2rem;padding-bottom:2rem}
   @media(max-width:768px){
   .pipeline-logo{display:none}
   .hero-right{display:block;width:100%;margin-bottom:2rem}
@@ -330,6 +330,47 @@ h2.light span{color:var(--gb)}
 
 /* FORMATS — same pond-tile treatment as SERVICES, evenly aligned */
 #formats{background:var(--cream)}
+.orient-demo{
+  display:flex;justify-content:center;align-items:flex-end;
+  gap:3.5rem;flex-wrap:wrap;margin-bottom:1rem;
+}
+.orient-item{display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.orient-frame{
+  background:var(--black);box-shadow:0 16px 30px -14px rgba(13,22,8,0.35);
+  position:relative;
+}
+.orient-frame.orient-vertical{
+  width:130px;aspect-ratio:9/16;border-radius:22px;padding:9px;
+}
+.orient-frame.orient-vertical::before{
+  content:'';position:absolute;top:16px;left:50%;transform:translateX(-50%);
+  width:34px;height:5px;border-radius:3px;background:rgba(252,249,244,0.35);z-index:2;
+}
+.orient-frame.orient-horizontal{
+  width:280px;aspect-ratio:16/9;border-radius:14px;padding:9px 9px 9px 9px;
+}
+.orient-frame.orient-horizontal::before{
+  content:'';position:absolute;top:9px;left:14px;
+  width:6px;height:6px;border-radius:50%;background:rgba(252,249,244,0.35);
+  box-shadow:14px 0 0 rgba(252,249,244,0.35),28px 0 0 rgba(252,249,244,0.35);
+  z-index:2;
+}
+.orient-screen{
+  width:100%;height:100%;border-radius:14px;
+  background:linear-gradient(160deg,rgba(124,191,57,0.65),rgba(13,22,8,0.92));
+  display:flex;align-items:center;justify-content:center;
+}
+.orient-frame.orient-horizontal .orient-screen{border-radius:8px}
+.orient-play{width:2.1rem;height:2.1rem;color:var(--cream);opacity:0.85;display:flex}
+.orient-play svg{width:100%;height:100%}
+.orient-label{
+  font-family:var(--fd);font-weight:700;font-size:0.85rem;
+  color:var(--black);text-align:center;
+}
+.orient-label span{
+  display:block;font-family:inherit;font-weight:400;font-size:0.72rem;
+  color:var(--muted);letter-spacing:0.01em;margin-top:0.35rem;
+}
 .formats-grid{
   display:grid;grid-template-columns:repeat(4,1fr);
   gap:2.1rem 1.6rem;
@@ -631,7 +672,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 
 /* FAQ */
-#faq{background:var(--cream);padding-top:6rem;padding-bottom:6rem}
+#faq{background:var(--cream);padding-top:4rem;padding-bottom:6rem}
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
 .faq-item:last-child{border-bottom:1px solid var(--border)}
@@ -1142,7 +1183,7 @@ input[type="range"]::-moz-range-thumb{
 .faq-intro .btn-text{color:var(--black);border-color:rgba(13,22,8,0.25)}
 .faq-intro .btn-text:hover{border-color:var(--gb);background:rgba(124,191,57,0.08)}
 .faq-acc{max-width:none}
-.faq-acc-standalone{max-width:760px;margin-top:3rem}
+.faq-acc-standalone{max-width:760px;margin-top:6rem}
 .faq-acc details{
   background:#fff;border:1.5px solid var(--border);border-radius:14px;
   padding:1.3rem 1.5rem;margin-bottom:1rem;transition:border-color 0.2s ease,box-shadow 0.2s ease;
