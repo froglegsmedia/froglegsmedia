@@ -203,10 +203,11 @@ h2.light span{color:var(--gb)}
 /* PIPELINE — clean numbered list */
 #pipeline{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
 /* SMM page's own timeline/FAQ sections are on unique IDs (#smm-pipeline,
-   #smm-faq) specifically so they never inherit changes made here — kept
-   at their original (pre-redesign) padding, untouched. */
-#smm-pipeline{background:var(--cream);padding-top:2rem}
-#smm-faq{background:var(--cream)}
+   #smm-faq) so they can't accidentally inherit changes made to #pipeline/
+   #faq above meant for the other pages -- but they're brought to the same
+   even 96px inter-section rhythm as the rest of the site below. */
+#smm-pipeline{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
+#smm-faq{background:var(--cream);padding-top:3rem;padding-bottom:3rem}
   @media(max-width:768px){
   .pipeline-logo{display:none}
   .hero-right{display:block;width:100%;margin-bottom:2rem}
@@ -698,7 +699,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .nav-links a.current{color:var(--black)}
 
 /* RETAINER BUILDER */
-#builder-section{position:relative}
+#builder-section{position:relative;padding-top:3rem;padding-bottom:3rem}
 .hop-track{
   position:absolute;top:-130px;left:0;right:0;height:230px;
   overflow:visible;pointer-events:none;z-index:3;
@@ -818,6 +819,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 @media(max-width:700px){.checklist{grid-template-columns:1fr}}
 
 /* FEEDBACK WALL (scattered screenshot-style placeholder collage) */
+#proof{padding-top:3rem;padding-bottom:3rem}
 .feedback-wall{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:2.6rem 2rem;margin-top:3.2rem;padding:0.5rem 1rem 1.5rem}
 .wall-card{
   position:relative;background:#fff;border-radius:10px;width:250px;
@@ -943,6 +945,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 .ig-note-text{font-size:0.8rem;color:var(--muted)}
 .ig-note-text a{color:var(--gd);font-weight:700;text-decoration:underline}
+#reels{padding-top:3rem;padding-bottom:3rem}
 .reel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.6rem}
 .reel-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,22,8,0.08)}
 .reel-top{display:flex;align-items:center;gap:6px;padding:0.6rem 0.8rem;border-bottom:1px solid var(--border)}
@@ -1072,6 +1075,7 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* ITEMIZED — CALL SHEET */
+#itemized{padding-top:3rem;padding-bottom:3rem}
 .itemized-wrap{display:grid;grid-template-columns:0.85fr 1fr;gap:5rem;align-items:center}
 .itemized-frog{
   width:76px;height:auto;display:block;margin-bottom:1rem;
@@ -1178,6 +1182,7 @@ input[type="range"]::-moz-range-thumb{
 .example-note{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:1.5rem}
 
 /* MONTHLY STATS (illustrative example categories) */
+#stats{padding-top:3rem;padding-bottom:3rem}
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3rem}
 .stat-col{border-left:2px solid var(--gb);padding-left:1.2rem}
 .stat-num{font-family:var(--fd);font-size:2.6rem;font-weight:800;color:var(--yellow);line-height:1}
