@@ -219,10 +219,7 @@
 
 <!-- FAQ -->
 <section id="faq">
-  <div class="faq-spin-frog" id="faq-spin-frog" role="button" tabindex="0" aria-label="Click to make the frog flip">
-    <span class="faq-click-badge">Click me!</span>
-    <img src="frog-leap.png" alt="" aria-hidden="true">
-  </div>
+  <div class="faq-spin-frog" aria-hidden="true"><div class="faq-spin-frog-hop"><img src="frog-leap.png" alt="" aria-hidden="true"></div></div>
   <h2>Frog-Quently<br><span>Asked.</span></h2>
   <div class="faq-acc faq-acc-standalone">
   <details>
@@ -285,30 +282,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', render);
   render();
-})();
-</script>
-
-<script>
-(function(){
-  var frog = document.getElementById('faq-spin-frog');
-  if (!frog) return;
-  var img = frog.querySelector('img');
-
-  function flip(){
-    if (frog.classList.contains('is-flipping')) return;
-    frog.classList.add('is-flipping');
-  }
-  img.addEventListener('animationend', function(){
-    frog.classList.remove('is-flipping');
-  });
-
-  frog.addEventListener('click', flip);
-  frog.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      flip();
-    }
-  });
 })();
 </script>
 
