@@ -90,6 +90,7 @@
 
 <!-- SERVICES -->
 <section id="services">
+  <div class="hop-track" id="hop-track"><img class="hop-frog-lg" id="hop-frog-lg" src="frog-leap.png" alt="" aria-hidden="true" style="width:150px"></div>
   <h2>Five Ways<br><span>We Grow Brands.</span></h2>
   <p class="section-intro">Book one service or stack all five into a retainer. <strong>Same crew, same creative voice, every time</strong>, no re-briefing a new vendor for every deliverable.</p>
   <div class="svc-grid">
@@ -143,6 +144,7 @@
 
 <!-- PIPELINE -->
 <section id="pipeline">
+  <div class="pipeline-arch-frog" aria-hidden="true"><img src="frog-leap.png" alt=""></div>
   <h2>We Handle<br><span>Everything.</span></h2>
   <p class="section-intro">Most creative and marketing work is a relay race: strategy over here, production over there, posting and ads somewhere else entirely. By the time it's done, the original idea is unrecognizable. <strong>We keep the whole race in-house.</strong> Same team, same vision, start to finish.</p>
   <div class="pipeline">
@@ -253,47 +255,27 @@
   </div>
 </section>
 
-<img class="scroll-hero-frog" id="scroll-hero-frog" src="frog-leap.png" alt="" aria-hidden="true">
-
 <script>
 (function(){
-  var frog = document.getElementById('scroll-hero-frog');
-  var startEl = document.getElementById('hero');
-  var endEl = document.getElementById('pipeline');
-  if (!frog || !startEl || !endEl) return;
+  var track = document.getElementById('hop-track');
+  var frog = document.getElementById('hop-frog-lg');
+  if (!track || !frog) return;
 
   function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
 
-  var startY = 0, endY = 0;
-
-  function measure(){
-    startY = startEl.getBoundingClientRect().bottom + window.scrollY;
-    endY = endEl.getBoundingClientRect().top + window.scrollY;
-  }
-
   function render(){
-    if (window.innerWidth < 900){
-      frog.classList.remove('is-active');
-      return;
-    }
+    var rect = track.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var total = rect.height + vh;
+    var traveled = vh - rect.top;
+    var progress = clamp(traveled / total, 0, 1);
 
-    var viewCenter = window.scrollY + window.innerHeight * 0.45;
-    var progress = clamp((viewCenter - startY) / Math.max(endY - startY, 1), 0, 1);
+    var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
+    var x = progress * maxX;
+    var hop = Math.abs(Math.sin(progress * Math.PI * 5)) * 44;
+    var rotate = Math.sin(progress * Math.PI * 5) >= 0 ? -8 : 6;
 
-    if (progress <= 0.01 || progress >= 0.99){
-      frog.classList.remove('is-active');
-    } else {
-      frog.classList.add('is-active');
-    }
-
-    var hop = Math.abs(Math.sin(progress * Math.PI * 8)) * 34;
-    var rotate = Math.sin(progress * Math.PI * 8) >= 0 ? -8 : 6;
-    var xDrift = 50 + Math.sin(progress * Math.PI * 4) * 34;
-    var yPos = 14 + progress * 62;
-
-    frog.style.left = xDrift + 'vw';
-    frog.style.top = yPos + 'vh';
-    frog.style.transform = 'translate(-50%,-50%) translateY(' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
+    frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
   }
 
   var ticking = false;
@@ -304,8 +286,7 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', function(){ measure(); render(); });
-  measure();
+  window.addEventListener('resize', render);
   render();
 })();
 </script>
