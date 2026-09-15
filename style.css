@@ -209,7 +209,6 @@ h2.light span{color:var(--gb)}
 #smm-pipeline{background:var(--cream);padding-top:8rem;padding-bottom:8rem}
 #smm-faq{background:var(--cream);padding-top:8rem;padding-bottom:8rem}
   @media(max-width:768px){
-  .pipeline-logo{display:none}
   .hero-right{display:block;width:100%;margin-bottom:2rem}
 }
 .pipeline{display:flex;flex-direction:column}
@@ -611,7 +610,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .btn-text{width:100%;text-align:center}
   .hero-bar{gap:0.6rem 0.8rem}
   .hb-item{font-size:0.68rem}
-@media(max-width:1100px) and (hover:hover){.hero-right{display:none}.pipeline-logo{display:none}}
+@media(max-width:1100px) and (hover:hover){.hero-right{display:none}}
   /* TICKER */
   .ti span{font-size:0.65rem}
 
@@ -1336,4 +1335,19 @@ input[type="range"]::-moz-range-thumb{
 }
 @media(max-width:900px){
   .hero-bounce-frog{display:none}
+}
+
+/* HOME — scroll mascot: fixed to viewport, repositioned every frame by JS
+   based on scroll progress between #hero and #pipeline. */
+.scroll-hero-frog{
+  position:fixed;top:14vh;left:50vw;z-index:45;
+  width:120px;height:auto;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.4s ease;
+  filter:drop-shadow(0 14px 14px rgba(0,0,0,0.4));
+  will-change:transform,top,left;
+}
+.scroll-hero-frog.is-active{opacity:1}
+@media(max-width:900px){
+  .scroll-hero-frog{display:none}
 }
