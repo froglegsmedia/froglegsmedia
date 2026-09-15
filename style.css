@@ -718,17 +718,33 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .faq-spin-frog{
   position:absolute;top:62%;right:var(--gutter);
   width:230px;transform:translateY(-50%);
-  pointer-events:none;z-index:1;
+  z-index:1;cursor:pointer;
 }
-.faq-spin-frog-hop{
-  animation:spin-frog-hop 3s infinite;
+.faq-click-badge{
+  position:absolute;top:-2.4rem;left:50%;
+  transform:translateX(-50%) rotate(-5deg);
+  background:var(--yellow);color:var(--black);
+  font-family:var(--fd);font-size:0.72rem;font-weight:800;
+  letter-spacing:0.01em;padding:0.4rem 0.9rem;border-radius:999px;
+  box-shadow:0 10px 20px rgba(13,22,8,0.18);
+  white-space:nowrap;pointer-events:none;
+  animation:faq-click-badge-bob 1.8s ease-in-out infinite;
+}
+@keyframes faq-click-badge-bob{
+  0%,100%{transform:translateX(-50%) rotate(-5deg) translateY(0)}
+  50%{transform:translateX(-50%) rotate(-5deg) translateY(-6px)}
 }
 .faq-spin-frog img{
   width:100%;height:auto;display:block;
   filter:drop-shadow(0 20px 30px rgba(13,22,8,0.15));
-  animation:spin-frog-spin 3s infinite;
-  animation-timing-function:linear;
   transform-origin:center center;
+}
+.faq-spin-frog.is-flipping img{
+  animation:faq-frog-flip 0.7s ease-in-out;
+}
+@keyframes faq-frog-flip{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 @media(max-width:1150px){
   .faq-spin-frog{display:none}
