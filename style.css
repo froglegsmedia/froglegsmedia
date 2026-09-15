@@ -616,7 +616,6 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .btn-text{width:100%;text-align:center}
   .hero-bar{gap:0.6rem 0.8rem}
   .hb-item{font-size:0.68rem}
-@media(max-width:1100px) and (hover:hover){.hero-right{display:none}}
   /* TICKER */
   .ti span{font-size:0.65rem}
 
@@ -669,6 +668,16 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 
   /* FOOTER */
   footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+}
+
+/* Narrower desktop windows: hide the hero video column (it's not worth the
+   space once it's this cramped) and let the text/logo column take the full
+   section width instead of being stuck centering inside half of it. This is
+   scoped to hover-capable devices so touch/mobile keeps its own stacked
+   layout above (which shows the video up top instead of hiding it). */
+@media(max-width:1100px) and (min-width:769px) and (hover:hover){
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
 }
 
 @media(max-width:480px){
