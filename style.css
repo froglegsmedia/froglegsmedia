@@ -122,6 +122,11 @@ h1 .outline{
   margin-bottom:2.8rem;
 }
 .hero-sub strong{color:rgba(252,249,244,0.85);font-weight:500}
+.hero-logo{
+  width:100%;max-width:230px;height:auto;display:block;
+  margin:0.6rem 0 2.8rem;
+  filter:drop-shadow(0 14px 30px rgba(0,0,0,0.35));
+}
 .hero-ctas{display:flex;align-items:center;gap:1.2rem}
 .btn-main{
   background:var(--yellow);color:var(--black);
@@ -604,6 +609,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .hero-right img{max-width:200px;margin:0}
   h1{font-size:2.6rem;letter-spacing:-0.02em}
   .hero-sub{font-size:0.92rem;max-width:100%;width:100%}
+  .hero-logo{max-width:170px;margin:0.4rem 0 2rem}
   .hero-kicker{font-size:0.65rem;white-space:normal;max-width:100%}
   .hero-ctas{flex-wrap:wrap;gap:0.8rem}
   .btn-main{width:100%;text-align:center;padding:0.9rem 1rem}
