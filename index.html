@@ -144,8 +144,8 @@
 
 <!-- PIPELINE -->
 <section id="pipeline">
-  <div class="pipeline-arch-frog" aria-hidden="true"><img src="frog-leap.png" alt=""></div>
-  <h2>We Handle<br><span>Everything.</span></h2>
+  <div class="pipeline-arch-frog" id="pipeline-arch-frog" aria-hidden="true"><img src="frog-leap.png" alt=""></div>
+  <h2 id="pipeline-heading">We Handle<br><span>Everything.</span></h2>
   <p class="section-intro">Most creative and marketing work is a relay race: strategy over here, production over there, posting and ads somewhere else entirely. By the time it's done, the original idea is unrecognizable. <strong>We keep the whole race in-house.</strong> Same team, same vision, start to finish.</p>
   <div class="pipeline">
     <div class="p-step">
@@ -288,6 +288,94 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', render);
   render();
+})();
+</script>
+
+<script>
+(function(){
+  var frog = document.getElementById('pipeline-arch-frog');
+  var heading = document.getElementById('pipeline-heading');
+  var section = document.getElementById('pipeline');
+  if (!frog || !heading || !section) return;
+
+  function widestLineHalfWidth(){
+    var range = document.createRange();
+    var maxW = 0;
+    heading.childNodes.forEach(function(node){
+      var r = null;
+      if (node.nodeType === 3 && node.textContent.trim()){
+        range.selectNodeContents(node);
+        r = range.getBoundingClientRect();
+      } else if (node.nodeType === 1 && node.tagName !== 'BR'){
+        r = node.getBoundingClientRect();
+      }
+      if (r && r.width > maxW) maxW = r.width;
+    });
+    return (maxW || heading.getBoundingClientRect().width) / 2;
+  }
+
+  var currentAnim = null;
+
+  function setup(){
+    if (window.innerWidth < 900){
+      if (currentAnim){ currentAnim.cancel(); currentAnim = null; }
+      return;
+    }
+
+    var secRect = section.getBoundingClientRect();
+    var headRect = heading.getBoundingClientRect();
+    var frogW = frog.offsetWidth || 80;
+    var frogH = frog.offsetHeight || 80;
+    var margin = 24;
+
+    // Anchor the frog's own (unanimated) top/left so its landed pose --
+    // offset 0 in the animation below -- already sits clear above the
+    // heading; the animation only ever moves it further up from there.
+    var topPx = (headRect.top - secRect.top) - frogH - margin;
+    frog.style.top = topPx + 'px';
+    frog.style.left = '50%';
+    frog.style.marginLeft = (-frogW / 2) + 'px';
+
+    var halfX = widestLineHalfWidth() + (frogW / 2) + margin;
+    var peak = 90;
+
+    function at(xFrac, yFrac, rot){
+      return 'translate(' + (halfX * xFrac).toFixed(1) + 'px,' + (-peak * yFrac).toFixed(1) + 'px) rotate(' + rot + 'deg)';
+    }
+
+    var keyframes = [
+      { transform: at(-1, 0, -10), opacity: 1, offset: 0 },
+      { transform: at(-0.82, 0.38, -6), opacity: 1, offset: 0.05 },
+      { transform: at(-0.42, 0.86, 0), opacity: 1, offset: 0.13 },
+      { transform: at(0, 1, 4), opacity: 1, offset: 0.20 },
+      { transform: at(0.42, 0.86, 8), opacity: 1, offset: 0.27 },
+      { transform: at(0.82, 0.38, 12), opacity: 1, offset: 0.35 },
+      { transform: at(1, 0, 14), opacity: 1, offset: 0.40 },
+      { transform: at(1, 0, 14), opacity: 1, offset: 0.84 },
+      { transform: at(1, 0, 14), opacity: 0, offset: 0.88 },
+      { transform: at(-1, 0, -10), opacity: 0, offset: 0.881 },
+      { transform: at(-1, 0, -10), opacity: 0, offset: 0.95 },
+      { transform: at(-1, 0, -10), opacity: 1, offset: 1 },
+    ];
+
+    if (currentAnim) currentAnim.cancel();
+    currentAnim = frog.animate(keyframes, { duration: 3600, iterations: Infinity, easing: 'linear' });
+  }
+
+  var resizeT;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeT);
+    resizeT = setTimeout(setup, 150);
+  });
+
+  // Re-measure once web fonts finish loading -- until then the heading may
+  // still be laid out in a fallback font, which measures narrower than the
+  // real one and would undersize the arc's horizontal reach.
+  setup();
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(setup);
+  }
+  window.addEventListener('load', setup);
 })();
 </script>
 

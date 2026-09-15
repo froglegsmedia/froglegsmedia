@@ -1337,36 +1337,20 @@ input[type="range"]::-moz-range-thumb{
   .hero-bounce-frog{display:none}
 }
 
-/* HOME — Pipeline heading: a smaller frog doing one big jump-arch back and
-   forth over "We Handle Everything.", on a continuous loop. Many explicit
-   keyframe stops trace the arc itself (left -> up -> peak -> down -> right),
-   so the animation runs on a single linear timing function with no extra
-   per-keyframe easing (same approach as the timeline-frog forward-hop). */
+/* HOME — Pipeline heading: a smaller frog doing one big, fast jump-arch back
+   and forth over "We Handle Everything.", on a continuous loop. Position and
+   the arc's reach are computed at runtime (see the script paired with this
+   markup) from the heading's own measured text width and height, so the
+   frog's landed pose always clears both lines of the heading -- not just
+   the peak of the jump -- at any viewport size or font metrics. */
 .pipeline-arch-frog{
-  position:absolute;left:50%;top:12rem;
-  width:80px;height:auto;margin-left:-40px;
-  z-index:3;pointer-events:none;
-  animation:frog-big-arch 5s linear infinite;
+  position:absolute;z-index:3;pointer-events:none;
+  width:80px;height:auto;
 }
 .pipeline-arch-frog img{
   width:100%;height:auto;display:block;
   filter:drop-shadow(0 12px 10px rgba(13,22,8,0.3));
 }
-@keyframes frog-big-arch{
-  0%{transform:translate(-230px,0) rotate(-10deg);opacity:1}
-  8%{transform:translate(-182px,-32px) rotate(-6deg);opacity:1}
-  20%{transform:translate(-90px,-84px) rotate(0deg);opacity:1}
-  35%{transform:translate(0,-106px) rotate(4deg);opacity:1}
-  50%{transform:translate(90px,-84px) rotate(8deg);opacity:1}
-  62%{transform:translate(182px,-32px) rotate(12deg);opacity:1}
-  70%{transform:translate(230px,0) rotate(14deg);opacity:1}
-  82%{transform:translate(230px,0) rotate(14deg);opacity:1}
-  86%{opacity:0}
-  86.5%{transform:translate(-230px,0) rotate(-10deg);opacity:0}
-  92%{opacity:0}
-  96%{transform:translate(-230px,0) rotate(-10deg);opacity:1}
-  100%{transform:translate(-230px,0) rotate(-10deg);opacity:1}
-}
 @media(max-width:900px){
-  .pipeline-arch-frog{display:none}
+  .pipeline-arch-frog{display:none !important}
 }
