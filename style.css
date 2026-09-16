@@ -781,6 +781,31 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 /* PAGE INTRO (portfolio/company light sections) */
 .page-intro{max-width:640px}
 
+/* Company story: click-to-play frog for the "Frog Legs" song */
+.song-player{max-width:640px;margin:0 0 1.8rem;}
+.song-frog-btn{
+  display:inline-flex;align-items:center;gap:0.9rem;
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:999px;padding:0.6rem 1.4rem 0.6rem 0.6rem;
+  cursor:pointer;
+}
+.song-frog-btn:hover{border-color:var(--gb)}
+.song-frog-btn img{
+  width:44px;height:auto;display:block;
+  filter:drop-shadow(0 6px 10px rgba(13,22,8,0.25));
+  transition:transform 0.2s ease;
+}
+.song-frog-btn:hover img{transform:scale(1.1) rotate(-6deg)}
+.song-frog-btn.is-playing img{animation:song-frog-bounce 0.6s ease-in-out infinite}
+@keyframes song-frog-bounce{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(-6deg)}
+}
+.song-frog-label{
+  font-family:var(--fd);font-size:0.85rem;font-weight:700;
+  color:var(--gd);white-space:nowrap;
+}
+
 /* BREADCRUMB-ish current nav state */
 .nav-links a.current{color:var(--black)}
 
