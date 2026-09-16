@@ -787,16 +787,15 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .page-intro{max-width:640px}
 
 /* Company story: text column + vertical video placeholder */
-.story-grid{display:flex;gap:4rem;align-items:flex-start;}
+.story-grid{display:flex;gap:4rem;align-items:center;}
 .story-copy{flex:1;min-width:0;max-width:640px}
-.story-video{flex-shrink:0;width:300px;position:sticky;top:110px;}
+.story-video{flex-shrink:0;width:300px;}
 .video-placeholder{
   aspect-ratio:9/16;width:100%;border-radius:22px;
   background:linear-gradient(160deg,var(--black),var(--gray));
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
   box-shadow:0 30px 60px rgba(13,22,8,0.25);
   border:2px solid rgba(255,255,255,0.08);
-  margin-top:2.5rem;
 }
 .video-placeholder-play{
   width:64px;height:64px;border-radius:50%;
