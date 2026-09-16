@@ -113,6 +113,11 @@ h1 .outline{
   color:var(--cream);
   opacity:0.55;
 }
+.hero-fit-line{
+  display:inline-block;
+  font-size:0.88em;
+  white-space:nowrap;
+}
 .hero-sub{
   font-size:1rem;
   color:rgba(252,249,244,0.68);
@@ -780,6 +785,35 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 
 /* PAGE INTRO (portfolio/company light sections) */
 .page-intro{max-width:640px}
+
+/* Company story: text column + vertical video placeholder */
+.story-grid{display:flex;gap:4rem;align-items:flex-start;}
+.story-copy{flex:1;min-width:0;max-width:640px}
+.story-video{flex-shrink:0;width:300px;position:sticky;top:110px;}
+.video-placeholder{
+  aspect-ratio:9/16;width:100%;border-radius:22px;
+  background:linear-gradient(160deg,var(--black),var(--gray));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+  box-shadow:0 30px 60px rgba(13,22,8,0.25);
+  border:2px solid rgba(255,255,255,0.08);
+  margin-top:2.5rem;
+}
+.video-placeholder-play{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(252,249,244,0.14);
+  color:var(--cream);font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;
+  padding-left:4px;
+}
+.video-placeholder-label{
+  font-family:var(--fd);font-size:0.8rem;font-weight:600;
+  color:rgba(252,249,244,0.7);letter-spacing:0.02em;
+}
+@media(max-width:900px){
+  .story-grid{flex-direction:column-reverse;gap:2.5rem;}
+  .story-video{width:100%;max-width:280px;position:static;margin:0 auto;}
+  .video-placeholder{margin-top:0;}
+}
 
 /* Company story: click-to-play frog for the "Frog Legs" song */
 .song-player{max-width:640px;margin:0 0 1.8rem;}
