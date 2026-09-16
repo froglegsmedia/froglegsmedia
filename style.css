@@ -608,7 +608,7 @@ footer{
 }
 .fl img{height:36px;width:auto;opacity:0.8}
 footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
-.footer-legal{display:flex;flex-direction:column;align-items:center;gap:0.2rem}
+.footer-legal{display:flex;flex-direction:column;align-items:center;gap:0.7rem}
 .footer-social{display:flex;align-items:center;gap:1.1rem}
 .footer-social a{color:rgba(252,249,244,0.4);display:flex;transition:color 0.2s,transform 0.2s}
 .footer-social a:hover{color:var(--gb);transform:translateY(-2px)}
