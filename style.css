@@ -603,9 +603,11 @@ form{display:flex;flex-direction:column;gap:1.1rem}
 /* FOOTER */
 footer{
   background:var(--black);padding:1.8rem var(--gutter);
-  display:flex;justify-content:space-between;align-items:center;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   border-top:1px solid rgba(124,191,57,0.08);
 }
+.fl{justify-self:start}
+.footer-email{justify-self:end}
 .fl img{height:36px;width:auto;opacity:0.8}
 footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .footer-legal{display:flex;flex-direction:column;align-items:center;gap:0.7rem}
@@ -696,7 +698,9 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   section{padding:4rem 1.5rem}
 
   /* FOOTER */
-  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+  footer{display:flex;flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
+  .fl{justify-self:auto}
+  .footer-email{justify-self:auto}
 }
 
 /* Narrower desktop windows: hide the hero video column (it's not worth the
