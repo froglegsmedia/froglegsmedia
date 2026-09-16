@@ -23,7 +23,7 @@ nav{
 .nav-logo img{height:44px;width:auto;display:block}
 .nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
 .nav-links a{
-  color:var(--muted);text-decoration:none;
+  color:var(--muted);text-decoration:none;line-height:1.4;
   font-family:var(--fd);font-size:0.8rem;font-weight:600;
   letter-spacing:0.02em;transition:color 0.2s;
 }
@@ -37,11 +37,11 @@ nav{
 .nav-cta:hover{background:var(--orange)!important;transform:translateY(-1px)}
 .nav-drop{position:relative}
 .nav-drop-toggle{
-  display:flex;align-items:center;gap:0.35rem;cursor:pointer;
+  cursor:pointer;line-height:1.4;
   color:var(--muted);font-family:var(--fd);font-size:0.8rem;font-weight:600;
   letter-spacing:0.02em;transition:color 0.2s;
 }
-.nav-drop-toggle .caret{font-size:0.55rem;transition:transform 0.2s;display:inline-block}
+.nav-drop-toggle .caret{font-size:0.55rem;transition:transform 0.2s;display:inline-block;margin-left:0.35rem;vertical-align:middle}
 .nav-drop:hover .nav-drop-toggle{color:var(--black)}
 .nav-drop:hover .caret{transform:rotate(180deg)}
 .nav-drop-menu{
