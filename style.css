@@ -216,6 +216,12 @@ h2.light span{color:var(--gb)}
   border:4px solid var(--cream);
   box-shadow:0 0 0 3px var(--gb),0 14px 30px rgba(13,22,8,0.18);
 }
+.lead-role{
+  font-family:var(--fd);font-size:0.8rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--gd);margin-bottom:1.2rem;
+}
+.lead-quote{font-style:italic}
 
 /* PIPELINE — clean numbered list */
 #pipeline{background:var(--cream);padding-top:8rem;padding-bottom:4rem;position:relative}
@@ -787,7 +793,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .page-intro{max-width:640px}
 
 /* Company story: text column + vertical video placeholder */
-.story-grid{display:flex;gap:4rem;align-items:center;}
+.story-grid{display:flex;gap:4rem;align-items:center;justify-content:space-between;}
 .story-copy{flex:1;min-width:0;max-width:640px}
 .story-video{flex-shrink:0;width:300px;}
 .video-placeholder{
