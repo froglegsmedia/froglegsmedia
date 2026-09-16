@@ -36,6 +36,10 @@ nav{
 }
 .nav-cta:hover{background:var(--orange)!important;transform:translateY(-1px)}
 .nav-drop{position:relative}
+.nav-drop::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  width:220px;height:1.1rem;
+}
 .nav-drop-toggle{
   cursor:pointer;line-height:1.4;
   color:var(--muted);font-family:var(--fd);font-size:0.8rem;font-weight:600;
