@@ -117,44 +117,15 @@
   </div>
 </section>
 
-<!-- VIDEO LIGHTBOX -->
-<div class="video-lightbox" id="video-lightbox">
-  <button class="video-lightbox-close" id="video-lightbox-close" type="button" aria-label="Close video">&times;</button>
-  <div class="video-lightbox-inner">
-    <div class="video-lightbox-frame" id="video-lightbox-frame"></div>
-  </div>
-</div>
-
 <script>
 (function(){
   var btn = document.getElementById('song-frog-btn');
-  var lb = document.getElementById('video-lightbox');
-  var frame = document.getElementById('video-lightbox-frame');
-  var closeBtn = document.getElementById('video-lightbox-close');
-  if (!btn || !lb || !frame || !closeBtn) return;
+  if (!btn) return;
 
-  var SONG_VIDEO_ID = '0sBuprhJK6o';
-
-  function openVideo(id){
-    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    lb.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeVideo(){
-    lb.classList.remove('is-open');
-    frame.innerHTML = '';
-    document.body.style.overflow = '';
-  }
+  var SONG_VIDEO_URL = 'https://www.youtube.com/watch?v=0sBuprhJK6o';
 
   btn.addEventListener('click', function(){
-    openVideo(SONG_VIDEO_ID);
-  });
-  closeBtn.addEventListener('click', closeVideo);
-  lb.addEventListener('click', function(e){
-    if (e.target === lb) closeVideo();
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeVideo();
+    window.open(SONG_VIDEO_URL, '_blank', 'noopener');
   });
 })();
 </script>
