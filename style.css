@@ -1353,6 +1353,31 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* MONTH TIMELINE (no cards — editorial three-up strip divided by hairlines) */
+.frog-legs-tagline-wrap{text-align:center;margin-bottom:0.6rem}
+.frog-legs-tagline{
+  display:inline-block;font-family:var(--fs);font-size:1.6rem;
+  color:var(--gb);line-height:1;
+}
+.growth-badge{
+  position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;margin-bottom:1.2rem;
+  border:1.5px solid rgba(124,191,57,0.25);
+}
+.growth-badge svg{width:58%;height:58%}
+.growth-badge.stage-tadpole{
+  width:2.5rem;height:2.5rem;
+  background:rgba(124,191,57,0.08);color:rgba(124,191,57,0.55);
+}
+.growth-badge.stage-froglet{
+  width:3.1rem;height:3.1rem;
+  background:rgba(124,191,57,0.14);color:rgba(124,191,57,0.82);
+}
+.growth-badge.stage-frog{
+  width:3.8rem;height:3.8rem;border-color:transparent;
+  background:var(--gb);color:var(--black);
+  box-shadow:0 10px 26px rgba(124,191,57,0.35);
+}
 .timeline{margin-top:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
 .timeline-item{position:relative;padding:2.6rem 2.4rem 0}
 .timeline-item:not(:first-child){border-left:1px solid rgba(124,191,57,0.14)}
