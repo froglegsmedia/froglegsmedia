@@ -41,7 +41,7 @@
   <div class="hero-glow"></div>
   <div class="page-hero-inner">
     <h1>Original Sound.<br><em>Not Stock Music.</em></h1>
-    <p class="hero-sub">Jingles, brand themes, and full original scores, written and produced in-house. It's the fastest way to make a good video sound like nobody else's.</p>
+    <p class="hero-sub">Most agencies license the same stock tracks everyone else is already using. Here, you have the option to get a song written just for your brand, original, in-house, and nobody else's.</p>
     <div class="hero-ctas">
       <a href="contact.html?service=Custom%20Music%20%2F%20Jingle" class="btn-main">Book a Discovery Call</a>
       <a href="portfolio.html" class="btn-text">See Our Work &rarr;</a>
@@ -93,12 +93,21 @@
       <p class="hero-playlist-note">Full playlist dropping soon</p>
     </div>
   </div>
-  <div class="hero-bounce-frog" aria-hidden="true"><img src="frog-leap.png" alt=""></div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ti">
+    <span>Video Production</span><span class="dot">&#10022;</span>
+    <span>Photography</span><span class="dot">&#10022;</span>
+    <span>Custom Music</span><span class="dot">&#10022;</span>
+    <span>Social Media Management</span><span class="dot">&#10022;</span>
+    <span>Paid Ad Management</span><span class="dot">&#10022;</span>
+    <span>Video Production</span><span class="dot">&#10022;</span>
+    <span>Photography</span><span class="dot">&#10022;</span>
+    <span>Custom Music</span><span class="dot">&#10022;</span>
+    <span>Social Media Management</span><span class="dot">&#10022;</span>
+    <span>Paid Ad Management</span><span class="dot">&#10022;</span>
     <span>Video Production</span><span class="dot">&#10022;</span>
     <span>Photography</span><span class="dot">&#10022;</span>
     <span>Custom Music</span><span class="dot">&#10022;</span>
@@ -181,6 +190,7 @@
 
 <!-- PROCESS -->
 <section id="pipeline">
+  <div class="hop-track" id="hop-track"><img class="hop-frog-lg" id="hop-frog-lg" src="frog-leap.png" alt="" aria-hidden="true" style="width:96px"></div>
   <h2>Step by<br><span>Step.</span></h2>
   <p class="section-intro">Here's what actually happens between booking the call and getting your deliverables.</p>
   <div class="pipeline">
@@ -218,6 +228,42 @@
     </div>
 </div>
 </section>
+
+<script>
+(function(){
+  var track = document.getElementById('hop-track');
+  var frog = document.getElementById('hop-frog-lg');
+  if (!track || !frog) return;
+
+  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+  function render(){
+    var rect = track.getBoundingClientRect();
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var total = rect.height + vh;
+    var traveled = vh - rect.top;
+    var progress = clamp(traveled / total, 0, 1);
+
+    var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
+    var x = progress * maxX;
+    var hop = Math.abs(Math.sin(progress * Math.PI * 5)) * 44;
+    var rotate = Math.sin(progress * Math.PI * 5) >= 0 ? -8 : 6;
+
+    frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
+  }
+
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ render(); ticking = false; });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', render);
+  render();
+})();
+</script>
 
 <!-- FAQ -->
 <section id="faq">

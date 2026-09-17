@@ -185,7 +185,7 @@ h1 .outline{
   color:var(--black);letter-spacing:0.14em;text-transform:uppercase;
 }
 .ti .dot{color:rgba(17,20,8,0.3)}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-25%)}}
 
 /* SHARED SECTION STYLES */
 section{padding:7rem var(--gutter)}
@@ -780,7 +780,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 .page-hero.has-playlist{display:grid;grid-template-columns:minmax(0,560px) 1fr;align-items:center;gap:3rem}
 .page-hero.has-playlist .page-hero-inner{max-width:560px}
-.page-hero.has-playlist .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-start}
+.page-hero.has-playlist .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
 .hero-playlist{
   width:100%;max-width:400px;border-radius:20px;overflow:hidden;
   box-shadow:0 30px 60px rgba(0,0,0,0.4);
