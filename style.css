@@ -272,6 +272,42 @@ h2.light span{color:var(--gb)}
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
    evenly aligned, no boxed grid-lines. */
 #services{background:var(--cream);padding-top:8rem;padding-bottom:8rem;position:relative}
+
+/* WEB DESIGN: AI-powered value section + placeholder site gallery */
+#ai-value{background:var(--cream);padding-top:6rem;padding-bottom:2rem;position:relative;text-align:center}
+#ai-value .example-badge{margin-bottom:1.4rem}
+#site-gallery{background:var(--cream);padding-top:2rem;padding-bottom:8rem;position:relative;text-align:center}
+.site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3rem;text-align:left}
+.site-card{
+  display:block;text-decoration:none;color:inherit;
+  border-radius:14px;overflow:hidden;background:#fff;
+  border:1px solid var(--border);box-shadow:0 14px 34px rgba(13,22,8,0.08);
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.site-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(13,22,8,0.14)}
+.site-browser-bar{
+  display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.8rem;
+  background:#f1efe9;border-bottom:1px solid var(--border);
+}
+.site-browser-dots{display:flex;gap:0.3rem;flex-shrink:0}
+.site-browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(107,166,65,0.35);display:block}
+.site-url{
+  flex:1;background:#fff;border-radius:6px;padding:0.25rem 0.6rem;
+  font-size:0.66rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.site-preview{
+  aspect-ratio:16/11;display:flex;align-items:center;justify-content:center;position:relative;
+}
+.site-preview span{
+  font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.05em;
+  text-transform:uppercase;color:rgba(255,255,255,0.92);
+  background:rgba(13,22,8,0.3);padding:0.4rem 0.8rem;border-radius:999px;text-align:center;
+}
+.site-card-foot{padding:1rem 1.2rem 1.2rem}
+.site-card-name{font-family:var(--fd);font-weight:700;font-size:0.92rem;color:var(--black)}
+.site-card-tag{font-size:0.76rem;color:var(--muted);margin-top:0.25rem}
+@media(max-width:900px){.site-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.site-grid{grid-template-columns:1fr}}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:2.1rem 1.6rem;
