@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company - Frog Legs Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="flm-favicon.png">
+
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="flm-logo-transparent.png" alt="Frog Legs Media"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="company.html" class="current">Company</a></li>
+    <li class="nav-drop">
+      <span class="nav-drop-toggle">Services <span class="caret">&#9662;</span></span>
+      <div class="nav-drop-menu">
+        <a href="video-production.html">Video Production</a>
+        <a href="photography.html">Photography</a>
+        <a href="custom-music.html">Custom Music</a>
+        <a href="social-media-management.html">Social Media Mgmt</a>
+        <a href="paid-ads.html">Paid Ad Management</a>
+        <a href="logo-design-branding.html">Logo Design &amp; Branding</a>
+        <a href="web-design.html">Web Design</a>
+        <a href="live-selling.html">Live Selling</a>
+        <a href="startup-artist-program.html">Startup &amp; Artist Program</a>
+      </div>
+    </li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a Discovery Call</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero has-frog">
+  <div class="hero-glow"></div>
+  <div class="page-hero-inner">
+    <h1>One Team.<br><em><span class="hero-fit-line">Full Service.</span></em></h1>
+    <p class="hero-sub">Frog Legs Media started as a video production company. Eight years and 50+ projects later, we're still that, plus the photography, music, social management, and ad accounts that used to mean hiring four other vendors.</p>
+    <div class="hero-bar">
+      <div class="hb-item">50+ Projects</div>
+      <div class="hb-item">8 Years In the Field</div>
+      <div class="hb-item">5 Services, One Team</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="company-hero-frog" aria-hidden="true"><img src="frog-leap.png" alt=""></div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <h2>Started With a Camera.<br><span>Grew Into an Agency.</span></h2>
+  <div class="story-grid">
+    <div class="story-copy">
+      <div class="page-intro" style="font-size:1rem;color:var(--muted);line-height:1.9;font-weight:300;margin-top:2.5rem;">
+        <p style="margin-bottom:1.4rem;">Frog Legs Media started with one person who loved making videos, not an agency. Coming from a music and film background instead of a marketing one, I saw content differently than most of what was flooding client feeds, and the work started standing out because of it.</p>
+        <p style="margin-bottom:1.4rem;">As the jobs got bigger, so did the operations around them. I've sat through setups where two separate agencies needed sign-off on a couple of simple handheld shots on a beach: more meetings than shots, more approvals than ideas. All that noise wasn't making the work better. It was just burning time and budget that should've gone into the video itself.</p>
+        <p style="margin-bottom:1.4rem;"><strong style="color:var(--black);font-weight:600;">So I built Frog Legs Media to cut out everything I couldn't stand about that world.</strong> One place I can trust, run efficiently, focused on results that actually move the needle instead of the process around them.</p>
+        <p style="margin-bottom:1.4rem;">The name isn't random, either. Frog Legs comes from a song I wrote years back, the one people still ask me to play more than anything else. When it came time to name this thing, it just fit: personal, a little unexpected, impossible to forget.</p>
+      </div>
+
+      <div class="song-player">
+        <button class="song-frog-btn" id="song-frog-btn" type="button" aria-label="Play the song Frog Legs">
+          <img src="frog-leap.png" alt="">
+          <span class="song-frog-label" id="song-frog-label">Click me! 🎵</span>
+        </button>
+        <audio id="song-audio" src="frog-legs-song.mp3" preload="none"></audio>
+      </div>
+      <p style="font-size:0.85rem;margin:-1rem 0 1.4rem;"><a href="custom-music.html" style="color:var(--gd);font-weight:600;text-decoration:none;">Want a song like this for your brand? See our Custom Music page &rarr;</a></p>
+
+      <div class="page-intro" style="font-size:1rem;color:var(--muted);line-height:1.9;font-weight:300;">
+        <p><strong style="color:var(--black);font-weight:600;">Take the Leap. Make the Splash.</strong> It's the whole philosophy: bet on the bold idea, go after the thing you actually want, and don't let overthinking drown a good one before it gets made.</p>
+      </div>
+    </div>
+
+    <div class="story-video">
+      <div class="video-placeholder" role="img" aria-label="Video placeholder: Tyler talking to camera, coming soon">
+        <div class="video-placeholder-play">&#9658;</div>
+        <p class="video-placeholder-label">Video coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var btn = document.getElementById('song-frog-btn');
+  var audio = document.getElementById('song-audio');
+  var label = document.getElementById('song-frog-label');
+  if (!btn || !audio || !label) return;
+
+  function setPlaying(isPlaying){
+    btn.classList.toggle('is-playing', isPlaying);
+    label.textContent = isPlaying ? 'Now playing… 🐸' : 'Click me! 🎵';
+  }
+
+  btn.addEventListener('click', function(){
+    if (audio.paused){
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  });
+  audio.addEventListener('play', function(){ setPlaying(true); });
+  audio.addEventListener('pause', function(){ setPlaying(false); });
+  audio.addEventListener('ended', function(){ setPlaying(false); });
+})();
+</script>
+
+<!-- WHY FLM -->
+<section id="why" style="padding:7rem var(--gutter);background:var(--black)">
+  <h2 class="light">Why Frog Legs<br><span>Just Works.</span></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="wc-num">01</div>
+      <div class="wc-title">We speak agency.</div>
+      <p class="wc-body">Every project starts with a real discovery meeting, moves through a written plan, and gets locked into a clear scope and timeline. <strong>All approved by you before we ever start the work.</strong></p>
+    </div>
+    <div class="why-card">
+      <div class="wc-num">02</div>
+      <div class="wc-title">We speak brand.</div>
+      <p class="wc-body">We study your colors, tone, and audience before we start. No logo yet? <strong>We can build one and keep everything on brand from there.</strong></p>
+    </div>
+    <div class="why-card">
+      <div class="wc-num">03</div>
+      <div class="wc-title">The gear is serious.</div>
+      <p class="wc-body">From production gear to the software and AI behind the scenes, we stay current. <strong>The budget goes toward the work, not outdated workflows.</strong></p>
+    </div>
+    <div class="why-card">
+      <div class="wc-num">04</div>
+      <div class="wc-title">The crew delivers.</div>
+      <p class="wc-body">We're a growing community of the best creatives we can find, always onboarding new talent. <strong>Every brand gets matched with the specialist whose style actually fits.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT DETAIL STRIP -->
+<section id="lead" style="text-align:center;">
+  <img src="tyler-forrest.jpg" alt="Tyler Forrest" class="lead-photo">
+  <h2>Tyler Forrest</h2>
+  <p class="lead-role">Founder &amp; Lead Producer</p>
+  <p class="section-intro lead-quote" style="margin:0 auto 1.8rem;text-align:center;">&ldquo;It's a lot of fun seeing businesses grow through our creativity. When you love your job it doesn't feel work.&rdquo;</p>
+  <div class="social-icons" style="justify-content:center;">
+    <a href="https://www.linkedin.com/in/rowdyhop/" target="_blank" rel="noopener" aria-label="Tyler Forrest on LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://instagram.com/rowdyhop" target="_blank" rel="noopener" aria-label="Tyler Forrest on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Got Something<br><span>To Make?</span></h2>
+    <p>Let's talk about what you're building and whether we're the right fit for it.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-main">Book a Discovery Call</a>
+      <a href="portfolio.html" class="btn-text">See Our Work &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl"><img src="FLM LOGO CRAYON small.jpg" alt="Frog Legs Media" style="height:36px;width:auto;opacity:0.8"></div>
+  <div class="footer-legal">
+    <div class="footer-social">
+      <a href="https://instagram.com/froglegsmedia" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://facebook.com/froglegsmedia" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@froglegsmedia" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v10.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c.5 2.8 2.3 4.6 5 5"/></svg>
+      </a>
+      <a href="https://youtube.com/@froglegsmedia" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+      </a>
+      <a href="https://x.com/froglegsmedia" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+      </a>
+    </div>
+    <p>&copy; 2026 Frog Legs Media. All rights reserved.</p>
+  </div>
+  <p class="footer-email">ribbit@froglegsmedia.com</p>
+</footer>
+
+</body></html>
