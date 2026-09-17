@@ -274,7 +274,7 @@ h2.light span{color:var(--gb)}
 #services{background:var(--cream);padding-top:8rem;padding-bottom:8rem;position:relative}
 
 /* WEB DESIGN: AI-powered value section + placeholder site gallery */
-#ai-value{background:var(--cream);padding-top:6rem;padding-bottom:2rem;position:relative;text-align:center}
+#ai-value{background:var(--cream);padding-top:8rem;padding-bottom:8rem;position:relative;text-align:center}
 .ai-feature-list{max-width:820px;margin:3.5rem auto 0;display:flex;flex-direction:column;text-align:left}
 .ai-feature-row{
   display:flex;align-items:flex-start;gap:1.8rem;
@@ -298,7 +298,7 @@ h2.light span{color:var(--gb)}
   .ai-feature-icon svg{width:20px;height:20px}
   .ai-feature-name{font-size:1.05rem}
 }
-#site-gallery{background:var(--cream);padding-top:2rem;padding-bottom:8rem;position:relative;text-align:center}
+#site-gallery{background:var(--cream);padding-top:8rem;padding-bottom:8rem;position:relative;text-align:center}
 .site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3rem;text-align:left}
 .site-card{
   display:block;text-decoration:none;color:inherit;
