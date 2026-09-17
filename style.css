@@ -272,6 +272,42 @@ h2.light span{color:var(--gb)}
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
    evenly aligned, no boxed grid-lines. */
 #services{background:var(--cream);padding-top:8rem;padding-bottom:8rem;position:relative}
+
+/* WEB DESIGN: AI-powered value section + placeholder site gallery */
+#ai-value{background:var(--cream);padding-top:6rem;padding-bottom:2rem;position:relative;text-align:center}
+#ai-value .example-badge{margin-bottom:1.4rem}
+#site-gallery{background:var(--cream);padding-top:2rem;padding-bottom:8rem;position:relative;text-align:center}
+.site-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3rem;text-align:left}
+.site-card{
+  display:block;text-decoration:none;color:inherit;
+  border-radius:14px;overflow:hidden;background:#fff;
+  border:1px solid var(--border);box-shadow:0 14px 34px rgba(13,22,8,0.08);
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.site-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(13,22,8,0.14)}
+.site-browser-bar{
+  display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.8rem;
+  background:#f1efe9;border-bottom:1px solid var(--border);
+}
+.site-browser-dots{display:flex;gap:0.3rem;flex-shrink:0}
+.site-browser-dots span{width:8px;height:8px;border-radius:50%;background:rgba(107,166,65,0.35);display:block}
+.site-url{
+  flex:1;background:#fff;border-radius:6px;padding:0.25rem 0.6rem;
+  font-size:0.66rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.site-preview{
+  aspect-ratio:16/11;display:flex;align-items:center;justify-content:center;position:relative;
+}
+.site-preview span{
+  font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.05em;
+  text-transform:uppercase;color:rgba(255,255,255,0.92);
+  background:rgba(13,22,8,0.3);padding:0.4rem 0.8rem;border-radius:999px;text-align:center;
+}
+.site-card-foot{padding:1rem 1.2rem 1.2rem}
+.site-card-name{font-family:var(--fd);font-weight:700;font-size:0.92rem;color:var(--black)}
+.site-card-tag{font-size:0.76rem;color:var(--muted);margin-top:0.25rem}
+@media(max-width:900px){.site-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.site-grid{grid-template-columns:1fr}}
 .svc-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:2.1rem 1.6rem;
@@ -608,6 +644,25 @@ form{display:flex;flex-direction:column;gap:1.1rem}
 }
 .fsub:hover{background:var(--gd);transform:translateY(-2px)}
 
+/* Contact page: sticky footer so short content still fills the browser
+   window instead of leaving blank space below the footer. */
+body.page-contact{min-height:100vh;display:flex;flex-direction:column}
+body.page-contact #contact{flex:1 0 auto}
+body.page-contact #book-direct{flex-shrink:0}
+body.page-contact footer{flex-shrink:0}
+
+/* BOOK DIRECTLY (Calendly embed) */
+#book-direct{background:var(--cream);padding-top:2rem;padding-bottom:6rem;position:relative}
+.calendly-card{
+  max-width:900px;margin:2.5rem auto 0;background:#fff;border-radius:18px;
+  padding:0.6rem;box-shadow:0 20px 45px rgba(13,22,8,0.08);border:1px solid var(--border);
+  overflow:hidden;
+}
+@media(max-width:700px){
+  .calendly-card{border-radius:12px}
+  #book-direct{padding-bottom:4.5rem}
+}
+
 /* FOOTER */
 footer{
   background:var(--black);padding:1.8rem var(--gutter);
@@ -889,6 +944,24 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 /* PAGE INTRO (portfolio/company light sections) */
 .page-intro{max-width:640px}
 
+/* Company story: origin journey strip (tadpole -> frog) */
+.origin-track{
+  display:flex;align-items:center;justify-content:center;gap:1.4rem;
+  margin:2.2rem 0 3.2rem;
+}
+.origin-stage{display:flex;flex-direction:column;align-items:center;gap:0.7rem}
+.origin-badge{margin-bottom:0}
+.origin-label{
+  font-family:var(--fd);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.02em;color:var(--muted);text-align:center;line-height:1.4;
+}
+.origin-arrow{color:rgba(124,191,57,0.5);font-size:1.3rem;margin-bottom:1.9rem}
+@media(max-width:640px){
+  .origin-track{gap:0.7rem}
+  .origin-arrow{margin-bottom:1.6rem;font-size:1rem}
+  .origin-label{font-size:0.62rem}
+}
+
 /* Company story: text column + vertical video placeholder */
 .story-grid{display:flex;gap:8rem;align-items:center;justify-content:flex-start;}
 .story-copy{flex:1;min-width:0;max-width:640px}
@@ -1034,6 +1107,50 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 .hero-song-card-note{
   margin-top:1.4rem;font-size:0.76rem;color:rgba(252,249,244,0.45);line-height:1.6;
+}
+.hero-song-btn{position:relative}
+.hero-song-btn::before{
+  content:'';position:absolute;inset:-6px;border-radius:999px;pointer-events:none;
+  border:2px solid var(--gb);opacity:0;animation:song-ring-pulse 2.4s ease-out infinite;
+}
+.hero-song-btn.is-playing::before{animation:none;opacity:0}
+@keyframes song-ring-pulse{
+  0%{opacity:0.55;transform:scale(0.94)}
+  70%{opacity:0;transform:scale(1.14)}
+  100%{opacity:0;transform:scale(1.14)}
+}
+.song-note{
+  position:absolute;font-size:1.1rem;color:var(--gb);pointer-events:none;
+  opacity:0;animation:song-note-float 2.6s ease-in-out infinite;
+}
+.song-note.n1{top:0.2rem;left:0.4rem;animation-delay:0s}
+.song-note.n2{top:-0.4rem;right:1.6rem;color:var(--yellow);animation-delay:0.7s}
+.song-note.n3{bottom:0.6rem;right:0.3rem;color:var(--orange);animation-delay:1.4s}
+@keyframes song-note-float{
+  0%{opacity:0;transform:translateY(6px) scale(0.8)}
+  30%{opacity:1}
+  100%{opacity:0;transform:translateY(-22px) scale(1.05)}
+}
+
+/* CUSTOM MUSIC: dancing frog + floating notes (song showcase heading) */
+.dance-frog-wrap{position:relative;width:110px;height:110px;margin:0 auto 1rem}
+.dance-frog-wrap img{
+  width:100%;height:auto;display:block;margin:0 auto;
+  filter:drop-shadow(0 14px 20px rgba(13,22,8,0.18));
+  animation:frog-dance 1.8s ease-in-out infinite;transform-origin:bottom center;
+}
+@keyframes frog-dance{
+  0%,100%{transform:rotate(-9deg)}
+  50%{transform:rotate(9deg)}
+}
+.dance-note{position:absolute;font-size:1.3rem;color:var(--gb);animation:dance-note-float 2.2s ease-in-out infinite}
+.dance-note.d1{top:-4px;left:-16px;animation-delay:0s}
+.dance-note.d2{top:8px;right:-20px;color:var(--yellow);animation-delay:0.6s}
+.dance-note.d3{bottom:2px;left:50%;color:var(--orange);animation-delay:1.1s}
+@keyframes dance-note-float{
+  0%{opacity:0;transform:translateY(6px) scale(0.8)}
+  30%{opacity:1}
+  100%{opacity:0;transform:translateY(-26px) scale(1.05)}
 }
 
 /* BREADCRUMB-ish current nav state */
@@ -1262,6 +1379,63 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .phone-float.f-top{top:-14px;left:-30px;transform:rotate(-6deg)}
 .phone-float.f-bottom{bottom:20px;right:-28px;transform:rotate(4deg);background:var(--yellow)}
 .hero-phone-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+
+/* ARTIST PROGRAM: vertical + 16:9 video duo, and reel/photo carousel */
+#video-showcase{background:var(--black);padding-top:7rem;padding-bottom:5rem;position:relative;text-align:center}
+#video-showcase .example-badge{margin-bottom:1.4rem}
+#video-showcase .section-intro{color:rgba(252,249,244,0.68)}
+#video-showcase .section-intro strong{color:rgba(252,249,244,0.9)}
+.video-duo{display:grid;grid-template-columns:0.62fr 1fr;gap:3rem;align-items:center;max-width:980px;margin:3.5rem auto 0}
+.vid-vertical-wrap{display:flex;justify-content:center}
+.vid-vertical-screen{
+  aspect-ratio:9/16;position:relative;
+  background:linear-gradient(165deg,#1c2b12,#0d1608);
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-16x9-frame{
+  border-radius:16px;position:relative;
+  background:rgba(255,255,255,0.03);border:2px solid rgba(255,255,255,0.08);
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);padding:8px;
+}
+.vid-16x9-screen{
+  aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#1c2b12,#0d1608);
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-placeholder-badge{
+  display:flex;flex-direction:column;align-items:center;gap:0.7rem;color:rgba(252,249,244,0.55);
+}
+.vid-play-circle{
+  width:56px;height:56px;border-radius:50%;background:rgba(124,191,57,0.18);
+  border:1.5px solid rgba(124,191,57,0.4);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.vid-play-circle svg{width:20px;height:20px;color:var(--gb);margin-left:3px}
+.vid-placeholder-badge span{font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+@media(max-width:800px){
+  .video-duo{grid-template-columns:1fr;gap:2.5rem;justify-items:stretch;max-width:420px}
+  .vid-16x9-screen .vid-placeholder-badge span{font-size:0.6rem}
+}
+
+.reel-carousel{
+  display:flex;gap:1.2rem;overflow-x:auto;padding:0.5rem 0.2rem 1.2rem;
+  margin:3.5rem auto 0;max-width:1040px;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+}
+.reel-card{
+  flex:0 0 auto;width:190px;aspect-ratio:3/4;border-radius:14px;
+  position:relative;scroll-snap-align:start;
+  display:flex;align-items:flex-end;justify-content:center;padding:1rem;
+}
+.reel-card .vid-play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px}
+.reel-card .vid-play-circle svg{width:16px;height:16px}
+.reel-card-tag{
+  font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  color:rgba(252,249,244,0.92);background:rgba(13,22,8,0.4);padding:0.35rem 0.7rem;border-radius:999px;
+}
+.reel-carousel::-webkit-scrollbar{height:8px}
+.reel-carousel::-webkit-scrollbar-thumb{background:rgba(252,249,244,0.15);border-radius:999px}
+@media(max-width:640px){.reel-card{width:150px}}
 .trust-dots{display:flex;align-items:center;gap:0.7rem;margin-top:2rem}
 .trust-dots .dstack{display:flex}
 .trust-dots .dstack span{
@@ -1586,6 +1760,52 @@ input[type="range"]::-moz-range-thumb{
 @media(max-width:700px){
   .report-card{padding:1.6rem;margin-top:2.5rem}
   .report-tile-grid{grid-template-columns:1fr 1fr}
+}
+
+/* BRAND BOOK PREVIEW (logo design & branding: behind-the-scenes mockup) */
+#brandbook-preview{background:var(--cream);padding-top:6rem;padding-bottom:7rem;position:relative;text-align:center}
+#brandbook-preview .example-badge{margin-bottom:1.4rem}
+.bb-card{
+  background:#fff;border-radius:20px;padding:2.4rem 2.6rem;max-width:920px;margin:3rem auto 0;
+  box-shadow:0 24px 55px rgba(13,22,8,0.12);text-align:left;
+}
+.bb-card-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem;
+}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.bb-block{background:#f7f6f2;border-radius:14px;padding:1.4rem 1.5rem}
+.bb-block-label{
+  font-family:var(--fd);font-size:0.66rem;font-weight:700;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--gd);margin-bottom:1rem;
+}
+.bb-logos{display:flex;gap:0.7rem}
+.bb-logo-tile{
+  flex:1;min-width:0;background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:0.9rem 0.4rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+}
+.bb-logo-tile svg{width:28px;height:28px;color:var(--gd);flex-shrink:0}
+.bb-logo-tile span{font-size:0.6rem;color:var(--muted);text-align:center;line-height:1.3}
+.bb-swatches{display:flex;gap:0.6rem}
+.bb-swatch{
+  flex:1;aspect-ratio:1/1;border-radius:10px;padding:0.5rem;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.bb-swatch span{font-family:var(--fd);font-size:0.56rem;font-weight:700}
+.bb-type-h{font-family:var(--fd);font-weight:800;font-size:1.5rem;color:var(--black);line-height:1.1}
+.bb-type-b{font-size:0.82rem;color:var(--muted);margin-top:0.5rem;line-height:1.6}
+.bb-type-tag{display:inline-block;margin-top:0.7rem;font-size:0.64rem;color:var(--gd);font-weight:600}
+.bb-rules{display:flex;flex-direction:column;gap:0.7rem;justify-content:center;height:100%}
+.bb-rule{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--black);line-height:1.4}
+.bb-rule-icon{
+  width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:0.62rem;font-weight:800;
+}
+.bb-rule-icon.yes{background:rgba(107,166,65,0.16);color:var(--gd)}
+.bb-rule-icon.no{background:rgba(224,84,42,0.15);color:#c0512e}
+@media(max-width:700px){
+  .bb-card{padding:1.7rem 1.5rem}
+  .bb-grid{grid-template-columns:1fr}
 }
 
 /* ACCORDION FAQ */
