@@ -92,11 +92,10 @@
       </div>
 
       <div class="song-player">
-        <button class="song-frog-btn" id="song-frog-btn" type="button" aria-label="Play the song Frog Legs">
+        <button class="song-frog-btn" id="song-frog-btn" type="button" aria-label="Watch the Frog Legs music video">
           <img src="frog-leap.png" alt="">
           <span class="song-frog-label" id="song-frog-label">Click me! 🎵</span>
         </button>
-        <audio id="song-audio" src="frog-legs-song.mp3" preload="none"></audio>
       </div>
       <p style="font-size:0.85rem;margin:-1rem 0 1.4rem;"><a href="custom-music.html" style="color:var(--gd);font-weight:600;text-decoration:none;">Want a song like this for your brand? See our Custom Music page &rarr;</a></p>
 
@@ -118,28 +117,45 @@
   </div>
 </section>
 
+<!-- VIDEO LIGHTBOX -->
+<div class="video-lightbox" id="video-lightbox">
+  <button class="video-lightbox-close" id="video-lightbox-close" type="button" aria-label="Close video">&times;</button>
+  <div class="video-lightbox-inner">
+    <div class="video-lightbox-frame" id="video-lightbox-frame"></div>
+  </div>
+</div>
+
 <script>
 (function(){
   var btn = document.getElementById('song-frog-btn');
-  var audio = document.getElementById('song-audio');
-  var label = document.getElementById('song-frog-label');
-  if (!btn || !audio || !label) return;
+  var lb = document.getElementById('video-lightbox');
+  var frame = document.getElementById('video-lightbox-frame');
+  var closeBtn = document.getElementById('video-lightbox-close');
+  if (!btn || !lb || !frame || !closeBtn) return;
 
-  function setPlaying(isPlaying){
-    btn.classList.toggle('is-playing', isPlaying);
-    label.textContent = isPlaying ? 'Now playing… 🐸' : 'Click me! 🎵';
+  var SONG_VIDEO_ID = '0sBuprhJK6o';
+
+  function openVideo(id){
+    frame.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo(){
+    lb.classList.remove('is-open');
+    frame.innerHTML = '';
+    document.body.style.overflow = '';
   }
 
   btn.addEventListener('click', function(){
-    if (audio.paused){
-      audio.play();
-    } else {
-      audio.pause();
-    }
+    openVideo(SONG_VIDEO_ID);
   });
-  audio.addEventListener('play', function(){ setPlaying(true); });
-  audio.addEventListener('pause', function(){ setPlaying(false); });
-  audio.addEventListener('ended', function(){ setPlaying(false); });
+  closeBtn.addEventListener('click', closeVideo);
+  lb.addEventListener('click', function(e){
+    if (e.target === lb) closeVideo();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeVideo();
+  });
 })();
 </script>
 
