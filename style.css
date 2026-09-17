@@ -885,7 +885,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .page-intro{max-width:640px}
 
 /* Company story: text column + vertical video placeholder */
-.story-grid{display:flex;gap:4rem;align-items:center;justify-content:space-between;}
+.story-grid{display:flex;gap:4rem;align-items:center;justify-content:flex-start;}
 .story-copy{flex:1;min-width:0;max-width:640px}
 .story-video{flex-shrink:0;width:300px;}
 .video-placeholder{
