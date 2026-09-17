@@ -1379,6 +1379,63 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .phone-float.f-top{top:-14px;left:-30px;transform:rotate(-6deg)}
 .phone-float.f-bottom{bottom:20px;right:-28px;transform:rotate(4deg);background:var(--yellow)}
 .hero-phone-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+
+/* ARTIST PROGRAM: vertical + 16:9 video duo, and reel/photo carousel */
+#video-showcase{background:var(--black);padding-top:7rem;padding-bottom:5rem;position:relative;text-align:center}
+#video-showcase .example-badge{margin-bottom:1.4rem}
+#video-showcase .section-intro{color:rgba(252,249,244,0.68)}
+#video-showcase .section-intro strong{color:rgba(252,249,244,0.9)}
+.video-duo{display:grid;grid-template-columns:0.62fr 1fr;gap:3rem;align-items:center;max-width:980px;margin:3.5rem auto 0}
+.vid-vertical-wrap{display:flex;justify-content:center}
+.vid-vertical-screen{
+  aspect-ratio:9/16;position:relative;
+  background:linear-gradient(165deg,#1c2b12,#0d1608);
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-16x9-frame{
+  border-radius:16px;position:relative;
+  background:rgba(255,255,255,0.03);border:2px solid rgba(255,255,255,0.08);
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);padding:8px;
+}
+.vid-16x9-screen{
+  aspect-ratio:16/9;border-radius:10px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#1c2b12,#0d1608);
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-placeholder-badge{
+  display:flex;flex-direction:column;align-items:center;gap:0.7rem;color:rgba(252,249,244,0.55);
+}
+.vid-play-circle{
+  width:56px;height:56px;border-radius:50%;background:rgba(124,191,57,0.18);
+  border:1.5px solid rgba(124,191,57,0.4);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.vid-play-circle svg{width:20px;height:20px;color:var(--gb);margin-left:3px}
+.vid-placeholder-badge span{font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+@media(max-width:800px){
+  .video-duo{grid-template-columns:1fr;gap:2.5rem;justify-items:stretch;max-width:420px}
+  .vid-16x9-screen .vid-placeholder-badge span{font-size:0.6rem}
+}
+
+.reel-carousel{
+  display:flex;gap:1.2rem;overflow-x:auto;padding:0.5rem 0.2rem 1.2rem;
+  margin:3.5rem auto 0;max-width:1040px;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+}
+.reel-card{
+  flex:0 0 auto;width:190px;aspect-ratio:3/4;border-radius:14px;
+  position:relative;scroll-snap-align:start;
+  display:flex;align-items:flex-end;justify-content:center;padding:1rem;
+}
+.reel-card .vid-play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px}
+.reel-card .vid-play-circle svg{width:16px;height:16px}
+.reel-card-tag{
+  font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+  color:rgba(252,249,244,0.92);background:rgba(13,22,8,0.4);padding:0.35rem 0.7rem;border-radius:999px;
+}
+.reel-carousel::-webkit-scrollbar{height:8px}
+.reel-carousel::-webkit-scrollbar-thumb{background:rgba(252,249,244,0.15);border-radius:999px}
+@media(max-width:640px){.reel-card{width:150px}}
 .trust-dots{display:flex;align-items:center;gap:0.7rem;margin-top:2rem}
 .trust-dots .dstack{display:flex}
 .trust-dots .dstack span{
