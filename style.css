@@ -1053,6 +1053,50 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .hero-song-card-note{
   margin-top:1.4rem;font-size:0.76rem;color:rgba(252,249,244,0.45);line-height:1.6;
 }
+.hero-song-btn{position:relative}
+.hero-song-btn::before{
+  content:'';position:absolute;inset:-6px;border-radius:999px;pointer-events:none;
+  border:2px solid var(--gb);opacity:0;animation:song-ring-pulse 2.4s ease-out infinite;
+}
+.hero-song-btn.is-playing::before{animation:none;opacity:0}
+@keyframes song-ring-pulse{
+  0%{opacity:0.55;transform:scale(0.94)}
+  70%{opacity:0;transform:scale(1.14)}
+  100%{opacity:0;transform:scale(1.14)}
+}
+.song-note{
+  position:absolute;font-size:1.1rem;color:var(--gb);pointer-events:none;
+  opacity:0;animation:song-note-float 2.6s ease-in-out infinite;
+}
+.song-note.n1{top:0.2rem;left:0.4rem;animation-delay:0s}
+.song-note.n2{top:-0.4rem;right:1.6rem;color:var(--yellow);animation-delay:0.7s}
+.song-note.n3{bottom:0.6rem;right:0.3rem;color:var(--orange);animation-delay:1.4s}
+@keyframes song-note-float{
+  0%{opacity:0;transform:translateY(6px) scale(0.8)}
+  30%{opacity:1}
+  100%{opacity:0;transform:translateY(-22px) scale(1.05)}
+}
+
+/* CUSTOM MUSIC: dancing frog + floating notes (song showcase heading) */
+.dance-frog-wrap{position:relative;width:110px;height:110px;margin:0 auto 1rem}
+.dance-frog-wrap img{
+  width:100%;height:auto;display:block;margin:0 auto;
+  filter:drop-shadow(0 14px 20px rgba(13,22,8,0.18));
+  animation:frog-dance 1.8s ease-in-out infinite;transform-origin:bottom center;
+}
+@keyframes frog-dance{
+  0%,100%{transform:rotate(-9deg)}
+  50%{transform:rotate(9deg)}
+}
+.dance-note{position:absolute;font-size:1.3rem;color:var(--gb);animation:dance-note-float 2.2s ease-in-out infinite}
+.dance-note.d1{top:-4px;left:-16px;animation-delay:0s}
+.dance-note.d2{top:8px;right:-20px;color:var(--yellow);animation-delay:0.6s}
+.dance-note.d3{bottom:2px;left:50%;color:var(--orange);animation-delay:1.1s}
+@keyframes dance-note-float{
+  0%{opacity:0;transform:translateY(6px) scale(0.8)}
+  30%{opacity:1}
+  100%{opacity:0;transform:translateY(-26px) scale(1.05)}
+}
 
 /* BREADCRUMB-ish current nav state */
 .nav-links a.current{color:var(--black)}
