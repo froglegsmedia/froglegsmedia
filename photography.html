@@ -99,6 +99,99 @@
 </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>A Few<br><span>Recent Frames.</span></h2>
+  <p class="section-intro">A small sample of the work. <strong>Full galleries are shared on the discovery call.</strong></p>
+  <div class="gallery-grid">
+    <button class="gallery-item" type="button" data-cat="Brand" data-caption="Brand Photography — studio headshot session">
+      <span class="gallery-cat">Brand</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.3"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Product" data-caption="Product Photography — e-commerce catalog shot">
+      <span class="gallery-cat">Product</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Event" data-caption="Event Coverage — brand activation launch">
+      <span class="gallery-cat">Event</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Product" data-caption="Product Photography — flat lay styling">
+      <span class="gallery-cat">Product</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Brand" data-caption="Brand Photography — team &amp; culture shoot">
+      <span class="gallery-cat">Brand</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.3"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Event" data-caption="Event Coverage — live activation floor">
+      <span class="gallery-cat">Event</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Product" data-caption="Product Photography — hero shot with props">
+      <span class="gallery-cat">Product</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+    <button class="gallery-item" type="button" data-cat="Brand" data-caption="Brand Photography — founder portrait">
+      <span class="gallery-cat">Brand</span>
+      <span class="gallery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.3"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5"/></svg></span>
+      <span class="gallery-label">Sample Photo</span>
+    </button>
+  </div>
+  <p class="gallery-note">Placeholder gallery, real samples coming soon.</p>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">&times;</button>
+  <div class="lightbox-inner">
+    <span class="lightbox-icon" id="lightbox-icon"></span>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.gallery-item');
+  var lightbox = document.getElementById('lightbox');
+  var lbIcon = document.getElementById('lightbox-icon');
+  var lbCaption = document.getElementById('lightbox-caption');
+  var lbClose = document.getElementById('lightbox-close');
+  if (!items.length || !lightbox) return;
+
+  function open(item){
+    lbIcon.innerHTML = item.querySelector('.gallery-icon').innerHTML;
+    lbCaption.textContent = item.getAttribute('data-caption') || '';
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  items.forEach(function(item){
+    item.addEventListener('click', function(){ open(item); });
+  });
+  lbClose.addEventListener('click', close);
+  lightbox.addEventListener('click', function(e){
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
 <!-- PROCESS -->
 <section id="pipeline">
   <div class="hop-track" id="hop-track"><img class="hop-frog-lg" id="hop-frog-lg" src="frog-leap.png" alt="" aria-hidden="true" style="width:96px"></div>
