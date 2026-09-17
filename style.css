@@ -340,6 +340,7 @@ h2.light span{color:var(--gb)}
   border-radius:28px 28px 8px 28px;
   position:relative;overflow:visible;
   display:flex;flex-direction:column;
+  text-align:left;
   border:1px solid rgba(13,22,8,0.07);
   box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -20px rgba(13,22,8,0.28);
   transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
@@ -955,6 +956,27 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 }
 @media(max-width:1150px){
   .faq-spin-frog{display:none}
+}
+.faq-ad-collage{
+  position:absolute;top:62%;right:var(--gutter);
+  width:250px;height:220px;transform:translateY(-50%);
+  pointer-events:none;z-index:1;
+}
+.faq-ad-collage .ad-chip{
+  position:absolute;width:64px;height:64px;
+  border-radius:18px 18px 6px 18px;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(13,22,8,0.07);
+  box-shadow:0 1px 0 rgba(13,22,8,0.04),0 16px 30px -14px rgba(13,22,8,0.32);
+}
+.faq-ad-collage .ad-chip svg{width:26px;height:26px}
+.ad-chip-meta{top:0;left:64px;color:var(--gb);background:rgba(124,191,57,0.14);transform:rotate(-7deg);z-index:3}
+.ad-chip-google{top:14px;left:160px;color:var(--yellow);background:rgba(242,187,19,0.16);transform:rotate(9deg);z-index:2}
+.ad-chip-tiktok{top:82px;left:0;color:var(--orange);background:rgba(242,132,92,0.16);transform:rotate(-10deg);z-index:4}
+.ad-chip-youtube{top:96px;left:174px;color:var(--gd);background:rgba(107,166,65,0.16);transform:rotate(8deg);z-index:2}
+.ad-chip-linkedin{top:152px;left:76px;color:var(--black);background:rgba(13,22,8,0.07);transform:rotate(-5deg);z-index:5}
+@media(max-width:1150px){
+  .faq-ad-collage{display:none}
 }
 .faq-list{display:flex;flex-direction:column;margin-top:1rem;max-width:760px}
 .faq-item{border-top:1px solid var(--border);padding:1.9rem 0}
