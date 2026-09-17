@@ -1606,6 +1606,52 @@ input[type="range"]::-moz-range-thumb{
   .report-tile-grid{grid-template-columns:1fr 1fr}
 }
 
+/* BRAND BOOK PREVIEW (logo design & branding: behind-the-scenes mockup) */
+#brandbook-preview{background:var(--cream);padding-top:6rem;padding-bottom:7rem;position:relative;text-align:center}
+#brandbook-preview .example-badge{margin-bottom:1.4rem}
+.bb-card{
+  background:#fff;border-radius:20px;padding:2.4rem 2.6rem;max-width:920px;margin:3rem auto 0;
+  box-shadow:0 24px 55px rgba(13,22,8,0.12);text-align:left;
+}
+.bb-card-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem;
+}
+.bb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.bb-block{background:#f7f6f2;border-radius:14px;padding:1.4rem 1.5rem}
+.bb-block-label{
+  font-family:var(--fd);font-size:0.66rem;font-weight:700;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--gd);margin-bottom:1rem;
+}
+.bb-logos{display:flex;gap:0.7rem}
+.bb-logo-tile{
+  flex:1;min-width:0;background:#fff;border:1px solid var(--border);border-radius:10px;
+  padding:0.9rem 0.4rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+}
+.bb-logo-tile svg{width:28px;height:28px;color:var(--gd);flex-shrink:0}
+.bb-logo-tile span{font-size:0.6rem;color:var(--muted);text-align:center;line-height:1.3}
+.bb-swatches{display:flex;gap:0.6rem}
+.bb-swatch{
+  flex:1;aspect-ratio:1/1;border-radius:10px;padding:0.5rem;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.bb-swatch span{font-family:var(--fd);font-size:0.56rem;font-weight:700}
+.bb-type-h{font-family:var(--fd);font-weight:800;font-size:1.5rem;color:var(--black);line-height:1.1}
+.bb-type-b{font-size:0.82rem;color:var(--muted);margin-top:0.5rem;line-height:1.6}
+.bb-type-tag{display:inline-block;margin-top:0.7rem;font-size:0.64rem;color:var(--gd);font-weight:600}
+.bb-rules{display:flex;flex-direction:column;gap:0.7rem;justify-content:center;height:100%}
+.bb-rule{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--black);line-height:1.4}
+.bb-rule-icon{
+  width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:0.62rem;font-weight:800;
+}
+.bb-rule-icon.yes{background:rgba(107,166,65,0.16);color:var(--gd)}
+.bb-rule-icon.no{background:rgba(224,84,42,0.15);color:#c0512e}
+@media(max-width:700px){
+  .bb-card{padding:1.7rem 1.5rem}
+  .bb-grid{grid-template-columns:1fr}
+}
+
 /* ACCORDION FAQ */
 /* Plain, normal flow - no position:sticky, no JS. The heading just scrolls
    with the page like every other section on the site (e.g. "What's
