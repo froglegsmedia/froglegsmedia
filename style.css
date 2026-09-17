@@ -994,6 +994,17 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .video-placeholder{margin-top:0;}
 }
 
+/* Company story: "Finding Your Frog Legs" stages illustration */
+.frog-legs-stages{
+  max-width:1000px;margin:4.5rem auto 0;
+}
+.frog-legs-stages img{
+  width:100%;height:auto;display:block;
+}
+@media(max-width:640px){
+  .frog-legs-stages{margin-top:3rem}
+}
+
 /* Company story: click-to-play frog for the "Frog Legs" song */
 .song-player{max-width:640px;margin:0 0 1.8rem;}
 .song-frog-btn{
