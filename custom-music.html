@@ -90,7 +90,7 @@
 </div>
 
 
-<!-- ORIGINAL SONG SHOWCASE -->
+<!-- ORIGINAL SONG SHOWCASE + WHAT'S INCLUDED (merged so the breakdown sits right under the intro) -->
 <section id="song-showcase" style="text-align:center;">
   <div class="dance-frog-wrap" aria-hidden="true">
     <img src="frog-leap.png" alt="">
@@ -100,13 +100,7 @@
   </div>
   <h2>The Power of<br><span>Custom Music.</span></h2>
   <p class="section-intro">The name "Frog Legs" comes from an original song our founder wrote. <strong>Hit play at the top of the page</strong> for a taste of what "custom" actually sounds like around here.</p>
-</section>
-
-<!-- WHAT'S INCLUDED (moved ahead of the playlist so the breakdown comes first) -->
-<section id="services">
-  <h2>What You Can<br><span>Actually Book.</span></h2>
-  <p class="section-intro">Here's how it breaks down: <strong>no mystery packages, no upsells you didn't ask for</strong>, just three ways to get music that's actually yours.</p>
-  <div class="svc-grid">
+  <div class="svc-grid" style="margin-top:3.5rem">
     <div class="svc-card">
       <div class="svc-top t-green"></div>
       <span class="lilypad card-lilypad"><span class="lilypad-num">01</span></span>
@@ -208,7 +202,6 @@
 
 <!-- PROCESS -->
 <section id="pipeline">
-  <div class="hop-track" id="hop-track"><img class="hop-frog-lg" id="hop-frog-lg" src="frog-leap.png" alt="" aria-hidden="true" style="width:96px"></div>
   <h2>From Brief<br><span>To Final Mix.</span></h2>
   <p class="section-intro">Here's what actually happens between booking the call and getting your finished track.</p>
   <div class="pipeline">
@@ -247,44 +240,14 @@
 </div>
 </section>
 
-<script>
-(function(){
-  var track = document.getElementById('hop-track');
-  var frog = document.getElementById('hop-frog-lg');
-  if (!track || !frog) return;
-
-  function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
-
-  function render(){
-    var rect = track.getBoundingClientRect();
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    var total = rect.height + vh;
-    var traveled = vh - rect.top;
-    var progress = clamp(traveled / total, 0, 1);
-
-    var maxX = Math.max(track.clientWidth - frog.offsetWidth, 0);
-    var x = progress * maxX;
-    var hop = Math.abs(Math.sin(progress * Math.PI * 5)) * 44;
-    var rotate = Math.sin(progress * Math.PI * 5) >= 0 ? -8 : 6;
-
-    frog.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (-hop).toFixed(1) + 'px) rotate(' + rotate + 'deg)';
-  }
-
-  var ticking = false;
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){ render(); ticking = false; });
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', render);
-  render();
-})();
-</script>
-
 <!-- FAQ -->
 <section id="faq">
+  <div class="faq-music-frog" aria-hidden="true">
+    <img src="frog-guitar-log.png" alt="">
+    <span class="dance-note d1">&#9834;</span>
+    <span class="dance-note d2">&#9835;</span>
+    <span class="dance-note d3">&#9834;</span>
+  </div>
   <h2>Frog-Quently<br><span>Asked.</span></h2>
   <div class="faq-acc faq-acc-standalone">
   <details>

@@ -1153,6 +1153,29 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   100%{opacity:0;transform:translateY(-26px) scale(1.05)}
 }
 
+/* CUSTOM MUSIC FAQ: frog playing guitar + floating notes */
+.faq-music-frog{
+  position:absolute;top:58%;right:var(--gutter);
+  width:260px;transform:translateY(-50%);
+  pointer-events:none;z-index:1;
+}
+.faq-music-frog img{
+  width:100%;height:auto;display:block;
+  filter:drop-shadow(0 20px 30px rgba(13,22,8,0.15));
+  animation:faq-frog-bob 2.6s ease-in-out infinite;
+}
+@keyframes faq-frog-bob{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-10px) rotate(2deg)}
+}
+.faq-music-frog .dance-note{font-size:1.6rem}
+.faq-music-frog .dance-note.d1{top:-10px;left:10px}
+.faq-music-frog .dance-note.d2{top:-16px;right:20px}
+.faq-music-frog .dance-note.d3{bottom:10px;left:-10px}
+@media(max-width:1150px){
+  .faq-music-frog{display:none}
+}
+
 /* BREADCRUMB-ish current nav state */
 .nav-links a.current{color:var(--black)}
 
