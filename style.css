@@ -848,7 +848,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .page-hero.has-frog .page-hero-inner{max-width:600px}
 .page-hero.has-frog .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center}
 .company-hero-frog{
-  width:560px;max-width:100%;
+  width:820px;max-width:110%;
 }
 .company-hero-frog img{
   width:100%;height:auto;display:block;
@@ -962,7 +962,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .page-intro{max-width:640px}
 
 /* Company story: text column + vertical video placeholder */
-.story-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:4rem;align-items:center;}
+.story-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3.4rem;align-items:center;}
 .story-copy{min-width:0;max-width:640px}
 .story-video{width:100%;max-width:300px;margin:0 auto;}
 .video-placeholder{
