@@ -262,11 +262,12 @@ h2.light span{color:var(--gb)}
   font-size:0.88rem;color:var(--muted);
   line-height:1.75;font-weight:300;
 }
-.p-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.8rem}
+.p-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.8rem}
 .ptag{
-  font-family:var(--fd);font-size:0.6rem;font-weight:700;
-  letter-spacing:0.06em;padding:0.22rem 0.65rem;
-  border:1px solid var(--border);color:var(--gd);border-radius:3px;
+  font-family:var(--fd);font-size:0.62rem;font-weight:800;
+  letter-spacing:0.05em;text-transform:uppercase;
+  padding:0.34rem 0.8rem;
+  border:none;background:var(--gb);color:var(--black);border-radius:999px;
 }
 
 /* SERVICES — pond-tile layout: rounded floating cards with a lily-pad notch,
@@ -373,7 +374,7 @@ h2.light span{color:var(--gb)}
   font-size:0.83rem;color:var(--muted);
   line-height:1.75;font-weight:300;margin-bottom:1.1rem;flex-grow:1;
 }
-.svc-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1.3rem}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.3rem}
 .svc-cta{
   font-family:var(--fd);font-size:0.72rem;font-weight:700;
   letter-spacing:0.04em;color:var(--gd);text-decoration:none;
@@ -527,11 +528,12 @@ h2.light span{color:var(--gb)}
   font-size:0.83rem;color:var(--muted);
   line-height:1.75;font-weight:300;margin-bottom:1.3rem;
 }
-.fmt-tags{display:flex;flex-wrap:wrap;gap:0.3rem}
+.fmt-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
 .ftag{
-  font-family:var(--fd);font-size:0.6rem;font-weight:700;
-  letter-spacing:0.06em;padding:0.22rem 0.65rem;
-  border:1px solid var(--border);color:var(--gd);border-radius:3px;
+  font-family:var(--fd);font-size:0.62rem;font-weight:800;
+  letter-spacing:0.05em;text-transform:uppercase;
+  padding:0.34rem 0.8rem;
+  border:none;background:var(--gb);color:var(--black);border-radius:999px;
 }
 
 /* WORK */
