@@ -104,22 +104,20 @@
 
 <!-- WORK -->
 <!--
-  NOTE FOR FROG LEGS MEDIA: the four tiles below autoplay muted/looped
-  YouTube embeds so visitors see them playing the moment the page opens
-  (no click required). To add another autoplaying tile, copy one of these
-  and swap in your own YOUTUBE_ID in both places (the src URL AND the
-  playlist= param, which is what makes YouTube loop a single video).
+  NOTE FOR FROG LEGS MEDIA: no YouTube embeds on this page anymore - every
+  video here is self-hosted (from your Cloudflare R2 bucket) and none of
+  them autoplay. Hover over a tile (or tap it on a touchscreen) and it
+  starts playing; move away (or tap again) and it pauses. See the script
+  near the bottom of this page for how that's wired up.
 
   The tiles marked "wi-placeholder" are slots ready for your real videos
   and photos. To fill one in:
-  - Video (YouTube): remove the wi-placeholder markup and swap in a real
-    autoplaying tile like the four at the top.
   - Video (uploaded file, e.g. from your Cloudflare R2 bucket): use a
-    "wi wi-video" div with a <video src="..." autoplay muted loop playsinline
-    preload="metadata"> inside, like the Boss Ladies / Pinball Pizza tiles
-    and the whole "Full Reel Library" section further down the page. No
-    YouTube ID needed - just point src at the file's public URL
-    (URL-encode spaces as %20).
+    "wi wi-video" div with a <video data-src="..." muted loop playsinline
+    preload="none"> inside, like the Boss Ladies / Pinball Pizza tiles
+    and the whole "Full Reel Library" section further down the page. Leave
+    off autoplay/src - the hover script below picks it up automatically.
+    Just point data-src at the file's public URL (URL-encode spaces as %20).
   - Photo: use data-image="your-photo.jpg" on a plain .wi button with a
     .wbg div pointing at that same image. Clicking it opens the photo
     full-size in the lightbox automatically.
@@ -132,23 +130,6 @@
 -->
 <section id="portfolio-work" style="background:var(--gray)">
   <div class="work-grid">
-    <div class="wi wi-embed" aria-label="Frog Legs Media reel, autoplaying">
-      <iframe src="https://www.youtube-nocookie.com/embed/r4Po0Tuho9A?autoplay=1&mute=1&loop=1&playlist=r4Po0Tuho9A&controls=0&modestbranding=1&rel=0&playsinline=1" title="Frog Legs Media reel" frameborder="0" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-      <div class="wo"><div class="wcat">Production Reel</div><div class="wtitle">Reel</div></div>
-    </div>
-    <div class="wi wi-embed" aria-label="Starbucks commercial, autoplaying">
-      <iframe src="https://www.youtube-nocookie.com/embed/qcyHw43zz2Y?autoplay=1&mute=1&loop=1&playlist=qcyHw43zz2Y&controls=0&modestbranding=1&rel=0&playsinline=1" title="Starbucks commercial" frameborder="0" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-      <div class="wo"><div class="wcat">Commercial</div><div class="wtitle">Starbucks</div></div>
-    </div>
-    <div class="wi wi-embed" aria-label="Starbucks commercial, autoplaying">
-      <iframe src="https://www.youtube-nocookie.com/embed/D09pkIoVCqk?autoplay=1&mute=1&loop=1&playlist=D09pkIoVCqk&controls=0&modestbranding=1&rel=0&playsinline=1" title="Starbucks commercial" frameborder="0" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-      <div class="wo"><div class="wcat">Commercial</div><div class="wtitle">Starbucks</div></div>
-    </div>
-    <div class="wi wi-embed" aria-label="Starbucks commercial, autoplaying">
-      <iframe src="https://www.youtube-nocookie.com/embed/O3NWsyC8bB4?autoplay=1&mute=1&loop=1&playlist=O3NWsyC8bB4&controls=0&modestbranding=1&rel=0&playsinline=1" title="Starbucks commercial" frameborder="0" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>
-      <div class="wo"><div class="wcat">Commercial</div><div class="wtitle">Starbucks</div></div>
-    </div>
-
     <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#6BA641,#0d1608)" tabindex="-1" aria-hidden="true">
       <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="ph-label">TikTok Shop</div>
@@ -191,8 +172,8 @@
       <div class="ph-sub">Video &middot; Music Video</div>
     </button>
 
-    <div class="wi wi-video" aria-label="Boss Ladies brand campaign, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Reel%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Boss Ladies brand campaign">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Reel%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Brand Campaign</div><div class="wtitle">Boss Ladies</div></div>
     </div>
     <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2845C,#0d1608)" tabindex="-1" aria-hidden="true">
@@ -229,8 +210,8 @@
       <div class="ph-label">Boss Ladies</div>
       <div class="ph-sub">Vertical Reel</div>
     </button>
-    <div class="wi wi-video" aria-label="Pinball Pizza reel, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Pinball%2050th%20Reel%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Pinball Pizza reel">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Pinball%2050th%20Reel%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Vertical Reel</div><div class="wtitle">Pinball Pizza</div></div>
     </div>
   </div>
@@ -241,19 +222,18 @@
      layout (each tile keeps its real aspect ratio instead of being
      cropped), so it works regardless of orientation.
 
-     These tiles do NOT autoplay on page load - with 51 videos that would
-     mean loading everything at once, which is a lot of data. Instead each
-     <video> holds its URL in data-src (not src) and starts with no
-     preload; the script at the bottom of this page uses an
-     IntersectionObserver to set the real src and call play() only once a
-     tile scrolls into view, and pause() once it scrolls back out. So they
-     all "play at the same time" in the sense that everything currently
-     visible on screen is playing together, but nothing loads until you've
-     actually scrolled to it.
+     None of these autoplay - with 51 videos that would mean loading
+     everything at once, which is a lot of data. Instead each <video>
+     holds its URL in data-src (not src) and starts with no preload; the
+     hover script near the bottom of this page sets the real src and calls
+     play() when the mouse enters a tile (or it's tapped, on touch
+     devices), and pauses it again on mouse-leave. Nothing loads until
+     someone actually hovers/taps it.
 
      To add a new one later: copy a ".wi wi-video" block below and point
      its <video data-src> at the new file's R2 URL (URL-encode spaces as
-     %20) - leave off autoplay/src, the observer picks it up automatically. -->
+     %20) - leave off autoplay/src, the hover script picks it up
+     automatically. -->
 <section id="portfolio-vault" style="background:var(--black)">
   <div class="eyebrow dark-eyebrow" style="max-width:1400px;margin:0 auto 1.4rem;padding:0 2rem">The Full Reel Library</div>
   <div class="video-wall">
@@ -479,12 +459,6 @@
   var closeBtn = document.getElementById('video-lightbox-close');
   if (!lb || !frame || !closeBtn) return;
 
-  function openVideo(id){
-    frame.classList.remove('is-image');
-    frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    lb.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
   function openImage(src){
     frame.classList.add('is-image');
     frame.innerHTML = '<img src="' + src + '" alt="">';
@@ -497,11 +471,6 @@
     frame.innerHTML = '';
     document.body.style.overflow = '';
   }
-  document.querySelectorAll('.wi[data-video-id]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      openVideo(btn.getAttribute('data-video-id'));
-    });
-  });
   document.querySelectorAll('.wi[data-image]').forEach(function(btn){
     btn.addEventListener('click', function(){
       openImage(btn.getAttribute('data-image'));
@@ -517,39 +486,44 @@
 })();
 </script>
 
-<!-- Full Reel Library: loads and plays each video only once it scrolls
-     into view, and pauses it again once it scrolls out. Keeps everything
-     visible on screen playing together without loading all 51 videos
-     (~3.5GB) at once on page load. -->
+<!-- Hover-to-play: every ".wi-video" tile on this page (the curated Boss
+     Ladies / Pinball Pizza tiles above, and all 51 in the Full Reel
+     Library) starts paused with no video loaded. Hovering a tile loads
+     its data-src (first hover only - after that it just plays/pauses) and
+     plays it; moving the mouse away pauses it and rewinds to the start.
+     On touchscreens (no real hover), tapping a tile toggles play/pause
+     the same way. -->
 <script>
 (function(){
-  var vids = document.querySelectorAll('.video-wall video[data-src]');
-  if (!vids.length) return;
-  if (!('IntersectionObserver' in window)){
-    // very old browser fallback: just load everything
-    vids.forEach(function(v){
+  var tiles = document.querySelectorAll('.wi-video');
+  if (!tiles.length) return;
+
+  function loadIfNeeded(v){
+    if (v.hasAttribute('data-src')){
       v.src = v.getAttribute('data-src');
       v.removeAttribute('data-src');
-    });
-    return;
+      v.load();
+    }
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      var v = entry.target;
-      if (entry.isIntersecting){
-        if (v.hasAttribute('data-src')){
-          v.src = v.getAttribute('data-src');
-          v.removeAttribute('data-src');
-          v.load();
-        }
-        var p = v.play();
-        if (p && p.catch) p.catch(function(){ /* autoplay blocked - ignore */ });
-      } else {
-        v.pause();
-      }
-    });
-  }, { root: null, rootMargin: '200px 0px', threshold: 0.15 });
-  vids.forEach(function(v){ io.observe(v); });
+  function play(v){
+    loadIfNeeded(v);
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){ /* autoplay blocked - ignore */ });
+  }
+  function pause(v){
+    v.pause();
+    try { v.currentTime = 0; } catch(e){ /* not loaded yet - ignore */ }
+  }
+
+  tiles.forEach(function(tile){
+    var v = tile.querySelector('video');
+    if (!v) return;
+    tile.addEventListener('mouseenter', function(){ play(v); });
+    tile.addEventListener('mouseleave', function(){ pause(v); });
+    tile.addEventListener('touchstart', function(){
+      if (v.paused) play(v); else pause(v);
+    }, { passive: true });
+  });
 })();
 </script>
 
