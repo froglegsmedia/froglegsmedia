@@ -611,6 +611,9 @@ h2.light span{color:var(--gb)}
 /* autoplaying inline video tiles (no click needed - already playing) */
 .wi-embed{cursor:default}
 .wi-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+/* self-hosted (non-YouTube) autoplaying video tiles */
+.wi-video{cursor:default}
+.wi-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;background:#0d1608}
 .wo{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(17,20,8,0.92) 0%,transparent 55%);
