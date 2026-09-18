@@ -236,217 +236,229 @@
   </div>
 </section>
 
-<!-- FULL VIDEO VAULT — every video currently in the Cloudflare R2 bucket,
-     all autoplaying at once. Mixed vertical/landscape sources are handled
-     by a CSS-columns masonry layout (each tile keeps its real aspect
-     ratio instead of being cropped), so it works regardless of orientation.
+<!-- FULL VIDEO VAULT — every video currently in the Cloudflare R2 bucket.
+     Mixed vertical/landscape sources are handled by a CSS-columns masonry
+     layout (each tile keeps its real aspect ratio instead of being
+     cropped), so it works regardless of orientation.
+
+     These tiles do NOT autoplay on page load - with 51 videos that would
+     mean loading everything at once, which is a lot of data. Instead each
+     <video> holds its URL in data-src (not src) and starts with no
+     preload; the script at the bottom of this page uses an
+     IntersectionObserver to set the real src and call play() only once a
+     tile scrolls into view, and pause() once it scrolls back out. So they
+     all "play at the same time" in the sense that everything currently
+     visible on screen is playing together, but nothing loads until you've
+     actually scrolled to it.
+
      To add a new one later: copy a ".wi wi-video" block below and point
-     its <video src> at the new file's R2 URL (URL-encode spaces as %20). -->
+     its <video data-src> at the new file's R2 URL (URL-encode spaces as
+     %20) - leave off autoplay/src, the observer picks it up automatically. -->
 <section id="portfolio-vault" style="background:var(--black)">
   <div class="eyebrow dark-eyebrow" style="max-width:1400px;margin:0 auto 1.4rem;padding:0 2rem">The Full Reel Library</div>
   <div class="video-wall">
-    <div class="wi wi-video" aria-label="Boss Ladies Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Boss Ladies Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Boss Ladies Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Boss Ladies Teasers 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Teasers%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Boss Ladies Teasers 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Teasers%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Boss Ladies Teasers 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="CityWalk 30s, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/CityWalk%2030s.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="CityWalk 30s">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/CityWalk%2030s.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">CityWalk 30s</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Malow Mac Pray To My God Ft Sick Jacken Psycho Realm Official Music Video, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Malow-Mac-Pray-To-My-God-Ft_-Sick-Jacken-Psycho-Realm-Official-Music-Video-.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Malow Mac Pray To My God Ft Sick Jacken Psycho Realm Official Music Video">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Malow-Mac-Pray-To-My-God-Ft_-Sick-Jacken-Psycho-Realm-Official-Music-Video-.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Music Video</div><div class="wtitle">Malow Mac Pray To My God Ft Sick Jacken Psycho Realm Official Music Video</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Mark Legacy Reel, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Mark%20legacy%20reel.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Mark Legacy Reel">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Mark%20legacy%20reel.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Mark Legacy Reel</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Monster Ad One, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Monster%20Ad%20one.mov" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Monster Ad One">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Monster%20Ad%20one.mov" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Monster Ad One</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 1a, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel%201a.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 1a">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel%201a.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 1a</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_1.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_2.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel Boss Ladies Group, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_Boss%20Ladies%20Group.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel Boss Ladies Group">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Reel_Boss%20Ladies%20Group.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel Boss Ladies Group</div></div>
     </div>
-    <div class="wi wi-video" aria-label="SimpMart 15s (logo), autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/SimpMart%2015s%20%28logo%29.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="SimpMart 15s (logo)">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/SimpMart%2015s%20%28logo%29.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">SimpMart 15s (logo)</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Speak For Love SMALL, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Speak%20for%20love%20SMALL.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Speak For Love SMALL">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Speak%20for%20love%20SMALL.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Speak For Love SMALL</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Summertime, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Summertime.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Summertime">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Summertime.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Summertime</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Touch Of Class Soiree 60s Reel, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Touch%20of%20Class%20Soiree%2060s%20Reel.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Touch Of Class Soiree 60s Reel">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Touch%20of%20Class%20Soiree%2060s%20Reel.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Touch Of Class Soiree 60s Reel</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Touch Of Class Soiree Reel 2 50s, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Touch%20of%20Class%20Soiree%20Reel%202%2050s.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Touch Of Class Soiree Reel 2 50s">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Touch%20of%20Class%20Soiree%20Reel%202%2050s.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Touch Of Class Soiree Reel 2 50s</div></div>
     </div>
-    <div class="wi wi-video" aria-label="YMCA Sizzle Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/YMCA%20Sizzle%20Teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="YMCA Sizzle Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/YMCA%20Sizzle%20Teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">YMCA Sizzle Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="YMCA Sizzle Teaser 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/YMCA%20Sizzle%20Teaser%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="YMCA Sizzle Teaser 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/YMCA%20Sizzle%20Teaser%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">YMCA Sizzle Teaser 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ad 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ad%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ad 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ad%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Ad 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Anatomy, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/anatomy.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Anatomy">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/anatomy.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Anatomy</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Cherise No Caption, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/cherise%20no%20caption.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Cherise No Caption">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/cherise%20no%20caption.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Cherise No Caption</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Coffee, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/coffee.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Coffee">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/coffee.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Coffee</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Dirtbike V1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/dirtbike%20v1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Dirtbike V1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/dirtbike%20v1.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Dirtbike V1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Dirtbike V2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/dirtbike%20v2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Dirtbike V2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/dirtbike%20v2.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Dirtbike V2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep1 Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep1 Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep1 Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep1 Teaser 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep1 Teaser 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep1 Teaser 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep1 Teaser 3, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%203.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep1 Teaser 3">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%203.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep1 Teaser 3</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep1 Teaser 4, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%204.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep1 Teaser 4">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep1%20teaser%204.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep1 Teaser 4</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep2 Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep2%20teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep2 Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep2%20teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep2 Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep2 Teaser 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep2%20teaser%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep2 Teaser 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep2%20teaser%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep2 Teaser 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep3 Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep3 Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep3 Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep3 Teaser 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep3 Teaser 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep3 Teaser 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep3 Teaser 3, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%203.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep3 Teaser 3">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%203.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep3 Teaser 3</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep3 Teaser 4, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%204.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep3 Teaser 4">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep3%20teaser%204.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep3 Teaser 4</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep4 Teaser 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep4%20teaser%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep4 Teaser 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep4%20teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep4 Teaser 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Ep4 Teaser 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep4%20teaser%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Ep4 Teaser 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/ep4%20teaser%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Ep4 Teaser 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Get Rowdy Get Low Canvas, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/get%20rowdy%20get%20low%20canvas.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Get Rowdy Get Low Canvas">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/get%20rowdy%20get%20low%20canvas.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Get Rowdy Get Low Canvas</div></div>
     </div>
-    <div class="wi wi-video" aria-label="How It Feels 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/how%20it%20feels%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="How It Feels 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/how%20it%20feels%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">How It Feels 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="How It Feels 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/how%20it%20feels%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="How It Feels 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/how%20it%20feels%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">How It Feels 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Krys Kareem 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/krys%20kareem%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Krys Kareem 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/krys%20kareem%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Krys Kareem 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Krys Kareem, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/krys%20kareem.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Krys Kareem">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/krys%20kareem.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Krys Kareem</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Lost My Mind SMALL, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/lost%20my%20mind%20SMALL.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Lost My Mind SMALL">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/lost%20my%20mind%20SMALL.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Lost My Mind SMALL</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Miami Reel 3, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/miami%20reel%203.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Miami Reel 3">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/miami%20reel%203.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Miami Reel 3</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Muffin 60sec, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/muffin%2060sec.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Muffin 60sec">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/muffin%2060sec.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Muffin 60sec</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Pinball Rowdy Hop Reel, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/pinball%20rowdy%20hop%20reel.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Pinball Rowdy Hop Reel">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/pinball%20rowdy%20hop%20reel.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Pinball Rowdy Hop Reel</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 1, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%201.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 1">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 1</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 2</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 4, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%204.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 4">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%204.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 4</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Reel 5, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%205.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Reel 5">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/reel%205.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Reel</div><div class="wtitle">Reel 5</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Saddle Up Mv Vertical, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/saddle%20up%20mv%20vertical.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Saddle Up Mv Vertical">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/saddle%20up%20mv%20vertical.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Music Video</div><div class="wtitle">Saddle Up Mv Vertical</div></div>
     </div>
-    <div class="wi wi-video" aria-label="Salguero 2, autoplaying">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/salguero%202.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="wi wi-video" aria-label="Salguero 2">
+      <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/salguero%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Video</div><div class="wtitle">Salguero 2</div></div>
     </div>
   </div>
@@ -502,6 +514,42 @@
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && lb.classList.contains('is-open')) closeVideo();
   });
+})();
+</script>
+
+<!-- Full Reel Library: loads and plays each video only once it scrolls
+     into view, and pauses it again once it scrolls out. Keeps everything
+     visible on screen playing together without loading all 51 videos
+     (~3.5GB) at once on page load. -->
+<script>
+(function(){
+  var vids = document.querySelectorAll('.video-wall video[data-src]');
+  if (!vids.length) return;
+  if (!('IntersectionObserver' in window)){
+    // very old browser fallback: just load everything
+    vids.forEach(function(v){
+      v.src = v.getAttribute('data-src');
+      v.removeAttribute('data-src');
+    });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var v = entry.target;
+      if (entry.isIntersecting){
+        if (v.hasAttribute('data-src')){
+          v.src = v.getAttribute('data-src');
+          v.removeAttribute('data-src');
+          v.load();
+        }
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){ /* autoplay blocked - ignore */ });
+      } else {
+        v.pause();
+      }
+    });
+  }, { root: null, rootMargin: '200px 0px', threshold: 0.15 });
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 
