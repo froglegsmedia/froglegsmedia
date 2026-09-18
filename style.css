@@ -346,6 +346,11 @@ h2.light span{color:var(--gb)}
   transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.25s;
 }
 .svc-card:hover{background:#fdfcf9;transform:translateY(-5px);box-shadow:0 1px 0 rgba(13,22,8,0.05),0 26px 40px -18px rgba(13,22,8,0.34)}
+/* Cards with no CTA (nothing to bottom-anchor to): center the content
+   block instead, so uneven description lengths read as breathing room
+   rather than a dead gap under short cards. */
+.svc-grid-flat .svc-card{justify-content:center}
+.svc-grid-flat .svc-desc{flex-grow:0;margin-bottom:1.1rem}
 .svc-top{
   height:5px;position:absolute;bottom:0;left:1.6rem;right:2.4rem;
   border-radius:3px;opacity:0.4;
