@@ -155,7 +155,6 @@
   <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">&times;</button>
   <div class="lightbox-inner">
     <img class="lightbox-img" id="lightbox-img" src="" alt="">
-    <p class="lightbox-caption" id="lightbox-caption"></p>
   </div>
 </div>
 
@@ -164,14 +163,12 @@
   var items = document.querySelectorAll('.gallery-item');
   var lightbox = document.getElementById('lightbox');
   var lbImg = document.getElementById('lightbox-img');
-  var lbCaption = document.getElementById('lightbox-caption');
   var lbClose = document.getElementById('lightbox-close');
   if (!items.length || !lightbox) return;
 
   function open(item){
     lbImg.src = item.getAttribute('data-img') || '';
     lbImg.alt = item.getAttribute('data-caption') || '';
-    lbCaption.textContent = item.getAttribute('data-caption') || '';
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
