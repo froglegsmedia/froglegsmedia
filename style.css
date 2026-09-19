@@ -604,6 +604,9 @@ h2.light span{color:var(--gb)}
 .cb-dot{width:5px;height:5px;border-radius:50%;background:var(--gb);flex-shrink:0}
 .wbg{position:absolute;inset:0;transition:transform 0.7s ease}
 .wi:hover .wbg{transform:scale(1.04)}
+/* self-hosted (non-YouTube) autoplaying video tiles */
+.wi-video{cursor:default}
+.wi-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;background:#0d1608}
 .wo{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(17,20,8,0.92) 0%,transparent 55%);
