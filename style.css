@@ -1146,15 +1146,15 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .video-placeholder{margin-top:0;}
 }
 
-/* Company story: "Finding Your Frog Legs" stages illustration */
+/* Company story: "Finding Your Frog Legs" stages illustration -
+   now its own section (previously tacked onto the bottom of #story),
+   so it just needs the horizontal centering, not extra top margin on
+   top of the section's own padding. */
 .frog-legs-stages{
-  max-width:1000px;margin:4.5rem auto 0;
+  max-width:1000px;margin:0 auto;
 }
 .frog-legs-stages img{
   width:100%;height:auto;display:block;
-}
-@media(max-width:640px){
-  .frog-legs-stages{margin-top:3rem}
 }
 
 /* Company story: click-to-play frog for the "Frog Legs" song */
