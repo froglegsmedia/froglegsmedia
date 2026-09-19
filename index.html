@@ -230,21 +230,12 @@
   </div>
 
   <div class="work-grid">
-    <button class="wi" type="button" data-video-id="r4Po0Tuho9A" aria-label="Play the Frog Legs Media reel">
-      <div class="wbg" style="background:url('https://img.youtube.com/vi/r4Po0Tuho9A/maxresdefault.jpg') center/cover"></div>
-      <div class="play"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M2 1.5L14 9L2 16.5V1.5Z" fill="#7CBF39"></path></svg></div>
-      <div class="wo"><div class="wcat">Production Reel</div><div class="wtitle">Reel</div></div>
-    </button>
+    <div class="wi wi-video" aria-label="Frog Legs Media reel">
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/FLM%20Reel%202025.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <div class="wo"><div class="wcat">Production Reel</div><div class="wtitle">FLM Reel 2025</div></div>
+    </div>
   </div>
 </section>
-
-<!-- VIDEO LIGHTBOX -->
-<div class="video-lightbox" id="video-lightbox">
-  <button class="video-lightbox-close" id="video-lightbox-close" type="button" aria-label="Close video">&times;</button>
-  <div class="video-lightbox-inner">
-    <div class="video-lightbox-frame" id="video-lightbox-frame"></div>
-  </div>
-</div>
 
 <!-- CTA BAND -->
 <section class="cta-band">
@@ -256,38 +247,6 @@
     </div>
   </div>
 </section>
-
-<script>
-(function(){
-  var lb = document.getElementById('video-lightbox');
-  var frame = document.getElementById('video-lightbox-frame');
-  var closeBtn = document.getElementById('video-lightbox-close');
-  if (!lb || !frame || !closeBtn) return;
-
-  function openVideo(id){
-    frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-    lb.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeVideo(){
-    lb.classList.remove('is-open');
-    frame.innerHTML = '';
-    document.body.style.overflow = '';
-  }
-  document.querySelectorAll('.wi[data-video-id]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      openVideo(btn.getAttribute('data-video-id'));
-    });
-  });
-  closeBtn.addEventListener('click', closeVideo);
-  lb.addEventListener('click', function(e){
-    if (e.target === lb) closeVideo();
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeVideo();
-  });
-})();
-</script>
 
 <script>
 (function(){
