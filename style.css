@@ -1601,6 +1601,9 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   background:linear-gradient(160deg,#1c2b12,#0d1608);
   display:flex;align-items:center;justify-content:center;
 }
+.vid-vertical-screen video,.vid-16x9-screen video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
 .vid-placeholder-badge{
   display:flex;flex-direction:column;align-items:center;gap:0.7rem;color:rgba(252,249,244,0.55);
 }
@@ -1622,12 +1625,21 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   -webkit-overflow-scrolling:touch;
 }
 .av-card{
-  flex:0 0 auto;width:190px;aspect-ratio:3/4;border-radius:14px;
-  position:relative;scroll-snap-align:start;
+  flex:0 0 auto;width:190px;aspect-ratio:3/4;border-radius:14px;overflow:hidden;
+  position:relative;scroll-snap-align:start;background:linear-gradient(165deg,#1c2b12,#0d1608);
   display:flex;align-items:flex-end;justify-content:center;padding:1rem;
 }
-.av-card .vid-play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px}
+.av-card video,.av-card img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+}
+.av-card::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(13,22,8,0) 55%,rgba(13,22,8,0.65) 100%);
+  pointer-events:none;
+}
+.av-card .vid-play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;z-index:2}
 .av-card .vid-play-circle svg{width:16px;height:16px}
+.av-card .reel-card-tag{position:relative;z-index:2}
 .reel-card-tag{
   font-family:var(--fd);font-size:0.62rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
   color:rgba(252,249,244,0.92);background:rgba(13,22,8,0.4);padding:0.35rem 0.7rem;border-radius:999px;
@@ -1674,8 +1686,9 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   transition:background 0.2s ease;
 }
 .ig-profile-btn:hover{background:var(--gb)}
-.reel-thumb{position:relative;aspect-ratio:4/5;display:block}
+.reel-thumb{position:relative;aspect-ratio:4/5;display:block;overflow:hidden}
 .reel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.reel-thumb video{width:100%;height:100%;object-fit:cover;display:block;background:var(--black)}
 .reel-play{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:42px;height:42px;border-radius:50%;
