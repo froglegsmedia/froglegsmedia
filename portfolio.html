@@ -42,18 +42,6 @@
     <h1>Recent<br><em>Projects.</em></h1>
     <p class="hero-sub">We work with all sizes of companies, from major corporations to local businesses and non-profits. A sample of what that's looked like lately.</p>
   </div>
-  <div class="hero-hop-track" aria-hidden="true">
-    <div class="hero-lilypad" style="left:16.666%">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/><path d="M50,50 L90,34 L90,66 Z" class="lp-notch"/></svg>
-    </div>
-    <div class="hero-lilypad" style="left:50%">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/><path d="M50,50 L90,34 L90,66 Z" class="lp-notch"/></svg>
-    </div>
-    <div class="hero-lilypad" style="left:83.333%">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40"/><path d="M50,50 L90,34 L90,66 Z" class="lp-notch"/></svg>
-    </div>
-    <img class="hero-hop-frog" src="frog-leap.png" alt="">
-  </div>
 </section>
 
 <!-- TICKER -->
@@ -104,139 +92,34 @@
 
 <!-- WORK -->
 <!--
-  NOTE FOR FROG LEGS MEDIA: no YouTube embeds on this page anymore - every
-  video here is self-hosted (from your Cloudflare R2 bucket) and none of
-  them autoplay. Hover over a tile (or tap it on a touchscreen) and it
-  starts playing; move away (or tap again) and it pauses. See the script
-  near the bottom of this page for how that's wired up.
+  NOTE FOR FROG LEGS MEDIA: this is one continuous wall of every real video
+  you have (pulled from your Cloudflare R2 bucket) instead of a curated
+  grid of named client cards. It's built to feel alive without being
+  heavy: nothing loads or plays until a tile scrolls into view, and it
+  pauses AND fully unloads again once it scrolls back out - so however
+  many videos happen to be on screen at once are the only ones ever using
+  bandwidth, no matter how many are in the wall total. See the script
+  near the bottom of the page for exactly how that works.
 
-  The tiles marked "wi-placeholder" are slots ready for your real videos
-  and photos. To fill one in:
-  - Video (uploaded file, e.g. from your Cloudflare R2 bucket): use a
-    "wi wi-video" div with a <video data-src="..." muted loop playsinline
-    preload="none"> inside, like the Boss Ladies / Pinball Pizza tiles
-    and the whole "Full Reel Library" section further down the page. Leave
-    off autoplay/src - the hover script below picks it up automatically.
-    Just point data-src at the file's public URL (URL-encode spaces as %20).
-  - Photo: use data-image="your-photo.jpg" on a plain .wi button with a
-    .wbg div pointing at that same image. Clicking it opens the photo
-    full-size in the lightbox automatically.
-  The grid repeats a 1 full-width + 3 one-third pattern every 4 tiles, so
-  you can keep adding tiles in groups of 4 and the layout keeps working.
-  The "Vertical & Short-Form" strip below the grid is a separate row where
-  every tile shares the same tall 9:16 shape, for Reels/TikTok/Shorts-style
-  clips - keep new vertical tiles there rather than in the main grid, since
-  mixing a tall tile into the main grid leaves gaps under its neighbors.
+  To add another video later: copy one ".wi wi-video" block below and
+  point its <video data-src> at the new file's public R2 URL (URL-encode
+  spaces as %20). Leave off "src" and "autoplay" - the script picks it up
+  automatically the first time it scrolls into view. Mixed vertical and
+  landscape clips both work fine side by side; the wall is a CSS masonry
+  layout that keeps each tile at the video's real aspect ratio instead of
+  cropping it.
 -->
-<section id="portfolio-work" style="background:var(--gray)">
-  <div class="work-grid">
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#6BA641,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">TikTok Shop</div>
-      <div class="ph-sub">Video &middot; Commercial</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2BB13,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">SC Fest</div>
-      <div class="ph-sub">Photo &middot; Event Coverage</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2845C,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">Mount of Angels</div>
-      <div class="ph-sub">Photo &middot; Event Coverage</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#7CBF39,#131d0c)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">Fitness &amp; Finance</div>
-      <div class="ph-sub">Video &middot; Commercial</div>
-    </button>
-
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2845C,#131d0c)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">Billy Ray Cyrus</div>
-      <div class="ph-sub">Video &middot; Music Video</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#6BA641,#131d0c)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">Pinball Pizza</div>
-      <div class="ph-sub">Photo &middot; Product</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2BB13,#131d0c)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">Ultra Records</div>
-      <div class="ph-sub">Photo &middot; Portrait</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#7CBF39,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">Black Eyed Peas</div>
-      <div class="ph-sub">Video &middot; Music Video</div>
-    </button>
-
+<section id="portfolio-wall" style="background:var(--black)">
+  <div class="eyebrow dark-eyebrow" style="max-width:1400px;margin:0 auto 1.4rem;padding:0 2rem">The Work, All of It</div>
+  <div class="video-wall">
     <div class="wi wi-video" aria-label="Boss Ladies brand campaign">
       <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Reel%202.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Brand Campaign</div><div class="wtitle">Boss Ladies</div></div>
     </div>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2845C,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">Ultra Records</div>
-      <div class="ph-sub">Video &middot; Music Video</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2BB13,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">Black Eyed Peas</div>
-      <div class="ph-sub">Photo &middot; Portrait</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#7CBF39,#131d0c)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
-      <div class="ph-label">Billy Ray Cyrus</div>
-      <div class="ph-sub">Photo &middot; Behind the Scenes</div>
-    </button>
-  </div>
-
-  <div class="eyebrow dark-eyebrow vertical-reels-label">Vertical &amp; Short-Form</div>
-  <div class="vertical-reels">
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#6BA641,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">TikTok Shop</div>
-      <div class="ph-sub">Vertical Reel</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2BB13,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">SC Fest</div>
-      <div class="ph-sub">Vertical Reel</div>
-    </button>
-    <button class="wi wi-placeholder" type="button" style="background:linear-gradient(165deg,#F2845C,#0d1608)" tabindex="-1" aria-hidden="true">
-      <div class="ph-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div>
-      <div class="ph-label">Boss Ladies</div>
-      <div class="ph-sub">Vertical Reel</div>
-    </button>
     <div class="wi wi-video" aria-label="Pinball Pizza reel">
       <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Pinball%2050th%20Reel%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Vertical Reel</div><div class="wtitle">Pinball Pizza</div></div>
     </div>
-  </div>
-</section>
-
-<!-- FULL VIDEO VAULT — every video currently in the Cloudflare R2 bucket.
-     Mixed vertical/landscape sources are handled by a CSS-columns masonry
-     layout (each tile keeps its real aspect ratio instead of being
-     cropped), so it works regardless of orientation.
-
-     None of these autoplay - with 51 videos that would mean loading
-     everything at once, which is a lot of data. Instead each <video>
-     holds its URL in data-src (not src) and starts with no preload; the
-     hover script near the bottom of this page sets the real src and calls
-     play() when the mouse enters a tile (or it's tapped, on touch
-     devices), and pauses it again on mouse-leave. Nothing loads until
-     someone actually hovers/taps it.
-
-     To add a new one later: copy a ".wi wi-video" block below and point
-     its <video data-src> at the new file's R2 URL (URL-encode spaces as
-     %20) - leave off autoplay/src, the hover script picks it up
-     automatically. -->
-<section id="portfolio-vault" style="background:var(--black)">
-  <div class="eyebrow dark-eyebrow" style="max-width:1400px;margin:0 auto 1.4rem;padding:0 2rem">The Full Reel Library</div>
-  <div class="video-wall">
     <div class="wi wi-video" aria-label="Boss Ladies Teaser 1">
       <video data-src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/Boss%20Ladies%20Teaser%201.mp4" muted loop playsinline preload="none"></video>
       <div class="wo"><div class="wcat">Teaser</div><div class="wtitle">Boss Ladies Teaser 1</div></div>
@@ -443,7 +326,6 @@
     </div>
   </div>
 </section>
-
 <!-- VIDEO LIGHTBOX -->
 <div class="video-lightbox" id="video-lightbox">
   <button class="video-lightbox-close" id="video-lightbox-close" type="button" aria-label="Close video">&times;</button>
@@ -486,44 +368,66 @@
 })();
 </script>
 
-<!-- Hover-to-play: every ".wi-video" tile on this page (the curated Boss
-     Ladies / Pinball Pizza tiles above, and all 51 in the Full Reel
-     Library) starts paused with no video loaded. Hovering a tile loads
-     its data-src (first hover only - after that it just plays/pauses) and
-     plays it; moving the mouse away pauses it and rewinds to the start.
-     On touchscreens (no real hover), tapping a tile toggles play/pause
-     the same way. -->
+<!-- Video wall playback: every ".wi-video" tile starts with no video loaded
+     at all (its URL sits in data-src, not src). An IntersectionObserver
+     watches every tile - the moment one scrolls into view it loads and
+     plays automatically (no hover/click needed, so scrolling through
+     genuinely looks like a wall of videos all playing at once), and the
+     moment it scrolls back out, playback stops AND the source is torn
+     back down (removeAttribute + load()) so the browser drops the
+     buffered data instead of holding onto it. That's what keeps this
+     "lightweight" even with 50+ source videos on the page: at any given
+     moment, only whatever's actually on screen (plus a small buffer just
+     above/below the viewport) is ever using network or memory. Scrolling
+     back up to something you already saw just reloads it. -->
 <script>
 (function(){
   var tiles = document.querySelectorAll('.wi-video');
   if (!tiles.length) return;
+  var vids = [];
+  tiles.forEach(function(tile){
+    var v = tile.querySelector('video');
+    if (v) vids.push(v);
+  });
+  if (!vids.length) return;
 
-  function loadIfNeeded(v){
+  if (!('IntersectionObserver' in window)){
+    // very old browser fallback: just load everything, don't autoplay
+    vids.forEach(function(v){
+      if (v.hasAttribute('data-src')){
+        v.src = v.getAttribute('data-src');
+        v.removeAttribute('data-src');
+      }
+    });
+    return;
+  }
+
+  function loadAndPlay(v){
     if (v.hasAttribute('data-src')){
       v.src = v.getAttribute('data-src');
       v.removeAttribute('data-src');
       v.load();
     }
-  }
-  function play(v){
-    loadIfNeeded(v);
     var p = v.play();
     if (p && p.catch) p.catch(function(){ /* autoplay blocked - ignore */ });
   }
-  function pause(v){
+  function pauseAndUnload(v){
     v.pause();
-    try { v.currentTime = 0; } catch(e){ /* not loaded yet - ignore */ }
+    if (v.src){
+      v.setAttribute('data-src', v.getAttribute('src') || v.currentSrc);
+      v.removeAttribute('src');
+      v.load();
+    }
   }
 
-  tiles.forEach(function(tile){
-    var v = tile.querySelector('video');
-    if (!v) return;
-    tile.addEventListener('mouseenter', function(){ play(v); });
-    tile.addEventListener('mouseleave', function(){ pause(v); });
-    tile.addEventListener('touchstart', function(){
-      if (v.paused) play(v); else pause(v);
-    }, { passive: true });
-  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) loadAndPlay(entry.target);
+      else pauseAndUnload(entry.target);
+    });
+  }, { root: null, rootMargin: '150px 0px', threshold: 0.15 });
+
+  vids.forEach(function(v){ io.observe(v); });
 })();
 </script>
 
