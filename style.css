@@ -541,10 +541,6 @@ h2.light span{color:var(--gb)}
 
 /* WORK */
 #work{background:var(--gray);padding-top:8rem;padding-bottom:8rem}
-/* Portfolio page's full-page gallery keeps its own original, more
-   spacious padding — it's a single standalone section, not part of a
-   sequence that needs even inter-section spacing. */
-#portfolio-work{background:var(--gray);position:relative}
 #work .eyebrow{color:var(--gb)}
 #work .eyebrow::before{background:var(--gb)}
 .w-header{
@@ -608,29 +604,6 @@ h2.light span{color:var(--gb)}
 .cb-dot{width:5px;height:5px;border-radius:50%;background:var(--gb);flex-shrink:0}
 .wbg{position:absolute;inset:0;transition:transform 0.7s ease}
 .wi:hover .wbg{transform:scale(1.04)}
-/* autoplaying inline video tiles (no click needed - already playing) */
-.wi-embed{cursor:default}
-.wi-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
-/* self-hosted (non-YouTube) autoplaying video tiles */
-.wi-video{cursor:default}
-.wi-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;background:#0d1608}
-
-/* THE WORK WALL — CSS-columns masonry so a mix of vertical and landscape
-   videos each keep their real aspect ratio (no cropping, no guessing
-   orientation ahead of time). More, smaller columns than a typical grid
-   on purpose - the point is a lot of tiles playing at once. */
-.video-wall{
-  column-count:5;column-gap:2px;
-  max-width:1600px;margin:0 auto;padding:0 2px;
-}
-.video-wall .wi{break-inside:avoid;margin-bottom:2px;display:block}
-.video-wall .wi-video video{
-  position:static;inset:auto;width:100%;height:auto;
-  display:block;object-fit:unset;
-}
-@media(max-width:1300px){.video-wall{column-count:4}}
-@media(max-width:1100px){.video-wall{column-count:3}}
-@media(max-width:700px){.video-wall{column-count:2;column-gap:1px}.video-wall .wi{margin-bottom:1px}}
 .wo{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(17,20,8,0.92) 0%,transparent 55%);
@@ -2034,18 +2007,6 @@ input[type="range"]::-moz-range-thumb{
 }
 
 /* SITEWIDE FROG DECORATIONS — one distinct treatment per page */
-.portfolio-hop-frog{
-  position:absolute;top:2rem;left:0;width:88px;height:auto;
-  z-index:2;pointer-events:none;
-  animation:frog-hop 4.5s linear infinite;
-}
-.portfolio-hop-frog img{
-  width:100%;height:auto;display:block;
-  filter:drop-shadow(0 8px 6px rgba(13,22,8,0.3));
-}
-@media(max-width:900px){
-  .portfolio-hop-frog{display:none}
-}
 
 .contact-l{position:relative}
 .contact-bounce-frog{
