@@ -1149,7 +1149,11 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 /* Company story: "Finding Your Frog Legs" stages illustration -
    now its own section (previously tacked onto the bottom of #story),
    so it just needs the horizontal centering, not extra top margin on
-   top of the section's own padding. */
+   top of the section's own padding. Bottom padding is zeroed out since
+   the very next section (#lead) already contributes its own top padding
+   -- without this, the gap below the illustration (this section's bottom
+   padding + #lead's top padding) reads as roughly double the gap above it. */
+#frog-legs-stages-section{padding-bottom:0}
 .frog-legs-stages{
   max-width:1000px;margin:0 auto;
 }
