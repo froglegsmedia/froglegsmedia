@@ -1002,17 +1002,23 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
 .hero-playlist-sub{font-size:0.76rem;color:rgba(252,249,244,0.5);margin-top:0.15rem}
 .hero-playlist-tracks{display:flex;flex-direction:column;gap:0.3rem}
 .hpt-row{
-  display:flex;align-items:center;gap:0.8rem;
+  display:flex;align-items:center;gap:0.8rem;width:100%;
   padding:0.55rem 0.5rem;border-radius:8px;
   transition:background 0.2s;
+  background:none;border:none;font:inherit;text-align:left;cursor:pointer;color:inherit;
 }
 .hpt-row:hover{background:rgba(255,255,255,0.06)}
 .hpt-play{
   width:26px;height:26px;flex-shrink:0;border-radius:50%;
   border:1.5px solid rgba(252,249,244,0.3);
   display:flex;align-items:center;justify-content:center;color:rgba(252,249,244,0.6);
+  transition:background 0.2s,border-color 0.2s,color 0.2s;
 }
 .hpt-play svg{width:10px;height:10px}
+.hpt-play .hpt-icon-pause{display:none}
+.hpt-row.is-playing .hpt-play{background:var(--gb);border-color:var(--gb);color:var(--black)}
+.hpt-row.is-playing .hpt-icon-play{display:none}
+.hpt-row.is-playing .hpt-icon-pause{display:block}
 .hpt-info{flex:1;min-width:0}
 .hpt-name{font-family:var(--fd);font-weight:600;font-size:0.82rem;color:var(--cream)}
 .hpt-meta{font-size:0.7rem;color:rgba(252,249,244,0.4);margin-top:0.1rem}
