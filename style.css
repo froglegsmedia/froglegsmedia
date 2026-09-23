@@ -730,15 +730,16 @@ body.page-contact #contact{flex:1 0 auto}
 body.page-contact #book-direct{flex-shrink:0}
 body.page-contact footer{flex-shrink:0}
 
-/* BOOK DIRECTLY (Calendly embed) */
+/* BOOK DIRECTLY (Google Calendar appointment schedule embed) */
 #book-direct{background:var(--cream);padding-top:2rem;padding-bottom:6rem;position:relative}
-.calendly-card{
+.booking-card{
   max-width:900px;margin:2.5rem auto 0;background:#fff;border-radius:18px;
   padding:0.6rem;box-shadow:0 20px 45px rgba(13,22,8,0.08);border:1px solid var(--border);
   overflow:hidden;
 }
+.booking-card iframe{display:block;border-radius:14px}
 @media(max-width:700px){
-  .calendly-card{border-radius:12px}
+  .booking-card{border-radius:12px}
   #book-direct{padding-bottom:4.5rem}
 }
 
