@@ -92,28 +92,48 @@
     </div>
     <div class="vid-16x9-frame">
       <div class="vid-16x9-screen">
-        <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Ollie-Gabriel-Something-New-From-NBC-Songland-Official-Music-Video.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Ollie-Gabriel-Something-New-From-NBC-Songland-Official-Music-Video.mp4" autoplay muted loop playsinline preload="metadata" style="transform:scale(1.4)"></video>
       </div>
     </div>
   </div>
   <div class="reel-carousel">
     <div class="av-card">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/His-Dream-Of-Lions-Danger-Close-Official-Video-.mp4" autoplay muted loop playsinline preload="metadata" style="transform:scale(1.36)"></video>
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/His-Dream-Of-Lions-Danger-Close-Official-Video-.mp4" muted loop playsinline preload="none" style="transform:scale(1.36)"></video>
     </div>
     <div class="av-card">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Bei%20Bei%20-%20Ashes%20of%20Love%20HD%20SMALL.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Bei%20Bei%20-%20Ashes%20of%20Love%20HD%20SMALL.mp4" muted loop playsinline preload="none"></video>
     </div>
     <div class="av-card">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Ada-Pasternak-Feelin-Good-Official-Music-Video-.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/Ada-Pasternak-Feelin-Good-Official-Music-Video-.mp4" muted loop playsinline preload="none"></video>
     </div>
     <div class="av-card">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/CVBZ-Young-Acoustic-Performance.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/CVBZ-Young-Acoustic-Performance.mp4" muted loop playsinline preload="none"></video>
     </div>
     <div class="av-card">
-      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/lost%20my%20mind%20SMALL.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/videos/lost%20my%20mind%20SMALL.mp4" muted loop playsinline preload="none"></video>
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  var vids = document.querySelectorAll('.reel-carousel video');
+  if (!vids.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var v = entry.target;
+      if (entry.isIntersecting) {
+        if (v.preload === 'none') v.preload = 'auto';
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){});
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '200px 0px' });
+  vids.forEach(function(v){ obs.observe(v); });
+})();
+</script>
 
 <!-- HOW THE PROGRAM WORKS -->
 <section id="services">
