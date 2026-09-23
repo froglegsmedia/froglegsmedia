@@ -116,31 +116,15 @@
 })();
 </script>
 
-<!-- BOOK DIRECTLY (Google Calendar appointment schedule embed) -->
-<!--
-  NOTE FOR FROG LEGS MEDIA: swap the iframe src below for your real Google
-  Calendar booking page. To get it (all free, no Workspace subscription
-  needed):
-    1. Open Google Calendar (calendar.google.com) with the account you
-       want bookings to land on.
-    2. Click "Create" (top left) -> "Appointment schedule".
-    3. Set your event name (e.g. "Discovery Call"), duration, available
-       hours, and check "Add Google Meet video conferencing" so a Meet
-       link gets created automatically for every booking.
-    4. Save, then open the schedule and click "Share" (or "Go to booking
-       page" -> share icon) -> copy the embed/iframe code it gives you.
-    5. Paste just the URL from that code's src="..." in place of the
-       placeholder below.
-  Everything else on this section already works as-is once that URL is
-  real.
--->
+<!-- BOOK DIRECTLY (Calendly inline embed) -->
 <section id="book-direct">
   <h2>Or Just Grab<br><span>A Time.</span></h2>
   <p class="section-intro">Skip the form if you'd rather. <strong>Pick a slot that works for you</strong> and we'll take it from there.</p>
   <div class="booking-card">
-    <iframe src="https://calendar.google.com/calendar/appointments/schedules/REPLACE-WITH-YOUR-SCHEDULE-ID?gv=true" style="border:0" width="100%" height="700" frameborder="0"></iframe>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/tyler-froglegsmedia/30min" style="min-width:280px;height:700px;width:100%;"></div>
   </div>
 </section>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
 <footer>
   <div class="fl"><img src="FLM LOGO CRAYON small.jpg" alt="Frog Legs Media" style="height:36px;width:auto;opacity:0.8"></div>
