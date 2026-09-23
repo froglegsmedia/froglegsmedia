@@ -139,40 +139,55 @@
       </div>
     </div>
     <div class="hero-playlist-tracks">
-      <div class="hpt-row">
-        <span class="hpt-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+      <button class="hpt-row" type="button" data-track="1" aria-label="Play The Flo">
+        <span class="hpt-play">
+          <svg class="hpt-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          <svg class="hpt-icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </span>
         <div class="hpt-info">
-          <div class="hpt-name">Track 01</div>
-          <div class="hpt-meta">Coming soon</div>
+          <div class="hpt-name">The Flo</div>
+          <div class="hpt-meta">Kori Lynn</div>
         </div>
         <span class="hpt-time">&ndash;:&ndash;</span>
-      </div>
-      <div class="hpt-row">
-        <span class="hpt-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+        <audio class="hpt-audio" preload="metadata" src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/music/02%20-%20Kori%20Lynn%20-%20The%20Flo.mp3"></audio>
+      </button>
+      <button class="hpt-row" type="button" data-track="2" aria-label="Play My Heart">
+        <span class="hpt-play">
+          <svg class="hpt-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          <svg class="hpt-icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </span>
         <div class="hpt-info">
-          <div class="hpt-name">Track 02</div>
-          <div class="hpt-meta">Coming soon</div>
+          <div class="hpt-name">My Heart</div>
+          <div class="hpt-meta">Open/High Mix</div>
         </div>
         <span class="hpt-time">&ndash;:&ndash;</span>
-      </div>
-      <div class="hpt-row">
-        <span class="hpt-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+        <audio class="hpt-audio" preload="metadata" src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/music/04-LANDR-My%20Heart-Open-High.mp3"></audio>
+      </button>
+      <button class="hpt-row" type="button" data-track="3" aria-label="Play Rowdy">
+        <span class="hpt-play">
+          <svg class="hpt-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          <svg class="hpt-icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </span>
         <div class="hpt-info">
-          <div class="hpt-name">Track 03</div>
-          <div class="hpt-meta">Coming soon</div>
+          <div class="hpt-name">Rowdy</div>
+          <div class="hpt-meta">Original Score</div>
         </div>
         <span class="hpt-time">&ndash;:&ndash;</span>
-      </div>
-      <div class="hpt-row">
-        <span class="hpt-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg></span>
+        <audio class="hpt-audio" preload="metadata" src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/music/06-Rowdy.mp3"></audio>
+      </button>
+      <button class="hpt-row" type="button" data-track="4" aria-label="Play Mr. Charlie's">
+        <span class="hpt-play">
+          <svg class="hpt-icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          <svg class="hpt-icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </span>
         <div class="hpt-info">
-          <div class="hpt-name">Track 04</div>
-          <div class="hpt-meta">Coming soon</div>
+          <div class="hpt-name">Mr. Charlie's</div>
+          <div class="hpt-meta">Custom Jingle</div>
         </div>
         <span class="hpt-time">&ndash;:&ndash;</span>
-      </div>
+        <audio class="hpt-audio" preload="metadata" src="https://pub-399adb7989b14a199cb648b09e64e0c4.r2.dev/music/09-Mr.%20Charlie's.wav"></audio>
+      </button>
     </div>
-    <p class="hero-playlist-note">Full playlist dropping soon</p>
   </div>
 </section>
 
@@ -198,6 +213,45 @@
   audio.addEventListener('play', function(){ setPlaying(true); });
   audio.addEventListener('pause', function(){ setPlaying(false); });
   audio.addEventListener('ended', function(){ setPlaying(false); });
+})();
+</script>
+
+<script>
+(function(){
+  var rows = document.querySelectorAll('.hero-playlist-tracks .hpt-row');
+  if (!rows.length) return;
+
+  function formatTime(seconds){
+    if (!isFinite(seconds) || seconds <= 0) return '–:–';
+    var m = Math.floor(seconds / 60);
+    var s = Math.floor(seconds % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  rows.forEach(function(row){
+    var audio = row.querySelector('.hpt-audio');
+    var timeEl = row.querySelector('.hpt-time');
+    if (!audio || !timeEl) return;
+
+    audio.addEventListener('loadedmetadata', function(){
+      timeEl.textContent = formatTime(audio.duration);
+    });
+    audio.addEventListener('play', function(){ row.classList.add('is-playing'); });
+    audio.addEventListener('pause', function(){ row.classList.remove('is-playing'); });
+    audio.addEventListener('ended', function(){ row.classList.remove('is-playing'); });
+
+    row.addEventListener('click', function(){
+      if (audio.paused){
+        rows.forEach(function(other){
+          var otherAudio = other.querySelector('.hpt-audio');
+          if (otherAudio && otherAudio !== audio && !otherAudio.paused) otherAudio.pause();
+        });
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+  });
 })();
 </script>
 
