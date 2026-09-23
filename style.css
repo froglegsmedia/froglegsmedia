@@ -1593,7 +1593,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
    height-by-content, so it reads as an actual phone, not a squashed
    frame. Scoped to .hero-phone-wrap so the artist-program page's
    phone-mock (built around its own 9:16 vertical video) is untouched. */
-.hero-phone-wrap .phone-mock{aspect-ratio:9/19.5;display:flex;flex-direction:column}
+.hero-phone-wrap .phone-mock{width:260px;aspect-ratio:9/19.5;display:flex;flex-direction:column}
 .hero-phone-wrap .phone-screen{width:100%;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
 .hero-phone-wrap .phone-content{aspect-ratio:auto;width:100%;flex:1 1 auto;min-height:0}
 .hero-phone-wrap{position:relative;display:flex;align-items:center;justify-content:center}
