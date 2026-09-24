@@ -121,10 +121,26 @@
   <h2>Or Just Grab<br><span>A Time.</span></h2>
   <p class="section-intro">Skip the form if you'd rather. <strong>Pick a slot that works for you</strong> and we'll take it from there.</p>
   <div class="booking-card">
-    <div class="calendly-inline-widget" data-url="https://calendly.com/tyler-froglegsmedia/30min" style="min-width:280px;height:1050px;width:100%;"></div>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/tyler-froglegsmedia/30min" style="min-width:280px;height:730px;width:100%;"></div>
   </div>
 </section>
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function(){
+  // Calendly posts its real rendered height as it changes (date view vs. form view, etc.)
+  // so the widget can match it exactly instead of using one fixed height with leftover
+  // blank space at the bottom.
+  window.addEventListener('message', function(e){
+    try {
+      if (e.data && e.data.event && e.data.event.indexOf('calendly') === 0 && e.data.event === 'calendly.page_height') {
+        var widget = document.querySelector('.calendly-inline-widget');
+        var h = parseInt(e.data.payload && e.data.payload.height, 10);
+        if (widget && h) { widget.style.height = h + 'px'; }
+      }
+    } catch (err) {}
+  });
+})();
+</script>
 
 <footer>
   <div class="fl"><img src="FLM LOGO CRAYON small.jpg" alt="Frog Legs Media" style="height:36px;width:auto;opacity:0.8"></div>
