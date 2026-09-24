@@ -796,7 +796,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   .nav-links li{display:block;width:100%;border-bottom:1px solid var(--border)}
   .nav-links li:last-child{border-bottom:none;padding:0.9rem 1.5rem 1.1rem}
   .nav-links a{display:block;width:100%;padding:1rem 1.5rem;font-size:1rem}
-  .nav-drop-toggle{display:block;padding:1rem 1.5rem;width:100%}
+  .nav-drop-toggle{display:block;padding:1rem 1.5rem;width:100%;font-size:1rem}
   .nav-drop::after{display:none}
   .nav-drop-menu{
     position:static;display:none;box-shadow:none;border-radius:0;margin:0;padding:0;
