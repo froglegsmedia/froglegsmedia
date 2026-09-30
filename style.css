@@ -816,7 +816,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   }
   .hero-right{order:-1;justify-content:center;width:100%;display:flex;margin:0 auto;grid-column:1}
   .hero-right .iframe-wrap, .hero-right div{margin:0 auto}
-  .hero-right img{max-width:200px;margin:0}
+  #hero .hero-right img{max-width:200px;margin:0}
   h1{font-size:2.6rem;letter-spacing:-0.02em}
   .hero-sub{font-size:0.92rem;max-width:100%;width:100%}
   .hero-logo{max-width:170px;margin:0.4rem auto 2rem}
@@ -894,7 +894,7 @@ footer p{font-size:0.74rem;color:rgba(252,249,244,0.22);font-weight:300}
   h1{font-size:2.6rem}
   h2{font-size:2rem}
   .formats-grid{grid-template-columns:1fr}
-  .hero-right img{max-width:220px}
+  #hero .hero-right img{max-width:220px}
   .contact-heading{font-size:2.2rem}
 }
 
