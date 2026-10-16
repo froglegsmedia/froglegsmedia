@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brett, you're awesome!</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../flm-favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d1608;
+  --green: #6BA641;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(242, 187, 19, 0.45), transparent 42%),
+    radial-gradient(ellipse at 96% 8%, rgba(124, 191, 57, 0.38), transparent 40%),
+    radial-gradient(ellipse at 88% 100%, rgba(242, 132, 92, 0.32), transparent 42%),
+    radial-gradient(ellipse at 4% 100%, rgba(120, 170, 255, 0.22), transparent 38%),
+    #ffffff;
+  padding: max(24px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+  overflow-x: hidden;
+}
+main {
+  position: relative;
+  z-index: 1;
+  width: min(640px, 100%);
+}
+.logo {
+  width: 148px;
+  max-width: 46%;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px;
+}
+.frog {
+  width: min(560px, 100%);
+  height: auto;
+  display: block;
+  margin: 0 auto 8px;
+}
+h1 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.15rem, 8.4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+h1 span { color: var(--green); }
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.confetti span {
+  position: absolute;
+  top: -24px;
+  opacity: 0.8;
+  border-radius: 2px;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translate3d(0, -12vh, 0) rotate(0deg); }
+  100% { transform: translate3d(18px, 112vh, 0) rotate(280deg); }
+}
+.confetti span:nth-child(1)  { left: 4%;  width: 8px;  height: 14px; background: #F2BB13; animation-duration: 11s; animation-delay: -2s; }
+.confetti span:nth-child(2)  { left: 12%; width: 7px;  height: 7px;  background: #F2845C; border-radius: 50%; animation-duration: 13s; animation-delay: -7s; }
+.confetti span:nth-child(3)  { left: 19%; width: 6px;  height: 16px; background: #7CBF39; animation-duration: 10s; animation-delay: -4s; }
+.confetti span:nth-child(4)  { left: 27%; width: 10px; height: 6px;  background: #c86bff; animation-duration: 14s; animation-delay: -9s; }
+.confetti span:nth-child(5)  { left: 35%; width: 7px;  height: 12px; background: #5aa7ff; animation-duration: 12s; animation-delay: -1s; }
+.confetti span:nth-child(6)  { left: 44%; width: 6px;  height: 6px;  background: #ff5d8f; border-radius: 50%; animation-duration: 15s; animation-delay: -6s; }
+.confetti span:nth-child(7)  { left: 53%; width: 8px;  height: 15px; background: #F2BB13; animation-duration: 11.5s; animation-delay: -8s; }
+.confetti span:nth-child(8)  { left: 61%; width: 9px;  height: 7px;  background: #7CBF39; animation-duration: 13.5s; animation-delay: -3s; }
+.confetti span:nth-child(9)  { left: 69%; width: 6px;  height: 14px; background: #F2845C; animation-duration: 10.5s; animation-delay: -5s; }
+.confetti span:nth-child(10) { left: 76%; width: 8px;  height: 8px;  background: #5aa7ff; border-radius: 50%; animation-duration: 14.5s; animation-delay: -11s; }
+.confetti span:nth-child(11) { left: 84%; width: 7px;  height: 16px; background: #ff5d8f; animation-duration: 12.5s; animation-delay: -2.5s; }
+.confetti span:nth-child(12) { left: 92%; width: 10px; height: 6px;  background: #c86bff; animation-duration: 9.5s; animation-delay: -6.5s; }
+.confetti span:nth-child(13) { left: 8%;  width: 5px;  height: 12px; background: #6BA641; animation-duration: 16s; animation-delay: -12s; }
+.confetti span:nth-child(14) { left: 48%; width: 6px;  height: 11px; background: #F2845C; animation-duration: 12s; animation-delay: -10s; }
+.confetti span:nth-child(15) { left: 88%; width: 7px;  height: 7px;  background: #F2BB13; border-radius: 50%; animation-duration: 13s; animation-delay: -4.5s; }
+.confetti span:nth-child(16) { left: 23%; width: 8px;  height: 8px;  background: #5aa7ff; animation-duration: 15.5s; animation-delay: -13s; }
+@media (prefers-reduced-motion: reduce) {
+  .confetti span { animation: none; top: 12vh; }
+}
+</style>
+</head>
+<body>
+<div class="confetti" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
+<main>
+<img class="logo" src="../flm-logo-transparent.png" alt="Frog Legs Media">
+<img class="frog" src="brett-frog.jpg" alt="Cartoon frog in a crown and sunglasses giving two thumbs up">
+<h1>Brett, you're <span>awesome!</span></h1>
+</main>
+</body>
+</html>
