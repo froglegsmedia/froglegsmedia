@@ -20,13 +20,19 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../leap-kits.css">
 <style>
-.intake{max-width:720px;margin:0 auto;padding:3rem var(--pad) 4rem}
-.intake h1{font-family:var(--fd)} .intake h3{font-family:var(--fd);margin:2rem 0 .6rem;color:var(--gb)}
-.intake label{display:block;margin:.9rem 0;font-weight:500}
-.intake input[type=text],.intake input[type=email],.intake input[type=tel],.intake input[type=url],.intake textarea{display:block;width:100%;margin-top:.35rem;padding:.7rem .8rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--black)}
-.intake fieldset{border:1px solid var(--line);border-radius:12px;padding:1rem} .intake legend{font-weight:600;padding:0 .3rem}
-.intake label.cb{margin:.4rem 0;font-weight:400} .intake .hint{font-size:.9rem;opacity:.8}
-.intake button{margin-top:1.6rem;border:0;cursor:pointer}
+.intake{max-width:720px;margin:0 auto;padding:2rem var(--pad) 4rem}
+.intake h1,.intake h2{font-family:var(--fd)} .intake h2{margin:0 0 .8rem;color:var(--gb)} .intake h2 span{display:block;font:500 .85rem var(--fb);opacity:.7;color:inherit}
+.intake label{display:block;margin:.9rem 0;font-weight:500} .intake label small{display:block;font-weight:400;opacity:.75;font-size:.85rem}
+.intake b{color:var(--orange)}
+.intake input[type=text],.intake input[type=email],.intake input[type=tel],.intake input[type=url],.intake textarea,.intake select{display:block;width:100%;margin-top:.35rem;padding:.7rem .8rem;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:16px;background:#fff;color:var(--black)}
+.intake .grp{border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;margin:1rem 0} .intake legend{font-weight:600;padding:0 .3rem}
+.intake label.cb{margin:.45rem 0;font-weight:400} .intake .hint{font-size:.9rem;opacity:.8}
+.intake .nav{display:flex;gap:.8rem;justify-content:space-between;margin-top:1.6rem} .intake .nav button{border:0;cursor:pointer}
+.btn-back,.btn-add,.btn-x{background:transparent;color:inherit;border:1px solid var(--line)!important;border-radius:999px;padding:.7rem 1.2rem;font:inherit;cursor:pointer}
+.prod{border:1px solid var(--line);border-radius:12px;padding:.6rem 1rem;margin:1rem 0} .prod h4{margin:.3rem 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--fd)}
+.btn-x{padding:.25rem .8rem;font-size:.85rem}
+.progress{position:sticky;top:0;z-index:5;background:var(--black);padding:.6rem 0;margin-bottom:1rem} .progress div{height:8px;border-radius:99px;background:rgba(124,191,57,.2);overflow:hidden} .progress i{display:block;height:100%;width:0;background:var(--gb);transition:width .3s} .progress p{margin:.3rem 0 0;font-size:.85rem;color:var(--cream)}
+.js .step{display:none} .js .step.on{display:block}
 #thanks{display:none} #thanks:target{display:block} #thanks:target ~ #intake-form{display:none}
 </style>
 </head>
@@ -38,48 +44,161 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <div id="thanks"><h1>Thank you!</h1><p>We got your answers. Your Custom Leap Kit will be in your Google Drive within 2 business days, and we will email you the link. Questions? Email <a href="mailto:tyler@froglegsmedia.com">tyler@froglegsmedia.com</a>.</p><p>Take the leap. Make a splash!</p></div>
 <div id="intake-form">
 <h1>Custom Leap Kit Intake</h1>
-<p>Thanks for your order! Fill this out so we can build your kit for your brand. It takes about 10 minutes. Fields with * are required.</p>
+<p>Thanks for your order! The more you tell us, the more your kit sounds like you and sells what you sell. Only fields with <b>*</b> are required. Skip anything that does not apply.</p>
+<div class="progress"><div><i id="bar"></i></div><p id="plbl"></p></div>
 <form action="https://formsubmit.co/tyler@froglegsmedia.com" method="POST">
 <input type="hidden" name="_subject" value="New Custom Leap Kit intake">
 <input type="hidden" name="_next" value="https://froglegsmedia.com/leap-kits/custom-intake/#thanks">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-<h3>About you</h3><label>Your name *<input type="text" name="Name" required></label>
-<label>Email *<input type="email" name="email" required></label>
-<label>Phone<input type="tel" name="Phone"></label>
-<label>Email used at checkout (for your Stripe receipt) *<input type="email" name="Stripe receipt email" required></label>
-<h3>Your business</h3><label>Business name *<input type="text" name="Business name" required></label>
-<label>Website<input type="url" name="Website" placeholder="https://"></label>
-<label>Social handles<input type="text" name="Social handles" placeholder="Instagram, Facebook, TikTok, etc."></label>
-<label>Industry *<input type="text" name="Industry" required></label>
-<label>City and service area *<input type="text" name="Location and service area" required></label>
-<label>Products and services, with prices and offers *<textarea name="Products and services" rows="4" required></textarea></label>
-<label>Who is your ideal customer? *<textarea name="Ideal customer" rows="4" required></textarea></label>
-<h3>Your goals</h3><label>Top 3 goals for your marketing *<textarea name="Top goals" rows="4" required></textarea></label>
-<fieldset><legend>Which kits or topics should we customize?</legend>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 01: Google Business Profile"> Leap Kit 01: Google Business Profile</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 02: 5-Star Reviews"> Leap Kit 02: 5-Star Reviews</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 03: AI Prompt Pack"> Leap Kit 03: AI Prompt Pack</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 04: 30-Day Social Calendar"> Leap Kit 04: 30-Day Social Calendar</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 05: Reels and TikTok Hooks"> Leap Kit 05: Reels and TikTok Hooks</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 06: New Year Marketing Reset"> Leap Kit 06: New Year Marketing Reset</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 07: 12-Month Promo Calendar"> Leap Kit 07: 12-Month Promo Calendar</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 08: Website Audit"> Leap Kit 08: Website Audit</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 09: Smartphone Video Starter"> Leap Kit 09: Smartphone Video Starter</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 10: Meta Ads Starter"> Leap Kit 10: Meta Ads Starter</label>
-<label class="cb"><input type="checkbox" name="Kits to customize" value="All 10 kits"> All 10 kits</label>
-</fieldset>
-<h3>Your brand</h3><label>Brand voice and tone (for example: friendly, bold, professional)<textarea name="Brand voice" rows="4"></textarea></label>
-<label>Brand colors and fonts<input type="text" name="Brand colors and fonts"></label>
-<p class="hint">Send your logo file by replying to the email you get from us, or email it to tyler@froglegsmedia.com.</p><label>Top competitors<textarea name="Competitors" rows="4"></textarea></label>
-<h3>Your marketing now</h3><label>What marketing are you doing now?<textarea name="Current marketing" rows="4"></textarea></label>
-<label>Monthly budget for ads<input type="text" name="Monthly ad budget" placeholder="$0, $300, $1,000, etc."></label>
-<label>Upcoming promos, events, or key dates<textarea name="Upcoming promos and dates" rows="4"></textarea></label>
-<label>Anything else we should know?<textarea name="Anything else" rows="4"></textarea></label>
-<button type="submit" class="btn-main">Send my answers</button>
+<section class="step" data-step="1"><h2><span>Step 1 of 13</span>Contact and matching</h2><label>Your name <b>*</b><input type="text" name="Name" required></label>
+<label>Your email <b>*</b><input type="email" name="email" required></label>
+<label>Best phone number<input type="tel" name="Phone"></label>
+<label>Email you used at checkout <b>*</b><small>So we can match your answers to your order.</small><input type="email" name="Stripe receipt email" required></label>
+<label>Best way to reach you<select name="Best way to reach you"><option value="">Choose one</option><option>Email</option><option>Phone call</option><option>Text</option></select></label>
+<div class="nav"><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="2"><h2><span>Step 2 of 13</span>Business basics</h2><label>Business name (as customers know it) <b>*</b><input type="text" name="Business name" required></label>
+<label>Legal name or DBA, if different<input type="text" name="Legal name or DBA"></label>
+<label>Industry or type of business <b>*</b><input type="text" name="Industry" required placeholder="Salon, plumber, cafe, gym, boutique..."></label>
+<label>Years in business<input type="text" name="Years in business"></label>
+<label>Business address (or base location)<input type="text" name="Address"></label>
+<label>City and service area <b>*</b><input type="text" name="Service area" required placeholder="For example: Austin plus 20 miles"></label>
+<label>Where do you serve customers?<select name="Customer location"><option value="">Choose one</option><option>At my location</option><option>At their location</option><option>Both</option><option>Online only</option></select></label>
+<label>Hours of operation<textarea name="Hours" rows="3" placeholder="Mon to Fri 9 to 6, Sat 10 to 4"></textarea></label>
+<label>Business phone for customers<input type="tel" name="Business phone"></label>
+<label>How customers book, order, or buy <b>*</b><input type="text" name="Booking or ordering method" required placeholder="Call, website, Square, Vagaro, walk in..."></label>
+<label>Booking or ordering link<input type="url" name="Booking link" placeholder="https://"></label>
+<label>Team size and key people (names and roles)<textarea name="Team size" rows="3"></textarea></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="3"><h2><span>Step 3 of 13</span>Brand</h2><label>Your story: how and why you started<textarea name="Brand story" rows="3"></textarea></label>
+<label>Mission or what you stand for<textarea name="Mission" rows="3"></textarea></label>
+<label>Tagline or slogan, if you have one<input type="text" name="Tagline"></label>
+<label>Brand voice <b>*</b><select name="Brand voice" required><option value="">Choose one</option><option>Friendly and warm</option><option>Bold and fun</option><option>Professional and polished</option><option>Laid back and casual</option><option>Luxury and refined</option><option>Other (describe below)</option></select></label>
+<label>Describe your voice, or paste a caption or email that sounds like you<textarea name="Voice examples" rows="3"></textarea></label>
+<label>Words and phrases to use<textarea name="Words to use" rows="3"></textarea></label>
+<label>Words, topics, or claims to avoid<textarea name="Words to avoid" rows="3"></textarea></label>
+<label>Brand colors (hex codes if you have them)<input type="text" name="Brand colors" placeholder="#6BA641, #F2BB13"></label>
+<label>Brand fonts<input type="text" name="Fonts"></label>
+<p class="hint">Logo: email your logo file (PNG or SVG works best) to tyler@froglegsmedia.com, or share a link below.</p><label>Logo or brand files link (Google Drive, Dropbox)<input type="url" name="Logo link" placeholder="https://"></label>
+<label>Photo and video style you like<textarea name="Photo style" rows="3" placeholder="Bright and clean, moody, candid, behind the scenes..."></textarea></label>
+<label>Link to your photos and videos, if any<input type="url" name="Photo library link" placeholder="https://"></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="4"><h2><span>Step 4 of 13</span>Products, services, and prices</h2><p class="hint">Add each product or service you want in your kit. Put your best sellers first.</p>
+<div id="products"></div>
+<button type="button" class="btn-add" id="add-product">+ Add another product or service</button>
+<textarea name="Products and services" id="products-out" hidden></textarea>
+<label>Packages or bundles you offer, with prices<textarea name="Packages and bundles" rows="3"></textarea></label>
+<label>Current offers or specials<textarea name="Current offers" rows="3"></textarea></label>
+<label>Discounts you are willing to run (percent off, first visit, referral...)<textarea name="Discounts" rows="3"></textarea></label>
+<label>Guarantees, warranties, or policies<textarea name="Guarantees" rows="3"></textarea></label>
+<label>Pricing notes (starting at, varies by job, deposits, payment plans)<textarea name="Pricing notes" rows="3"></textarea></label>
+<label>Average sale or ticket size<input type="text" name="Average sale" placeholder="$85"></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="5"><h2><span>Step 5 of 13</span>Customers</h2><label>Describe your ideal customer <b>*</b><textarea name="Ideal customer" rows="3" required></textarea></label>
+<label>Age, gender, income, family, location, anything that fits<textarea name="Demographics" rows="3"></textarea></label>
+<label>Problems they have when they come to you<textarea name="Pain points" rows="3"></textarea></label>
+<label>Why people hesitate or say no<textarea name="Objections" rows="3"></textarea></label>
+<label>Why customers choose you<textarea name="Why they buy" rows="3"></textarea></label>
+<label>Questions customers ask most (with your answers)<textarea name="Customer FAQs" rows="3"></textarea></label>
+<label>Favorite reviews or testimonials (paste a few)<textarea name="Testimonials" rows="3"></textarea></label>
+<label>Link to your reviews<input type="url" name="Reviews link" placeholder="https://"></label>
+<label>When are customers happiest with you?<select name="Best time to ask for a review"><option value="">Choose one</option><option>Right after the visit or job</option><option>A day or two later</option><option>After they see results</option><option>Not sure</option></select></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="6"><h2><span>Step 6 of 13</span>Competitors and what sets you apart</h2><label>Top 3 competitors (names and websites)<textarea name="Competitors" rows="3"></textarea></label>
+<label>What competitors do well<textarea name="What they do well" rows="3"></textarea></label>
+<label>What makes you different or better <b>*</b><textarea name="Differentiators" rows="3" required></textarea></label>
+<label>Awards, licenses, certifications, press<textarea name="Awards and credentials" rows="3"></textarea></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="7"><h2><span>Step 7 of 13</span>Online presence</h2><label>Website<input type="url" name="Website" placeholder="https://"></label>
+<label>Google Business Profile<select name="Google Business Profile status"><option value="">Choose one</option><option>Verified and active</option><option>Exists but not verified</option><option>Not sure</option><option>I do not have one</option></select></label>
+<label>Google Business Profile or Maps link<input type="url" name="Google Business Profile link" placeholder="https://"></label>
+<label>Google categories you use or want<input type="text" name="GBP categories"></label>
+<label>Google review count and rating<input type="text" name="Google review count and rating" placeholder="48 reviews, 4.8 stars"></label>
+<label>Your Google review link, if you have it<input type="url" name="Google review link" placeholder="https://"></label>
+<label>Instagram handle and followers<input type="text" name="Instagram" placeholder="@yourbiz, 1,200"></label>
+<label>Facebook page and followers<input type="text" name="Facebook"></label>
+<label>TikTok handle and followers<input type="text" name="TikTok"></label>
+<label>YouTube channel and subscribers<input type="text" name="YouTube"></label>
+<label>Other platforms (LinkedIn, Pinterest, Nextdoor, Yelp...)<textarea name="Other socials" rows="3"></textarea></label>
+<label>Email list size and platform<input type="text" name="Email list" placeholder="800 on Mailchimp"></label>
+<label>Text list size and platform, if any<input type="text" name="Text list"></label>
+<label>How often you post now, and where<input type="text" name="Posting frequency"></label>
+<fieldset class="grp"><legend>Platforms you want your plan to focus on</legend><label class="cb"><input type="checkbox" name="Platforms to focus on" value="Instagram"> Instagram</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="Facebook"> Facebook</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="TikTok"> TikTok</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="YouTube"> YouTube</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="Google"> Google</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="Email"> Email</label><label class="cb"><input type="checkbox" name="Platforms to focus on" value="Text"> Text</label></fieldset>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="8"><h2><span>Step 8 of 13</span>Content and video</h2><label>How comfortable are you filming video?<select name="Filming comfort"><option value="">Choose one</option><option>Love it</option><option>Okay with it</option><option>Prefer not to be on camera</option><option>Will not film</option></select></label>
+<label>Who will appear on camera (you, staff, customers, products only)<textarea name="On camera" rows="3"></textarea></label>
+<fieldset class="grp"><legend>Equipment you have</legend><label class="cb"><input type="checkbox" name="Equipment" value="Smartphone"> Smartphone</label><label class="cb"><input type="checkbox" name="Equipment" value="Tripod"> Tripod</label><label class="cb"><input type="checkbox" name="Equipment" value="Ring light or lights"> Ring light or lights</label><label class="cb"><input type="checkbox" name="Equipment" value="Microphone"> Microphone</label><label class="cb"><input type="checkbox" name="Equipment" value="Camera"> Camera</label><label class="cb"><input type="checkbox" name="Equipment" value="Editing app"> Editing app</label></fieldset>
+<label>Editing apps you use (CapCut, Canva, InShot...)<input type="text" name="Editing app"></label>
+<label>Content or accounts you like (links welcome)<textarea name="Content you like" rows="3"></textarea></label>
+<label>Content you never want to post<textarea name="Content you dislike" rows="3"></textarea></label>
+<label>Topics, hooks, or ideas you want to try<textarea name="Hooks and topics" rows="3"></textarea></label>
+<label>Behind the scenes moments in your business that would make good content<textarea name="Behind the scenes" rows="3"></textarea></label>
+<label>Hours per week you can spend on marketing<input type="text" name="Time for marketing" placeholder="3"></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="9"><h2><span>Step 9 of 13</span>Goals</h2><label>Top 3 marketing goals <b>*</b><textarea name="Top goals" rows="3" required></textarea></label>
+<label>Your 90-day goal<textarea name="90-day goal" rows="3"></textarea></label>
+<label>Your 12-month goal<textarea name="12-month goal" rows="3"></textarea></label>
+<label>Monthly or yearly revenue target<input type="text" name="Revenue target"></label>
+<fieldset class="grp"><legend>Numbers you want to grow</legend><label class="cb"><input type="checkbox" name="KPIs" value="Calls"> Calls</label><label class="cb"><input type="checkbox" name="KPIs" value="Bookings"> Bookings</label><label class="cb"><input type="checkbox" name="KPIs" value="Walk ins"> Walk ins</label><label class="cb"><input type="checkbox" name="KPIs" value="Website visits"> Website visits</label><label class="cb"><input type="checkbox" name="KPIs" value="Online sales"> Online sales</label><label class="cb"><input type="checkbox" name="KPIs" value="Reviews"> Reviews</label><label class="cb"><input type="checkbox" name="KPIs" value="Followers"> Followers</label><label class="cb"><input type="checkbox" name="KPIs" value="Email list"> Email list</label></fieldset>
+<label>What worked and what did not in your marketing last year<textarea name="Last year" rows="3"></textarea></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="10"><h2><span>Step 10 of 13</span>Promotions calendar</h2><label>Busy seasons<textarea name="Busy seasons" rows="3"></textarea></label>
+<label>Slow months you want to fill<textarea name="Slow months" rows="3"></textarea></label>
+<label>Holidays and days that matter to your business<textarea name="Holidays" rows="3"></textarea></label>
+<label>New products, services, or launches coming up (with dates)<textarea name="Launches" rows="3"></textarea></label>
+<label>Events, anniversaries, or community dates<textarea name="Events" rows="3"></textarea></label>
+<label>Promos already planned (with dates)<textarea name="Upcoming promos" rows="3"></textarea></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="11"><h2><span>Step 11 of 13</span>Ads</h2><label>Past ad experience<select name="Ad experience"><option value="">Choose one</option><option>Never run ads</option><option>Boosted posts only</option><option>Ran Meta ads</option><option>Ran Google ads</option><option>Run ads regularly</option></select></label>
+<label>What happened with past ads<textarea name="Ad results" rows="3"></textarea></label>
+<label>Monthly ad budget<input type="text" name="Monthly ad budget" placeholder="$0, $300, $1,000"></label>
+<fieldset class="grp"><legend>Ad platforms you want to use</legend><label class="cb"><input type="checkbox" name="Ad platforms" value="Facebook and Instagram"> Facebook and Instagram</label><label class="cb"><input type="checkbox" name="Ad platforms" value="Google"> Google</label><label class="cb"><input type="checkbox" name="Ad platforms" value="TikTok"> TikTok</label><label class="cb"><input type="checkbox" name="Ad platforms" value="YouTube"> YouTube</label><label class="cb"><input type="checkbox" name="Ad platforms" value="Nextdoor"> Nextdoor</label><label class="cb"><input type="checkbox" name="Ad platforms" value="Not sure"> Not sure</label></fieldset>
+<label>Target area or radius for ads<input type="text" name="Target radius" placeholder="15 miles around downtown"></label>
+<label>Page ads should send people to<input type="url" name="Ad landing page" placeholder="https://"></label>
+<label>Meta Business Suite and Pixel<select name="Meta setup"><option value="">Choose one</option><option>Both set up</option><option>Business Suite only</option><option>Not set up</option><option>Not sure</option></select></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="12"><h2><span>Step 12 of 13</span>Website</h2><label>Website platform<input type="text" name="Website platform" placeholder="Wix, Squarespace, WordPress, Shopify..."></label>
+<label>Main pages on your site<textarea name="Website pages" rows="3"></textarea></label>
+<label>Known issues or things you do not like<textarea name="Website issues" rows="3"></textarea></label>
+<label>Main thing you want visitors to do<input type="text" name="Main call to action" placeholder="Call, book, buy, get a quote"></label>
+<label>Who can edit your website?<select name="Website access"><option value="">Choose one</option><option>I can</option><option>Someone on my team</option><option>An outside company</option><option>No one right now</option></select></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
+<section class="step" data-step="13"><h2><span>Step 13 of 13</span>Kits and delivery</h2><fieldset class="grp"><legend>Which kits should we customize? <b>*</b></legend><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 01: Google Business Profile"> Leap Kit 01: Google Business Profile</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 02: 5-Star Reviews"> Leap Kit 02: 5-Star Reviews</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 03: AI Prompt Pack"> Leap Kit 03: AI Prompt Pack</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 04: 30-Day Social Calendar"> Leap Kit 04: 30-Day Social Calendar</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 05: Reels and TikTok Hooks"> Leap Kit 05: Reels and TikTok Hooks</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 06: New Year Marketing Reset"> Leap Kit 06: New Year Marketing Reset</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 07: 12-Month Promo Calendar"> Leap Kit 07: 12-Month Promo Calendar</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 08: Website Audit"> Leap Kit 08: Website Audit</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 09: Smartphone Video Starter"> Leap Kit 09: Smartphone Video Starter</label><label class="cb"><input type="checkbox" name="Kits to customize" value="Leap Kit 10: Meta Ads Starter"> Leap Kit 10: Meta Ads Starter</label><label class="cb"><input type="checkbox" name="Kits to customize" value="All 10 kits"> All 10 kits</label></fieldset>
+<label>Google account email for your Drive folder <b>*</b><small>We share your finished kit folder with this account.</small><input type="email" name="Google account email" required></label>
+<label>Other emails to share the folder with<input type="text" name="Others to share with"></label>
+<label>Any deadline we should know about<input type="text" name="Deadline"></label>
+<label>Anything else we should know?<textarea name="Anything else" rows="3"></textarea></label>
+<div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="submit" class="btn-main">Send my answers</button></div></section>
 </form>
 </div>
 </main>
+<script>
+(function(){
+document.documentElement.classList.add("js");
+var steps=[].slice.call(document.querySelectorAll(".step")),cur=0,bar=document.getElementById("bar"),lbl=document.getElementById("plbl");
+function show(i){steps.forEach(function(s,j){s.classList.toggle("on",j===i)});cur=i;bar.style.width=((i+1)/steps.length*100)+"%";lbl.textContent="Step "+(i+1)+" of "+steps.length+": "+steps[i].querySelector("h2").lastChild.textContent;window.scrollTo(0,document.getElementById("intake-form").offsetTop);}
+function ok(s){var f=s.querySelectorAll("input,select,textarea");for(var k=0;k<f.length;k++){if(!f[k].checkValidity()){f[k].reportValidity();return false}}return true}
+document.addEventListener("click",function(e){if(e.target.matches("[data-next]")){if(ok(steps[cur]))show(cur+1)}if(e.target.matches("[data-back]"))show(cur-1)});
+var MAX=25,box=document.getElementById("products");
+function row(){var n=box.children.length;if(n>=MAX){alert("That is the max of "+MAX+". Add the rest in Pricing notes.");return}
+var d=document.createElement("div");d.className="prod";
+d.innerHTML='<h4><span>Product or service</span><button type="button" class="btn-x">Remove</button></h4>'+
+'<label>Name'+(n===0?' <b>*</b>':'')+'<input type="text" data-k="Name"'+(n===0?' required':'')+'></label>'+
+'<label>Price'+(n===0?' <b>*</b>':'')+'<input type="text" data-k="Price" placeholder="$45, from $120, $60/hr"'+(n===0?' required':'')+'></label>'+
+'<label>Short description<textarea rows="2" data-k="Description"></textarea></label>'+
+'<label class="cb"><input type="checkbox" data-k="Best seller"> Best seller</label>'+
+'<label>Priority to promote<select data-k="Promote priority"><option value="">Choose one</option><option>High (best margin or most wanted)</option><option>Medium</option><option>Low</option></select></label>';
+d.querySelector(".btn-x").onclick=function(){if(box.children.length>1)d.remove()};box.appendChild(d);num()}
+function num(){[].forEach.call(box.children,function(c,i){c.querySelector("h4 span").textContent="Product or service "+(i+1)})}
+document.getElementById("add-product").onclick=row;row();
+document.querySelector("form").addEventListener("submit",function(e){
+var out=[];[].forEach.call(box.children,function(c,i){var p=[];[].forEach.call(c.querySelectorAll("[data-k]"),function(f){var v=f.type==="checkbox"?(f.checked?"Yes":""):f.value.trim();if(v)p.push(f.getAttribute("data-k")+": "+v)});if(p.length)out.push((i+1)+". "+p.join(" | "))});
+document.getElementById("products-out").value=out.join("\n");
+var kits=document.querySelectorAll('input[name="Kits to customize"]:checked');if(!kits.length){e.preventDefault();alert("Pick at least one kit to customize.");}
+});
+show(0);
+})();
+</script>
 </body>
 </html>
