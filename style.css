@@ -5,7 +5,7 @@
   --muted:#4f5a44;--border:rgba(107,166,65,0.14);
   --fd:'Bricolage Grotesque',sans-serif;
   --fb:'Inter',sans-serif;
-  --fs:'Patrick Hand',cursive;
+  --fs:'Great Vibes',cursive;
   --gutter:max(4rem, calc((100vw - 1400px) / 2));
 }
 html{scroll-behavior:smooth;scroll-padding-top:90px}
