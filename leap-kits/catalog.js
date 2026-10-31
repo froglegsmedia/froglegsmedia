@@ -33,6 +33,7 @@ window.LEAP_KITS = {
     "get-found": { url: "https://buy.stripe.com/5kQ9AUdlI4cG7Hyd3hcMM0c" },
     "social-content": { url: "https://buy.stripe.com/9B6aEY1D08sW4vm1kzcMM0d" },
     "plan-and-promote": { url: "https://buy.stripe.com/9B628sa9waB4e5W3sHcMM0e" },
-    "complete": { url: "https://buy.stripe.com/bJe14ochEeRk4vm7IXcMM0f" }
+    "complete": { url: "https://buy.stripe.com/bJe14ochEeRk4vm7IXcMM0f" },
+    "custom": { url: "https://buy.stripe.com/4gM8wQ4PcgZs9PGgftcMM0g" }
   }
 };
