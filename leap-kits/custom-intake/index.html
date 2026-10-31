@@ -46,41 +46,50 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <h1>Custom Leap Kit Intake</h1>
 <p>Thanks for your order! The more you tell us, the more your kit sounds like you and sells what you sell. Only fields with <b>*</b> are required. Skip anything that does not apply.</p>
 <div class="progress"><div><i id="bar"></i></div><p id="plbl"></p></div>
-<form action="https://formsubmit.co/tyler@froglegsmedia.com" method="POST">
+<form action="https://formsubmit.co/tyler@froglegsmedia.com" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="_subject" value="New Custom Leap Kit intake">
 <input type="hidden" name="_next" value="https://froglegsmedia.com/leap-kits/custom-intake/#thanks">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 <section class="step" data-step="1"><h2><span>Step 1 of 13</span>Contact and matching</h2><label>Your name <b>*</b><input type="text" name="Name" required></label>
+<label>Your title or role<input type="text" name="Your title" placeholder="Owner, Manager"></label>
 <label>Your email <b>*</b><input type="email" name="email" required></label>
 <label>Best phone number<input type="tel" name="Phone"></label>
 <label>Email you used at checkout <b>*</b><small>So we can match your answers to your order.</small><input type="email" name="Stripe receipt email" required></label>
 <label>Best way to reach you<select name="Best way to reach you"><option value="">Choose one</option><option>Email</option><option>Phone call</option><option>Text</option></select></label>
 <div class="nav"><button type="button" class="btn-main" data-next>Next</button></div></section>
 <section class="step" data-step="2"><h2><span>Step 2 of 13</span>Business basics</h2><label>Business name (as customers know it) <b>*</b><input type="text" name="Business name" required></label>
+<label>What you do, in one sentence <b>*</b><input type="text" name="What you do" required placeholder="A family bakery making everything from scratch daily"></label>
 <label>Legal name or DBA, if different<input type="text" name="Legal name or DBA"></label>
 <label>Industry or type of business <b>*</b><input type="text" name="Industry" required placeholder="Salon, plumber, cafe, gym, boutique..."></label>
 <label>Years in business<input type="text" name="Years in business"></label>
 <label>Business address (or base location)<input type="text" name="Address"></label>
-<label>City and service area <b>*</b><input type="text" name="Service area" required placeholder="For example: Austin plus 20 miles"></label>
+<label>City <b>*</b><input type="text" name="City" required></label>
+<label>State <b>*</b><input type="text" name="State" required></label>
+<label>City and service area <b>*</b><input type="text" name="Neighborhood or service area" required placeholder="For example: Austin plus 20 miles"></label>
 <label>Where do you serve customers?<select name="Customer location"><option value="">Choose one</option><option>At my location</option><option>At their location</option><option>Both</option><option>Online only</option></select></label>
 <label>Hours of operation<textarea name="Hours" rows="3" placeholder="Mon to Fri 9 to 6, Sat 10 to 4"></textarea></label>
 <label>Business phone for customers<input type="tel" name="Business phone"></label>
 <label>How customers book, order, or buy <b>*</b><input type="text" name="Booking or ordering method" required placeholder="Call, website, Square, Vagaro, walk in..."></label>
 <label>Booking or ordering link<input type="url" name="Booking link" placeholder="https://"></label>
+<label>Parking or location details customers should know<input type="text" name="Location details" placeholder="Free lot behind the building"></label>
+<label>Any booking or entry requirements<input type="text" name="Booking requirements" placeholder="Appointments only, deposits, age limits"></label>
 <label>Team size and key people (names and roles)<textarea name="Team size" rows="3"></textarea></label>
+<label>Name of your lead professional or main contact customers see<input type="text" name="Lead professional"></label>
 <div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
 <section class="step" data-step="3"><h2><span>Step 3 of 13</span>Brand</h2><label>Your story: how and why you started<textarea name="Brand story" rows="3"></textarea></label>
 <label>Mission or what you stand for<textarea name="Mission" rows="3"></textarea></label>
 <label>Tagline or slogan, if you have one<input type="text" name="Tagline"></label>
+<label>Fun facts or surprising details about your business<textarea name="Fun facts" rows="3"></textarea></label>
 <label>Brand voice <b>*</b><select name="Brand voice" required><option value="">Choose one</option><option>Friendly and warm</option><option>Bold and fun</option><option>Professional and polished</option><option>Laid back and casual</option><option>Luxury and refined</option><option>Other (describe below)</option></select></label>
 <label>Describe your voice, or paste a caption or email that sounds like you<textarea name="Voice examples" rows="3"></textarea></label>
 <label>Words and phrases to use<textarea name="Words to use" rows="3"></textarea></label>
 <label>Words, topics, or claims to avoid<textarea name="Words to avoid" rows="3"></textarea></label>
 <label>Brand colors (hex codes if you have them)<input type="text" name="Brand colors" placeholder="#6BA641, #F2BB13"></label>
 <label>Brand fonts<input type="text" name="Fonts"></label>
-<p class="hint">Logo: email your logo file (PNG or SVG works best) to tyler@froglegsmedia.com, or share a link below.</p><label>Logo or brand files link (Google Drive, Dropbox)<input type="url" name="Logo link" placeholder="https://"></label>
+<label>Upload your logo (PNG or JPG, square works best)<input type="file" name="attachment" accept="image/png,image/jpeg,image/svg+xml"><small>Or email it to tyler@froglegsmedia.com, or share a link below.</small></label>
+<label>Logo or brand files link (Google Drive, Dropbox)<input type="url" name="Logo link" placeholder="https://"></label>
 <label>Photo and video style you like<textarea name="Photo style" rows="3" placeholder="Bright and clean, moody, candid, behind the scenes..."></textarea></label>
 <label>Link to your photos and videos, if any<input type="url" name="Photo library link" placeholder="https://"></label>
 <div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
@@ -90,6 +99,9 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <textarea name="Products and services" id="products-out" hidden></textarea>
 <label>Packages or bundles you offer, with prices<textarea name="Packages and bundles" rows="3"></textarea></label>
 <label>Current offers or specials<textarea name="Current offers" rows="3"></textarea></label>
+<label>A signature offer you run or want to run<input type="text" name="Signature offer" placeholder="Free pastry with any bag of coffee on Fridays"></label>
+<label>Offer details: who it is for, limits, how to claim, end date<textarea name="Offer limits" rows="3"></textarea></label>
+<label>Promo code you want to use, if any<input type="text" name="Promo code"></label>
 <label>Discounts you are willing to run (percent off, first visit, referral...)<textarea name="Discounts" rows="3"></textarea></label>
 <label>Guarantees, warranties, or policies<textarea name="Guarantees" rows="3"></textarea></label>
 <label>Pricing notes (starting at, varies by job, deposits, payment plans)<textarea name="Pricing notes" rows="3"></textarea></label>
@@ -101,7 +113,9 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <label>Why people hesitate or say no<textarea name="Objections" rows="3"></textarea></label>
 <label>Why customers choose you<textarea name="Why they buy" rows="3"></textarea></label>
 <label>Questions customers ask most (with your answers)<textarea name="Customer FAQs" rows="3"></textarea></label>
+<label>Common mistakes or myths you see customers make<textarea name="Common mistakes" rows="3"></textarea></label>
 <label>Favorite reviews or testimonials (paste a few)<textarea name="Testimonials" rows="3"></textarea></label>
+<label>Customer success stories or results you are proud of<textarea name="Customer stories" rows="3"></textarea></label>
 <label>Link to your reviews<input type="url" name="Reviews link" placeholder="https://"></label>
 <label>When are customers happiest with you?<select name="Best time to ask for a review"><option value="">Choose one</option><option>Right after the visit or job</option><option>A day or two later</option><option>After they see results</option><option>Not sure</option></select></label>
 <div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
@@ -109,6 +123,7 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <label>What competitors do well<textarea name="What they do well" rows="3"></textarea></label>
 <label>What makes you different or better <b>*</b><textarea name="Differentiators" rows="3" required></textarea></label>
 <label>Awards, licenses, certifications, press<textarea name="Awards and credentials" rows="3"></textarea></label>
+<label>Local businesses, causes, or groups you support or partner with<textarea name="Local partners" rows="3"></textarea></label>
 <div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="button" class="btn-main" data-next>Next</button></div></section>
 <section class="step" data-step="7"><h2><span>Step 7 of 13</span>Online presence</h2><label>Website<input type="url" name="Website" placeholder="https://"></label>
 <label>Google Business Profile<select name="Google Business Profile status"><option value="">Choose one</option><option>Verified and active</option><option>Exists but not verified</option><option>Not sure</option><option>I do not have one</option></select></label>
@@ -169,6 +184,7 @@ fbq('init','1156298203419593');fbq('track','PageView');
 <label>Other emails to share the folder with<input type="text" name="Others to share with"></label>
 <label>Any deadline we should know about<input type="text" name="Deadline"></label>
 <label>Anything else we should know?<textarea name="Anything else" rows="3"></textarea></label>
+<label class="cb"><input type="checkbox" name="Consent" value="Yes" required> OK to use these details to create my kits <b>*</b></label>
 <div class="nav"><button type="button" class="btn-back" data-back>Back</button><button type="submit" class="btn-main">Send my answers</button></div></section>
 </form>
 </div>
